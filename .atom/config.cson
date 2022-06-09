@@ -1,0 +1,90 @@
+"*":
+  Hydrogen:
+    kernelNotifications: true
+    languageMappings: "{ \"python\": \"magicpython\", \"jupyter\": \"python\" }"
+    startDir: "dirOfFile"
+  "autocomplete-clang":
+    includeNonDoxygenCommentsAsDocumentation: true
+    includeSystemHeadersDocumentation: true
+  build: {}
+  core:
+    disabledPackages: [
+      "linter-gcc-breeen"
+      "terminal-plus"
+      "platformio-ide-terminal"
+      "iv-terminal"
+    ]
+    projectHome: "/home/riley/projects"
+    telemetryConsent: "no"
+  editor:
+    atomicSoftTabs: false
+    fontFamily: "Hack, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 12
+    lineHeight: 1.4
+    scrollPastEnd: true
+    softWrapHangingIndent: 2
+    tabLength: 4
+  "exception-reporting":
+    userId: "5a7c4de7-a94f-42e6-9a62-a2502b2db390"
+  "file-icons":
+    coloured: false
+  "ide-python":
+    pylsPlugins:
+      flake8:
+        enabled: true
+      jedi_definition:
+        follow_builtin_imports: true
+        follow_imports: true
+      rope_completion:
+        enabled: true
+    python: "/usr/bin/python3"
+  "iv-terminal":
+    shellSettings:
+      shellArgs: " "
+  linter:
+    lintOnChangeInterval: 500
+  "linter-gcc-breeen":
+    gccLintOnTheFly: true
+  "linter-gcc2":
+    gccLintOnTheFly: true
+  "linter-ui-default":
+    panelHeight: 251
+    useBusySignal: false
+  minimap: {}
+  "one-dark-ui":
+    tabCloseButton: "Left"
+  "platformio-ide":
+    advanced:
+      customPATH: "/home/riley/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin"
+    autoUpdateIDE: false
+    useBuiltinPIOCore: false
+  pp:
+    require: [
+      ""
+    ]
+  "terminal-plus":
+    core:
+      autoRunCommand: "/bin/fish"
+      shell: "/usr/bin/fish"
+      shellArguments: " "
+    style:
+      fontFamily: "Noto Sans Mono"
+      fontSize: "11"
+      theme: "pro"
+    toggles:
+      autoClose: true
+      cursorBlink: false
+  "terminal-tab-fork":
+    shellSettings:
+      shellArgs: " "
+  "tool-bar":
+    iconSize: "18px"
+    position: "Left"
+  welcome:
+    showOnStartup: false
+".c.source":
+  editor:
+    tabLength: 8
+".cpp.source":
+  editor:
+    tabLength: 8
