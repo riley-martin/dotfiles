@@ -1,0 +1,58 @@
+# GIMP gimprc
+# 
+# This is your personal gimprc file.  Any variable defined in this file takes
+# precedence over the value defined in the system-wide gimprc:
+# /usr/local/etc/gimp/2.99/gimprc
+# Most values can be set within GIMP by changing some options in the
+# Preferences dialog.
+
+(config-version "2.99.11")
+(import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-rawtherapee/file-rawtherapee")
+(export-file-type jpg)
+(items-select-method glob-pattern)
+(monitor-xresolution 92)
+(monitor-yresolution 91)
+(default-fullscreen-view
+    (show-menubar yes)
+    (show-statusbar yes)
+    (show-rulers yes)
+    (show-scrollbars yes)
+    (show-selection yes)
+    (show-layer-boundary yes)
+    (show-canvas-boundary yes)
+    (show-guides yes)
+    (show-grid no)
+    (show-sample-points yes)
+    (snap-to-guides yes)
+    (snap-to-grid no)
+    (snap-to-canvas no)
+    (snap-to-path no)
+    (padding-mode custom)
+    (padding-color (color-rgb 1 1 1))
+    (padding-in-show-all no))
+(theme "System")
+(user-manual-online yes)
+(layer-new-name "bottom-right")
+(selection-feather-radius 3)
+(fill-options
+    (style solid)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10))
+(stroke-options
+    (style solid)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10)
+    (method line)
+    (width 6)
+    (unit pixels)
+    (cap-style butt)
+    (join-style miter)
+    (miter-limit 10)
+    (dash-offset 0)
+    (dash-info 0)
+    (emulate-brush-dynamics no))
+
+
+# end of gimprc

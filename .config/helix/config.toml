@@ -1,0 +1,12 @@
+theme = "gruvbox"
+[editor]
+scrolloff = 5
+shell = ["/bin/fish"]
+idle-timeout = 300
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+[editor.file-picker]
+hidden = false
+
