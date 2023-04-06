@@ -23,6 +23,8 @@ in {
     };
   };
 
+  # formatter.system = pkgs.alejandra;
+
   xdg = {
     enable = true;
   };  
@@ -42,13 +44,16 @@ in {
     pkgs.fd
     pkgs.bottom
     self.inputs.nix-alien.packages.${system}.nix-alien
+    pkgs.tealdeer
 
     ## Gui/Desktop environment utilities
     pkgs.xdg-utils
     pkgs.wluma
     pkgs.swayidle
     (pkgs.callPackage ./pkgs/chromium-flagfile.nix {})
-    (pkgs.callPackage ./pkgs/gestures.nix {})
+    self.inputs.gestures.packages.${system}.gestures
+    # (pkgs.callPackage ./pkgs/gestures.nix {})
+
     pkgs.kanata
     pkgs.wl-clipboard
     pkgs.brillo
@@ -89,6 +94,7 @@ in {
     ./alacritty.nix
     ./waybar.nix
     ./wezterm.nix
+    ./nushell.nix
     # ./ironbar.nix
   ];
 

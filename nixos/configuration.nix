@@ -57,6 +57,11 @@
     ];
   };
 
+
+  virtualisation = {
+    waydroid.enable = true;
+    lxd.enable = true;
+  };
   
 
   # Configure keymap in X11

@@ -20,6 +20,7 @@
       {
         name = "nix";
         language-server = { command = lib.getExe pkgs.nil; };
+        formatter = { command = "${pkgs.nix}/bin/nix fmt"; };
       }
     ];
     settings = {
