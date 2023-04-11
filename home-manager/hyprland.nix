@@ -139,7 +139,7 @@ wayland.windowManager.hyprland = {
       $mod = ALT
 
       # bind=$mod, RETURN, exec, kitty
-      bind = $mod, RETURN, exec, alacritty
+      bind = $mod, RETURN, exec, wezterm
       bind = $mod, Q, killactive,
       bind = $modSHIFT, M, exit,
       bind = $mod, M, exec, ${swaylock} -f -c 000000
