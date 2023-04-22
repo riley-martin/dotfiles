@@ -13,6 +13,7 @@
     '';
     initExtra = ''
       # zprof
+      eval "$(direnv hook zsh)"
     '';
     sessionVariables = {
       EDITOR = "hx";

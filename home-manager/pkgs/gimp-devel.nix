@@ -1,70 +1,314 @@
+# { stdenv
+# , lib
+# , fetchurl
+# , fetchFromGitHub
+# , fetchpatch
+# , substituteAll
+# , meson
+# , ninja
+# , pkg-config
+# , babl
+# , gegl
+# , gtk3
+# , glib
+# , gdk-pixbuf
+# , graphviz
+# , isocodes
+# , pango
+# , cairo
+# , libarchive
+# , luajit
+# , freetype
+# , fontconfig
+# , lcms
+# , libpng
+# , libjpeg
+# , libjxl
+# , poppler
+# , poppler_data
+# , libtiff
+# , libmng
+# , librsvg
+# , libwmf
+# , zlib
+# , libzip
+# , ghostscript
+# , aalib
+# , shared-mime-info
+# , python3
+# , libexif
+# , gettext
+# , wrapGAppsHook
+# , libxslt
+# , gobject-introspection
+# , vala
+# , gi-docgen
+# , perl
+# , appstream-glib
+# , desktop-file-utils
+# , xorg
+# , glib-networking
+# , json-glib
+# , libmypaint
+# , gexiv2
+# , harfbuzz
+# , mypaint-brushes1
+# , libwebp
+# , libheif
+# , gjs
+# , libgudev
+# , openexr
+# , xvfb-run
+# , dbus
+# , gnome
+# , hicolor-icon-theme
+# , alsa-lib
+# # , AppKit
+# # , Cocoa
+# # , gtk-mac-integration-gtk3
+# , unstableGitUpdater
+# }:
 { pkgs ? import <nixpkgs> {}, ... }:
-pkgs.stdenv.mkDerivation rec {
-  name = "gimp-devel";
-  src = pkgs.fetchFromGitHub {
+with pkgs;
+let
+  python = python3.withPackages (pp: with pp; [
+    pygobject3
+  ]);
+in stdenv.mkDerivation (finalAttrs: {
+  pname = "gimp";
+  version = "2_99_14+date=2023-03-17";
+
+  outputs = [ "out" "dev" "devdoc" ];
+
+  # src = fetchurl {
+  #   url = "http://download.gimp.org/pub/gimp/v${lib.versions.majorMinor finalAttrs.version}/gimp-${finalAttrs.version}.tar.bz2";
+  #   sha256 = "hABGQtNRs5ikKTzX/TWSBEqUTwW7UoUO5gaPJHxleqM=";
+  # };
+
+  # We should not use fetchFromGitLab because the build system
+  # will complain and mark the build as unsupported when it cannot find
+  # .git directory but downloading the whole repo is jus too much.
+  src = fetchFromGitHub rec {
+    name = "gimp-dev-${rev}"; # to make sure the hash is updated
     owner = "GNOME";
     repo = "gimp";
-    rev = "50a028ac33f5b7dfc079791b15f91f1e62021c27";
-    sha256 = "LkOPyUSqtPEr9JVnWTy/mZ0iKIAVdIiBrKEUmW9md1k=";
+    rev = "ad7a2e53eb72ef471566fa2d0ce9faeec929fbcf";
+    sha256 = "IJMUJc817EDWIRqqkCuwAcSw7gcgCkXxPan5fEq1AO0=";
   };
-  nativeBuildInputs = with pkgs; [ perl autoreconfHook pkgconfig gettext ];
-  buildInputs = with pkgs; [
-    python3
-    luajit_2_1
-    gjs
-    appstream-glib
-    glib-networking
-    glib
-    mypaint-brushes1
-    libarchive
-    poppler_gi
-    poppler_data
-    shared-mime-info
-    libwebp
-    libheif
-    libavif
-    lcms2
-    vala
-    glib
-    # gobject
+
+  patches = [
+    # to remove compiler from the runtime closure, reference was retained via
+    # gimp --version --verbose output
+    (substituteAll {
+      src = ./remove-cc-reference.patch;
+      cc_version = stdenv.cc.cc.name;
+    })
+
+    # Use absolute paths instead of relying on PATH
+    # to make sure plug-ins are loaded by the correct interpreter.
+    (substituteAll {
+      src = ./hardcode-plugin-interpreters.patch;
+      python_interpreter = python.interpreter;
+    })
+
+    # D-Bus configuration is not available in the build sandbox
+    # so we need to pick up the one from the package.
+    (substituteAll {
+      src = ./tests-dbus-conf.patch;
+      session_conf = "${dbus.out}/share/dbus-1/session.conf";
+    })
+
+    # Since we pass absolute datadirs to Meson, the path is resolved incorrectly.
+    # What is more, even the assumption that iso-codes have the same datadir
+    # subdirectory as GIMP is incorrect. Though, there is not a way to obtain
+    # the correct directory at the moment. There is a MR against isocodes to fix that:
+    # https://salsa.debian.org/iso-codes-team/iso-codes/merge_requests/11
+    ./fix-isocodes-paths.patch
+  ];
+
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    gettext
+    wrapGAppsHook
+    libxslt # for xsltproc
     gobject-introspection
-    gtk3
-    gexiv2
-    cairo
-    pango
-    # liblcms
-    libmypaint
+    perl
+    vala
+
+    # for docs
+    gi-docgen
+
+    # for tests
+    gnome3.adwaita-icon-theme
+    shared-mime-info
+    desktop-file-utils
+    xvfb-run
+    dbus
+  ];
+
+  buildInputs = [
+    appstream-glib # for library
     babl
     gegl
-    librsvg
+    gtk3
+    glib
+    gdk-pixbuf
+    pango
+    cairo
+    libarchive
+    gexiv2
+    harfbuzz
+    isocodes
+    freetype
+    fontconfig
+    lcms
     libpng
-    libwmf
-    libtiff
     libjpeg
     libjxl
+    poppler
+    poppler_data
+    libtiff
+    openexr
+    libmng
+    librsvg
+    libwmf
+    zlib
+    libzip
+    ghostscript
+    aalib
+    shared-mime-info
+    json-glib
+    libwebp
+    libheif
+    python
+    libexif
+    xorg.libXpm
+    xorg.libXmu
+    glib-networking
+    libmypaint
+    mypaint-brushes1
+
+    # New file dialogue crashes with “Icon 'image-missing' not present in theme Symbolic” without an icon theme.
+    gnome3.adwaita-icon-theme
+    shared-mime-info
+
+    # for Lua plug-ins
+    (luajit.withPackages (pp: [
+      pp.lgi
+    ]))
+  ] ++ lib.optionals (!stdenv.isDarwin) [
+    alsa-lib
+
+    # for JavaScript plug-ins
+    gjs
+  ]
+    # ++ lib.optionals stdenv.isDarwin [
+    # AppKit
+    # Cocoa
+    # gtk-mac-integration-gtk3
+  # ]
+    ++ lib.optionals stdenv.isLinux [
+    libgudev
   ];
-  enableParallelBuilding = true;
-  preConfigure = ''
-    export GIO_EXTRA_MODULES="${pkgs.glib-networking}/lib/gio/modules:$GIO_EXTRA_MODULES"
+
+  # needed by gimp-2.0.pc
+  propagatedBuildInputs = [
+    gegl
+  ];
+
+  mesonFlags = [
+    "-Dbug-report-url=https://github.com/NixOS/nixpkgs/issues/new"
+    "-Dicc-directory=/run/current-system/sw/share/color/icc"
+    "-Dcheck-update=no"
+    # Requires neweer appstreamcli and not necessary
+    "-Dappdata-test=disabled"
+  ] ++ lib.optionals stdenv.isDarwin [
+    "-Dalsa=disabled"
+    "-Djavascript=false"
+  ];
+
+  # on Linux, unable to find icons
+  doCheck = true;
+
+  env = {
+    # The check runs before glib-networking is registered
+    GIO_EXTRA_MODULES = "${glib-networking}/lib/gio/modules";
+
+    NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-DGDK_OSX_BIG_SUR=16";
+
+    # Check if librsvg was built with --disable-pixbuf-loader.
+    PKG_CONFIG_GDK_PIXBUF_2_0_GDK_PIXBUF_MODULEDIR = "${librsvg}/${gdk-pixbuf.moduleDir}";
+  };
+
+  postPatch = ''
+    patchShebangs \
+      app/tests/create_test_env.sh \
+      tools/gimp-mkenums
+
+    # Bypass the need for downloading git archive.
+    substitute app/git-version.h.in git-version.h \
+      --subst-var-by GIMP_GIT_VERSION "GIMP_2.99.?-g${builtins.substring 0 10 finalAttrs.src.rev}" \
+      --subst-var-by GIMP_GIT_VERSION_ABBREV "${builtins.substring 0 10 finalAttrs.src.rev}" \
+      --subst-var-by GIMP_GIT_LAST_COMMIT_YEAR "${builtins.head (builtins.match ".+\+date=([0-9]{4})-[0-9]{2}-[0-9]{2}" finalAttrs.version)}"
   '';
-  configurePhase = "./autogen.sh";
-  buildPhase = "make && make install";
-  installPhase = ''
-    mkdir $out/
 
-    # ln -s ${pkgs.ungoogled-chromium}/bin $out/bin
-
-    mkdir $out/share
-    ln -s ${pkgs.ungoogled-chromium}/share/icons $out/share/icons
-    ln -s ${pkgs.ungoogled-chromium}/share/man $out/share/man
-    ln -s ${pkgs.ungoogled-chromium}/share/applications $out/share/applications
-
-    mkdir $out/bin/
-
-    sed -E 's#(exec)\W("/nix/store/.*/chromium")#cat "$HOME/.config/chromium-flags.conf" | xargs \2#g' \
-      ${pkgs.ungoogled-chromium}/bin/chromium \
-      > $out/bin/chromium
-
-    chmod +x $out/bin/chromium
+  preCheck = ''
+    # Avoid “Error retrieving accessibility bus address”
+    export NO_AT_BRIDGE=1
+    # Fix storing recent file list in tests
+    export HOME="$TMPDIR"
+    export XDG_DATA_DIRS="${glib.getSchemaDataDirPath gtk3}:$XDG_DATA_DIRS"
   '';
-}
+
+  checkPhase = ''
+    runHook preCheck
+
+    meson test --timeout-multiplier 4 --print-errorlogs
+
+    runHook postCheck
+  '';
+
+  preFixup = ''
+    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [
+      # for dot for gegl:introspect (Debug » Show Image Graph, hidden by default on stable release)
+      graphviz
+    ]}:$out/bin")
+    gappsWrapperArgs+=(
+      --prefix XDG_DATA_DIRS : "XDG_ICON_DIRS"
+    )
+  '';
+
+  postFixup = ''
+    # Cannot be in postInstall, otherwise _multioutDocs hook in preFixup will move right back.
+    moveToOutput "share/doc" "$devdoc"
+  '';
+
+  passthru = {
+    # The declarations for `gimp-with-plugins` wrapper,
+    # used for determining plug-in installation paths
+    majorVersion = "2.99";
+    targetLibDir = "lib/gimp/${finalAttrs.passthru.majorVersion}";
+    targetDataDir = "share/gimp/${finalAttrs.passthru.majorVersion}";
+    targetPluginDir = "${finalAttrs.passthru.targetLibDir}/plug-ins";
+    targetScriptDir = "${finalAttrs.passthru.targetDataDir}/scripts";
+
+    # probably its a good idea to use the same gtk in plugins ?
+    gtk = gtk3;
+
+    updateScript = unstableGitUpdater {
+      stableVersion = true;
+      tagPrefix = "GIMP_";
+    };
+  };
+
+  meta = with lib; {
+    description = "The GNU Image Manipulation Program";
+    homepage = "https://www.gimp.org/";
+    maintainers = with maintainers; [ jtojnar ];
+    license = licenses.gpl3Plus;
+    platforms = platforms.unix;
+    mainProgram = "gimp";
+  };
+})

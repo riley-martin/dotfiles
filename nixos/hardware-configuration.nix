@@ -12,6 +12,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.extraModprobeConfig = lib.mkMerge [
+    "options snd_hda_intel power_save=1"
+    "options iwlwifi power_save=1 uapsd_disable=1"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/00b3a018-de2c-4ffc-a49a-3464e84b526d";

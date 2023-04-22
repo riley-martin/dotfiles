@@ -15,6 +15,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
 
   networking.hostName = "beta"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -41,8 +45,27 @@
   services.udev.extraRules = ''
     KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
     ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video $sys$devpath/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w $sys$devpath/brightness"
+
+    # Arduino Uno
+    SUBSYSTEM=="tty", GROUP="plugdev". MODE="0660"
+
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", SYMLINK+="arduino"
   '';
   # services.logind.lidSwitch = "suspend";
+  services.tlp = {
+    enable = true;
+    extraConfig = ''
+      CPU_SCALING_GOVERNOR_ON_AC=performance
+      CPU_SCALING_GOVERNOR_ON_BAT=powersave
+      RUNTIME_PM_ON_AC=on
+      RUNTIME_PM_ON_BAT=auto
+    '';
+  };
+
+  services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.openFirewall = true;
 
   fonts = {
     fonts = with pkgs; [
@@ -99,7 +122,7 @@
   programs.zsh.enable = true;
   users.users.riley = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" ];
     home = "/home/riley";
     shell = pkgs.zsh;
     packages = with pkgs; [

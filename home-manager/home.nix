@@ -47,10 +47,12 @@ in {
     pkgs.tealdeer
 
     ## Gui/Desktop environment utilities
+    pkgs.imv
     pkgs.xdg-utils
     pkgs.wluma
     pkgs.swayidle
     (pkgs.callPackage ./pkgs/chromium-flagfile.nix {})
+    # (pkgs.callPackage ./pkgs/gimp-devel.nix {inherit pkgs;})
     self.inputs.gestures.packages.${system}.gestures
     # (pkgs.callPackage ./pkgs/gestures.nix {})
 
@@ -105,6 +107,11 @@ in {
     "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation'"
     "--ozone-platform=wayland"
   ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   
   programs.git = {
     enable = true;

@@ -34,7 +34,7 @@
           "PATH=/home/riley/.nix-profile/bin:/run/current-system/sw/bin"
         ];
         Type = "simple";
-        ExecStart = "/home/riley/.nix-profile/bin/gestures";
+        ExecStart = "/home/riley/.nix-profile/bin/gestures start";
       };
       Install = {
         WantedBy = [ "default.target" ];
