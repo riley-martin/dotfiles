@@ -19,7 +19,9 @@
     ironbar.url = "github:JakeStanger/ironbar";
     ironbar.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/2df0d034bc4a18fafb3524401eeeceaa6b23e753";
+
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     gestures.url = "github:riley-martin/gestures";

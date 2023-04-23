@@ -40,6 +40,12 @@
     useXkbConfig = false; # use xkbOptions in tty.
   };
 
+  services.fprintd.enable = true;
+  services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
+  {
+    inherit pkgs lib;
+  });
+  
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services.udev.extraRules = ''
@@ -157,6 +163,7 @@
 
   security.rtkit.enable = true;
   security.pam.services.swaylock = {};
+  security.polkit.enable = true;
 
   services.pipewire = {
     enable = true;

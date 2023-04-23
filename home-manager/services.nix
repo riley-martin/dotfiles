@@ -1,5 +1,22 @@
 { pkgs, ... }: {
   systemd.user.services = {
+    polkit-gnome-agent = {
+      Unit = {
+        Description = "polkit-gnome-agent";
+        After = "graphical-session.target";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+        Wants = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimoutStopSec = 10;
+      };
+    };
     mpris-proxy = {
       Unit = {
         Description = "Mpris proxy";
