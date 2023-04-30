@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ agenix, config, pkgs, lib, ... }:
 
 {
   imports =
@@ -19,6 +19,10 @@
     keep-outputs = true
     keep-derivations = true
   '';
+
+  age = {
+    secrets.laptop.file = ../secrets/laptop.age;
+  };
 
   networking.hostName = "beta"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -39,6 +43,8 @@
     keyMap = "us";
     useXkbConfig = false; # use xkbOptions in tty.
   };
+
+  services.sshd.enable = true;
 
   services.fprintd.enable = true;
   services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
@@ -128,6 +134,7 @@
   programs.zsh.enable = true;
   users.users.riley = {
     isNormalUser = true;
+    passwordFile = config.age.secrets.laptop.path;
     extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" ];
     home = "/home/riley";
     shell = pkgs.zsh;
@@ -143,6 +150,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    agenix.packages.x86_64-linux.default
     helix
     networkmanager
     wget

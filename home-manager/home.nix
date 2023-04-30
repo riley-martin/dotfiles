@@ -13,6 +13,10 @@ in {
     # This sucks, but I sort of need widevine :(
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "chromium"
+      "chromiumDev"
+      "chromium-dev"
+      "chromiumBeta"
+      "chromium-beta"
       "ungoogled-chromium"
       "chromium-unwrapped"
       "chrome-widevine-cdm"
@@ -115,6 +119,7 @@ in {
   };
   
   programs.git = {
+    package = pkgs.gitFull;
     enable = true;
     includes = [ { path = ./gitconfig; } ];
   };

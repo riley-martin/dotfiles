@@ -4,11 +4,16 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpuser = rileyseanm@gmail.com
+	smtpencryption = tls
+	smtpserverport = 587
 [init]
 	defaultBranch = main
 [user]
 	name = Riley Martin
-	email = 106552431+riley-martin@users.noreply.github.com
+	email = rileyseanm@gmail.com
 [core]
 	pager = delta
 

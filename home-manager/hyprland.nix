@@ -111,6 +111,7 @@ wayland.windowManager.hyprland = {
 
       debug {
           overlay = false
+
       }
 
       blurls = waybar
