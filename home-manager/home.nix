@@ -113,6 +113,12 @@ in {
     "--ozone-platform=wayland"
   ];
 
+  programs.eww = {
+    enable = true;
+    package = pkgs.eww-wayland;
+    configDir = ./eww;
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
