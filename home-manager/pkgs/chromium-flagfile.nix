@@ -5,6 +5,17 @@ in pkgs.stdenv.mkDerivation rec {
   name = "chromium-flagfile";
   src = ./.;
   # buildInputs = with pkgs; [ makeWrapper ungoogled-chromium ];
+  nativeBuildInputs = with pkgs; [
+    ninja
+    pkg-config
+    python3
+    perl
+    which
+    llvmPackages.bintools
+    bison
+    gperf
+    libevdev
+  ];
   buildInputs = [ pkgs.makeWrapper chromium ];
   buildPhase = "true";
   installPhase = ''

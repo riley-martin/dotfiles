@@ -55,7 +55,7 @@ in {
     pkgs.xdg-utils
     pkgs.wluma
     pkgs.swayidle
-    (pkgs.callPackage ./pkgs/chromium-flagfile.nix {})
+    (pkgs.callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
     (pkgs.callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
     # (pkgs.callPackage ./pkgs/gimp-devel.nix {inherit pkgs;})
     self.inputs.gestures.packages.${system}.gestures
