@@ -35,7 +35,7 @@ wayland.windowManager.hyprland = {
       exec-once = dunst
       exec-once = gestures
       exec-once = /usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/wireplumber
-      exec-once = swayidle -w timeout 60 '${swaylock}' timeout 65 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+      exec-once = swayidle -w timeout 120 'hyprctl dispatch dpms off' timeout 125 '${swaylock}' resume 'hyprctl dispatch dpms on'
 
       input {
           kb_file =
@@ -160,11 +160,11 @@ wayland.windowManager.hyprland = {
       bind = , XF86MonBrightnessDown, exec, brillo -U 5
 
       # these are the media control buttons on my laptop function keys
-      bind = , 121, exec, wpctl set-mute '@DEFAULT_SINK@' toggle
+      bindl = , 121, exec, wpctl set-mute '@DEFAULT_SINK@' toggle
 
-      bind = , 122, exec, wpctl set-volume '@DEFAULT_SINK@' 2%-
+      bindl = , 122, exec, wpctl set-volume '@DEFAULT_SINK@' 2%-
 
-      bind = , 123, exec, wpctl set-volume '@DEFAULT_SINK@' 2%+
+      bindl = , 123, exec, wpctl set-volume '@DEFAULT_SINK@' 2%+
 
       bind = , 255, exec, /home/riley/bin/wifi-toggle
 

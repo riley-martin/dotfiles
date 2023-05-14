@@ -1,0 +1,35 @@
+import System.Environment (getArgs)
+import System.Process (callProcess, proc, system)
+
+main :: IO ()
+main = do
+  args <- getArgs
+  handleArgs $ args
+
+-- TODO: deduplicate code; more commands; more than just simple wrapper over nix; etc.
+-- Inspiration: see https://github.com/hlissner/dotfiles/blob/master/bin/hey
+
+handleArgs :: [String] -> IO ()
+handleArgs (x:xs)
+  | x == "rebuild" || x == "r" = callProcess "nixos-rebuild" $ ["switch"] ++ xs
+  | x == "check" || x == "c" = callProcess "nix" $ ["flake", "check"] ++ xs
+  | x == "show" = callProcess "nix" $ ["flake", "show"] ++ xs
+  | x == "search" || x == "s" = callProcess "nix" $ ["search", "nixpkgs"] ++ xs
+  | x == "update" || x == "u" = callProcess "nix" $ ["flake", "update"] ++ xs
+  | x == "help" || x == "h" || x == "-h" || x == "--help" = help
+  | otherwise = help
+handleArgs _ = help
+
+help :: IO ()
+help = putStrLn "\
+\hey: A cli tool for nix and home manager configuration management\n\n\
+\Commands:\n\
+\  r, rebuild: rebuild home and system configuration\n\
+\  u, update: update flake \n\
+\  c, check: check flake\n\
+\  show: show flake\n\
+\  s, search: search nixpkgs\n\
+\  h, help: show this help\n\n\
+\Options:\n\
+\  -h, --help: show this help\n\
+\"

@@ -1,6 +1,10 @@
 { self, system, pkgs, lib, ... }:
 let
   nixpkgs = import <nixpkgs> {};
+  hey = pkgs.writers.writeHaskellBin
+    "hey"
+    { libraries = [ pkgs.haskellPackages.cmdargs ]; }
+    (builtins.readFile ./hey);
 in {
   home.username = "riley";
   home.homeDirectory = "/home/riley";
@@ -8,6 +12,7 @@ in {
   targets.genericLinux.enable = true;
   programs.home-manager.enable = true;
   # programs.plotinus.enable = true;
+
 
   nixpkgs.config = {
     # This sucks, but I sort of need widevine :(
@@ -35,6 +40,10 @@ in {
 
   home.packages = [
     ## Command line utilities
+    hey
+    pkgs.libnotify
+    pkgs.zip
+    pkgs.unzip
     pkgs.sl
     pkgs.bashInteractive
     pkgs.s-tui
@@ -85,6 +94,7 @@ in {
     ## Graphics
     pkgs.gimp
     pkgs.darktable
+    pkgs.freecad
 
     ## Office
     pkgs.libreoffice-fresh
@@ -102,10 +112,9 @@ in {
     ./waybar.nix
     ./wezterm.nix
     ./nushell.nix
+    ./dunst.nix
     # ./ironbar.nix
   ];
-
-  services.dunst.enable = true;
 
   programs.chromium.commandLineArgs = [
     "--force-dark-mode"

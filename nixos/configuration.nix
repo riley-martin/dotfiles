@@ -24,10 +24,13 @@
     secrets.laptop.file = ../secrets/laptop.age;
   };
 
+
   networking.hostName = "beta"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  # networking.nameservers = [ "192.168.0.28" "1.1.1.1" ];
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -117,11 +120,13 @@
   };
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     extraPackages = with pkgs; [
       intel-media-driver
       vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
+      intel-compute-runtime
     ];
   };
 
