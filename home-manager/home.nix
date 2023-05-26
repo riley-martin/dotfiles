@@ -38,69 +38,30 @@ in {
     enable = true;
   };  
 
-  home.packages = [
+  home.packages = with pkgs; [
     ## Command line utilities
-    hey
-    pkgs.libnotify
-    pkgs.zip
-    pkgs.unzip
-    pkgs.sl
-    pkgs.bashInteractive
-    pkgs.s-tui
-    pkgs.dig
-    pkgs.lynx
-    pkgs.delta
-    pkgs.bat
-    pkgs.lsd
-    pkgs.ripgrep
-    # pkgs.handlr
-    pkgs.fd
-    pkgs.bottom
+    hey progress libnotify zip unzip sl bashInteractive s-tui
+    dig lynx delta bat lsd ripgrep fd bottom tealdeer
     self.inputs.nix-alien.packages.${system}.nix-alien
-    pkgs.tealdeer
 
     ## Gui/Desktop environment utilities
-    pkgs.imv
-    pkgs.xdg-utils
-    pkgs.wluma
-    pkgs.swayidle
-    (pkgs.callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
-    (pkgs.callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
-    # (pkgs.callPackage ./pkgs/gimp-devel.nix {inherit pkgs;})
+    imv xdg-utils wluma swayidle
+    (callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
+    (callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
     self.inputs.gestures.packages.${system}.gestures
-    # (pkgs.callPackage ./pkgs/gestures.nix {})
-
-    pkgs.kanata
-    pkgs.wl-clipboard
-    pkgs.brillo
-    # pkgs.waybar
-    pkgs.wpaperd
-    pkgs.rofi-wayland
-    # pkgs.joplin-desktop
-    pkgs.jamesdsp
-    pkgs.dconf
+    kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
 
     ## Development tools
-    pkgs.rust-analyzer
-    pkgs.gh
-    pkgs.nil
-    pkgs.age
-    pkgs.zola
-    pkgs.rustup
-    pkgs.clang
-    # pkgs.gcc
-    pkgs.pkg-config
+    rust-analyzer gh nil age zola rustup clang pkg-config
 
     ## Graphics
-    pkgs.gimp
-    pkgs.darktable
-    pkgs.freecad
+    gimp darktable freecad
 
     ## Office
-    pkgs.libreoffice-fresh
+    libreoffice-fresh
 
     ## Other
-    pkgs.stellarium
+    stellarium
   ];
 
   imports = [
@@ -115,6 +76,10 @@ in {
     ./dunst.nix
     # ./ironbar.nix
   ];
+
+  services.udiskie = {
+    enable = true;
+  };
 
   programs.chromium.commandLineArgs = [
     "--force-dark-mode"
@@ -145,6 +110,7 @@ in {
   };
 
   programs.broot.enable = true;
+
   programs.starship = {
     enable = true;
   };

@@ -13,6 +13,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.extraOptions = ''
@@ -48,6 +49,7 @@
   };
 
   services.sshd.enable = true;
+  services.udisks2.enable = true;
 
   services.fprintd.enable = true;
   services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
@@ -140,13 +142,15 @@
   users.users.riley = {
     isNormalUser = true;
     passwordFile = config.age.secrets.laptop.path;
-    extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" "adbusers" ];
     home = "/home/riley";
     shell = pkgs.zsh;
     packages = with pkgs; [
       swaylock
     ];
   };
+
+  programs.adb.enable = true;
 
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
