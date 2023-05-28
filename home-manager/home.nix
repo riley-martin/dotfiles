@@ -74,6 +74,7 @@ in {
     ./wezterm.nix
     ./nushell.nix
     ./dunst.nix
+    ./eww
     # ./ironbar.nix
   ];
 
@@ -87,10 +88,16 @@ in {
     "--ozone-platform=wayland"
   ];
 
-  programs.eww = {
+  # programs.eww = {
+  #   enable = true;
+  #   # package = pkgs.eww-wayland;
+  #   package = (pkgs.callPackage ./eww { inherit pkgs; });
+  #   configDir = ./eww;
+  # };
+
+  programs.eww-hyprland = {
     enable = true;
-    package = pkgs.eww-wayland;
-    configDir = ./eww;
+    autoReload = true;
   };
 
   programs.direnv = {
