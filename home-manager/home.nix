@@ -52,7 +52,7 @@ in {
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
 
     ## Development tools
-    rust-analyzer gh nil age zola rustup clang pkg-config
+    gh nil age
 
     ## Graphics
     gimp darktable freecad

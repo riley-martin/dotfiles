@@ -106,7 +106,7 @@ wayland.windowManager.hyprland = {
       }
 
       misc {
-          animate_manual_resizes = false
+          animate_manual_resizes = true
       }
 
       debug {

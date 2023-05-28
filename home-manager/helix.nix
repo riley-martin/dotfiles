@@ -2,7 +2,7 @@
   programs.helix = {
     enable = true;
     # package = (pkgs.callPackage ./pkgs/helix.nix {});
-    languages = [
+    languages = { language = [
       {
         name = "rust";
         config = {
@@ -22,9 +22,9 @@
         language-server = { command = lib.getExe pkgs.nil; };
         formatter = { command = "${pkgs.nix}/bin/nix fmt"; };
       }
-    ];
+    ];};
     settings = {
-      theme = "ayu_dark";
+      theme = "dracula_at_night";
       editor = {
         bufferline = "multiple";
         scrolloff = 4;
@@ -32,7 +32,7 @@
         color-modes = true;
         idle-timeout = 200;
         cursorline = true;
-        indent-guides = { character = "│"; render = true; };
+        indent-guides = { character = "⏐"; render = true; };
         cursor-shape = {
           insert = "bar";
           normal = "block";
