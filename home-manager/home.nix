@@ -55,13 +55,44 @@ in {
     gh nil age
 
     ## Graphics
-    gimp darktable freecad
+    gimp darktable freecad blender hugin
 
     ## Office
     libreoffice-fresh
 
     ## Other
     stellarium
+  ]
+  # Deps for eww scripts
+  ++
+  [
+    bash
+    blueberry
+    bluez
+    brillo
+    coreutils
+    dbus
+    findutils
+    gawk
+    gnome.gnome-control-center
+    gnused
+    imagemagick
+    jaq
+    jc
+    libnotify
+    networkmanager
+    pavucontrol
+    playerctl
+    procps
+    pulseaudio
+    ripgrep
+    socat
+    udev
+    upower
+    util-linux
+    wget
+    wireplumber
+    wlogout
   ];
 
   imports = [
@@ -88,17 +119,17 @@ in {
     "--ozone-platform=wayland"
   ];
 
-  # programs.eww = {
-  #   enable = true;
-  #   # package = pkgs.eww-wayland;
-  #   package = (pkgs.callPackage ./eww { inherit pkgs; });
-  #   configDir = ./eww;
-  # };
-
-  programs.eww-hyprland = {
+  programs.eww = {
     enable = true;
-    autoReload = true;
+    package = pkgs.eww-wayland;
+    # package = (pkgs.callPackage ./eww { inherit pkgs; });
+    configDir = ./eww/topbar;
   };
+
+  # programs.eww-hyprland = {
+    # enable = true;
+    # autoReload = true;
+  # };
 
   programs.direnv = {
     enable = true;

@@ -11,6 +11,7 @@
 			end
 
 			config = {
+				hide_mouse_cursor_when_typing = false,
 				enable_scroll_bar = true,
 				hide_tab_bar_if_only_one_tab = true,
 				window_background_opacity = 0.6,

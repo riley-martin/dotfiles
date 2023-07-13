@@ -3,6 +3,7 @@
     :class "module"
     :space-evenly false
     :spacing 5
+    :orientation "v"
     (circular-progress
       :value {EWW_CPU.avg}
       :class "cpubar"

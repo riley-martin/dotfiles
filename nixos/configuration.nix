@@ -14,6 +14,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_instances" = 4096;
+    "fs.inotify.max_user_watches" = 524288;
+  };
+
+  security.pam.loginLimits = with lib;
+    flip concatMap [ "*" "root" ] (domain:
+    flip concatMap [ "nproc" "nofile" ] (item:
+    flip       map [ "soft" "hard"](type:
+      { inherit domain; inherit item; inherit type; value = "65536"; }
+    )));
+
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.extraOptions = ''
@@ -83,6 +95,11 @@
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
   services.avahi.openFirewall = true;
+  services.upower.enable = true;
+
+  services.dbus.packages = [
+    pkgs.upower
+  ];
 
   fonts = {
     fonts = with pkgs; [
@@ -93,6 +110,7 @@
       iosevka-bin
       meslo-lgs-nf
       font-awesome
+      material-symbols
       (nerdfonts.override { fonts = [ "Iosevka" ]; })
     ];
   };

@@ -31,10 +31,10 @@ wayland.windowManager.hyprland = {
       # exec-once = udiskie &
       exec-once = wpaperd
       exec-once = wluma
-      exec-once = waybar
       exec-once = dunst
       exec-once = gestures
       exec-once = /usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/wireplumber
+      exec-once = eww open bar
       exec-once = swayidle -w timeout 120 'hyprctl dispatch dpms off' timeout 125 '${swaylock}' resume 'hyprctl dispatch dpms on'
 
       input {
@@ -115,6 +115,7 @@ wayland.windowManager.hyprland = {
       }
 
       blurls = waybar
+      blurls = gtk-layer-shell
 
 
       # Make rofi float because tiled launchers suck

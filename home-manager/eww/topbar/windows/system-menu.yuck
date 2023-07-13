@@ -212,5 +212,5 @@
     :y "0"
     :width "0%"
     :height "0%"
-    :anchor "right top")
+    :anchor "bottom left")
   (system-menu))

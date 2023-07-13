@@ -9,11 +9,12 @@
       (box
         :space-evenly false
         :class "text"
+        :orientation "v"
         (label
           :text {time.hour}
           :class "hour")
-        (label
-          :text ":")
+        ; (label
+          ; :text ":")
         (label
           :text {time.minute}
           :class "minute"))

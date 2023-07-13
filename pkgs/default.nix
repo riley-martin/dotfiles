@@ -3,4 +3,5 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   # example = pkgs.callPackage ./example { };
+  gimp-devel = pkgs.callPackage ./gimp-devel {};
 }

@@ -2,6 +2,7 @@
   (box
     :space-evenly: false
     :class "indicators"
+    :orientation "v"
     (for i in indicators
       (label
         :class "icon indicator ${i.class}"

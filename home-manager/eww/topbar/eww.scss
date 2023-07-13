@@ -13,6 +13,7 @@
 * {
   all: unset;
   font-family: "Jost *", Roboto, sans-serif;
+  // font-family: Iosevka Nerd Font;
   transition: 200ms ease;
 }
 
@@ -47,7 +48,7 @@ tooltip {
 .text label, { text-shadow: 0 0 .3rem $base; }
 
 .icon,
-.icon label { font-family: Material Symbols Outlined; }
+.icon label { font-family: Material Symbols; }
 
 .ws {
   border-radius: 2rem;
@@ -61,15 +62,17 @@ tooltip {
   padding: .25rem;
 }
 
-.module { margin: 0 5px; }
+.module { margin: 0 2px; }
 
 .hour {
   font-weight: bold;
-  padding-left: 5px;
+  // padding-left: 5px;
+  padding-top: .5rem;
 }
 
 .minute {
-  padding-right: .7rem;
+  // padding-right: .7rem;
+  padding-bottom: .5rem;
 }
 
 .date {
@@ -92,4 +95,4 @@ scale trough {
   min-width: 70px;
 }
 
-.workspaces { margin-left: 10px; }
+.workspaces { margin-left: 4px; }
