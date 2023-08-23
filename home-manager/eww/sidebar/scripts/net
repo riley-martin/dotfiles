@@ -37,7 +37,7 @@ function gen_wifi() {
 }
 
 function gen_ethernet() {
-  icon=""
+  icon=""
   class="net-connected"
   color="#cba6f7"
   name=$(echo "$nm" | jaq -r 'select(.type == "ethernet") .connection')
