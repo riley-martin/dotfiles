@@ -1,9 +1,10 @@
-{...}: {
+{ ... }: {
 	programs.alacritty = {
 		enable = true;
 		settings = {
+			dynamic_title = true;
 			font = {
-				normal.family = "Iosevka NF";
+				normal.family = "Iosevka";
 			};
 		};
 	};

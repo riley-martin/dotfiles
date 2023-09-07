@@ -63,6 +63,7 @@ in {
     hey progress libnotify zip unzip sl bashInteractive s-tui
     dig lynx delta bat lsd ripgrep fd bottom tealdeer
     self.inputs.nix-alien.packages.${system}.nix-alien
+    traceroute
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle
@@ -71,12 +72,14 @@ in {
     self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
+    joplin-desktop
 
     ## Development tools
     gh nil age
 
     ## Graphics
-    gimp darktable freecad blender hugin
+    darktable freecad blender hugin
+    (callPackage ../pkgs{}).gimp-devel
 
     ## Office
     libreoffice-fresh
@@ -122,12 +125,13 @@ in {
     ./zsh.nix
     ./hyprland.nix
     ./helix.nix
-    ./alacritty.nix
-    ./waybar.nix
+    # ./alacritty.nix
+    # ./waybar.nix
     ./wezterm.nix
     ./nushell.nix
     ./dunst.nix
     ./eww
+    ./alacritty.nix
     # ./ironbar.nix
   ];
 

@@ -78,12 +78,13 @@ wayland.windowManager.hyprland = {
       decoration {
           multisample_edges = true
           rounding = 8
-          blur = true
-          blur_size = 8
-          blur_passes = 3
-          blur_new_optimizations = true
           dim_inactive = false
           #screen_shader = /home/riley/.config/hypr/nightlight.frag
+          blur {
+              enabled = true
+              size = 8
+              passes = 2
+          }
       }
 
       animations {
@@ -141,8 +142,7 @@ wayland.windowManager.hyprland = {
 
       $mod = ALT
 
-      # bind=$mod, RETURN, exec, kitty
-      bind = $mod, RETURN, exec, wezterm
+      bind = $mod, RETURN, exec, alacritty
       bind = $mod, Q, killactive,
       bind = $modSHIFT, M, exit,
       bind = $mod, M, exec, ${swaylock} -f -c 000000

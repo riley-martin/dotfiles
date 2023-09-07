@@ -22,6 +22,7 @@
     shellAliases = {
       ls = "lsd -A";
       lsd = "lsd -A";
+      hm = "home-manager";
       
     };
     plugins = [

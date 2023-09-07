@@ -5,7 +5,7 @@
 , meson
 , atkmm
 , alsa-lib
-, perl534
+, perl538
 , appstream
 , babl
 , libgudev
@@ -53,6 +53,9 @@
 , python3
 , wrapGAppsHook
 , gsettings_desktop_schemas
+, gnome3
+, hicolor-icon-theme
+, graphviz
 }:
 
 let
@@ -67,6 +70,8 @@ in stdenv.mkDerivation (finalAttrs: {
   src = fetchurl {
     url = "http://download.gimp.org/pub/gimp/v${lib.versions.majorMinor finalAttrs.version}/gimp-${finalAttrs.version}.tar.xz";
     sha256 = "MTogVHXR/wPFxNlgLwn1yXW6bBx52IQ+I5b5/iq996g=";
+    # sha256 = "6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d";
+
   };
 
   patches = [
@@ -87,7 +92,7 @@ in stdenv.mkDerivation (finalAttrs: {
     aalib
     libjxl
     isocodes
-    perl534
+    perl538
     appstream
     meson
     xvfb-run
@@ -132,11 +137,20 @@ in stdenv.mkDerivation (finalAttrs: {
     gobject-introspection
     python
     libgudev
+    gnome3.adwaita-icon-theme
   ];
 
   preConfigure = "
     patchShebangs tools/gimp-mkenums app/tests/create_test_env.sh
   ";
+
+  preFixup = ''
+    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [
+      # for dot for gegl:introspect (Debug » Show Image Graph, hidden by default on stable release)
+      graphviz
+    ]}:$out/bin")
+    gappsWrapperArgs+=(--prefix XDG_DATA_DIRS : "${hicolor-icon-theme}/share:${gnome3.adwaita-icon-theme}/share")
+  '';
 
   enableParallelBuilding = true;
 
