@@ -63,7 +63,7 @@ in {
     hey progress libnotify zip unzip sl bashInteractive s-tui
     dig lynx delta bat lsd ripgrep fd bottom tealdeer
     self.inputs.nix-alien.packages.${system}.nix-alien
-    traceroute
+    traceroute restic itd
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle

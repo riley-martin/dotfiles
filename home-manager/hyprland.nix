@@ -48,6 +48,7 @@ wayland.windowManager.hyprland = {
 
           follow_mouse = 1
           natural_scroll = true
+          scroll_method = 2fg
 
           touchpad {
               natural_scroll = yes

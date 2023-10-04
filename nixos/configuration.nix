@@ -150,6 +150,8 @@
     ];
   };
 
+  hardware.opentabletdriver.enable = true;
+
   hardware.bluetooth.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
