@@ -4,7 +4,7 @@
     defaultKeymap = "viins";
     autocd = true;
     # enableVteIntegration = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
     initExtraFirst = ''

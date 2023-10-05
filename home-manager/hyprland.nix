@@ -77,7 +77,6 @@ wayland.windowManager.hyprland = {
       }
 
       decoration {
-          multisample_edges = true
           rounding = 8
           dim_inactive = false
           #screen_shader = /home/riley/.config/hypr/nightlight.frag
