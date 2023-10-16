@@ -4,4 +4,6 @@
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   # example = pkgs.callPackage ./example { };
   gimp-devel = pkgs.callPackage ./gimp-devel {};
+  chromium-flagfile = pkgs.callPackage ./chromium-flagfile.nix {};
+  fprint-eh575 = pkgs.callPackage ./fprint-eh575.nix {};
 }

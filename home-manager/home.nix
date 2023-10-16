@@ -1,6 +1,6 @@
 { self, system, pkgs, lib, ... }:
 let
-  nixpkgs = import <nixpkgs> {};
+  nixpkgs = import ../nixpkgs.nix {};
   hey = pkgs.writers.writeHaskellBin
     "hey"
     { libraries = [ pkgs.haskellPackages.cmdargs ]; }
@@ -76,8 +76,10 @@ in {
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle
-    (callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
-    (callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
+    # (callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
+    (callPackage ../pkgs{}).chromium-flagfile
+    # (callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
+    (callPackage ../pkgs{}).fprint-eh575
     self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
