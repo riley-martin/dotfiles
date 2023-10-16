@@ -43,13 +43,22 @@ in {
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
+      # package = pkgs.papirus-icon-theme;
+      # name = "Papirus-Dark";
+      package = pkgs.materia-theme;
+      name = "Materia-dark-icons";
     };
     theme = {
       package = pkgs.materia-theme;
       name = "Materia-dark-compact";
     };
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 16;
   };
 
   home.sessionVariables = {
