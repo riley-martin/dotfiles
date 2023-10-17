@@ -3,7 +3,7 @@
 in {
 wayland.windowManager.hyprland = {
     enable = true;
-    recommendedEnvironment = true;
+    # recommendedEnvironment = true;
     extraConfig = ''
       #
       # Please note not all available settings / options are set here.

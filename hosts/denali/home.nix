@@ -1,10 +1,6 @@
-{ self, system, pkgs, lib, ... }:
+{ customPackages, self, system, pkgs, lib, ... }:
 let
-  nixpkgs = import ../nixpkgs.nix {};
-  hey = pkgs.writers.writeHaskellBin
-    "hey"
-    { libraries = [ pkgs.haskellPackages.cmdargs ]; }
-    (builtins.readFile ./hey);
+  nixpkgs = import ../../nixpkgs.nix {};
 in {
   home.username = "riley";
   home.homeDirectory = "/home/riley";
@@ -76,10 +72,8 @@ in {
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle
-    # (callPackage ./pkgs/chromium-flagfile.nix { inherit pkgs; })
-    (callPackage ../pkgs{}).chromium-flagfile
-    # (callPackage ./pkgs/fprint-eh575.nix {inherit lib;})
-    (callPackage ../pkgs{}).fprint-eh575
+    (callPackage ../../pkgs{}).chromium-flagfile
+    (callPackage ../../pkgs{}).fprint-eh575
     self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
@@ -90,7 +84,7 @@ in {
 
     ## Graphics
     darktable freecad blender hugin
-    (callPackage ../pkgs{}).gimp-devel
+    (callPackage ../../pkgs{}).gimp-devel
 
     ## Office
     libreoffice-fresh
@@ -132,17 +126,17 @@ in {
   ];
 
   imports = [
-    ./services.nix
-    ./zsh.nix
-    ./hyprland.nix
-    ./helix.nix
+    ../../home/services.nix
+    ../../home/zsh.nix
+    ../../home/hyprland.nix
+    ../../home/helix.nix
     # ./alacritty.nix
     # ./waybar.nix
-    ./wezterm.nix
-    ./nushell.nix
-    ./dunst.nix
-    ./eww
-    ./alacritty.nix
+    ../../home/wezterm.nix
+    ../../home/nushell.nix
+    ../../home/dunst.nix
+    ../../home/eww
+    ../../home/alacritty.nix
     # ./ironbar.nix
   ];
 
@@ -160,7 +154,7 @@ in {
     enable = true;
     package = pkgs.eww-wayland;
     # package = (pkgs.callPackage ./eww { inherit pkgs; });
-    configDir = ./eww/sidebar;
+    configDir = ../../home/eww/sidebar;
   };
 
   # programs.eww-hyprland = {
@@ -176,7 +170,7 @@ in {
   programs.git = {
     package = pkgs.gitFull;
     enable = true;
-    includes = [ { path = ./gitconfig; } ];
+    includes = [ { path = ../../home/gitconfig; } ];
   };
 
   programs.zoxide = {

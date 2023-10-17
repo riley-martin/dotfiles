@@ -49,7 +49,7 @@
     rec {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system:
+      customPackages = forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
       );
@@ -72,11 +72,13 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        beta = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs agenix; };
+        denali = nixpkgs.lib.nixosSystem {
+          # system = "x86_64";
+          specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            ./hosts/denali/default.nix
+            # (import ./hosts/denali{}).homeManagerConfiguration
             agenix.nixosModules.default
           ];
         };
@@ -84,17 +86,17 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "riley@beta" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs self agenix; system = "x86_64-linux"; };
-          modules = with inputs; [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
-            hyprland.homeManagerModules.default
-            ironbar.homeManagerModules.default
-          ];
-        };
-      };
+      # homeConfigurations = {
+      #   "riley@beta" = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+      #     extraSpecialArgs = { inherit inputs outputs self agenix customPackages; system = "x86_64-linux"; };
+      #     modules = with inputs; [
+      #       # > Our main home-manager configuration file <
+      #       ./hosts/denali
+      #       hyprland.homeManagerModules.default
+      #       ironbar.homeManagerModules.default
+      #     ];
+      #   };
+      # };
     };
 }
