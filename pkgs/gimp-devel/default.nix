@@ -52,7 +52,7 @@
 , ninja
 , python3
 , wrapGAppsHook
-, gsettings_desktop_schemas
+, gsettings-desktop-schemas
 , gnome3
 , hicolor-icon-theme
 , graphviz
