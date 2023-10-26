@@ -71,8 +71,8 @@
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        denali = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = with nixpkgs.lib; {
+        denali = nixosSystem {
           # system = "x86_64";
           specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
@@ -80,6 +80,18 @@
             ./hosts/denali/default.nix
             # (import ./hosts/denali{}).homeManagerConfiguration
             agenix.nixosModules.default
+          ];
+        };
+
+        elias = nixosSystem {
+          modules = [
+            ./hosts/elias/default.nix
+          ];
+        };
+
+        foraker = nixosSystem {
+          modules = [
+            ./hosts/foraker/default.nix
           ];
         };
       };
