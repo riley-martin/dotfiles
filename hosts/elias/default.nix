@@ -135,7 +135,7 @@
     };
     
     config = {
-      adminpassFile = "${pkgs.writeText "adminpass" "admin"}";
+      adminpassFile = "/etc/nixos/nextcloud-admin-pass";
       overwriteProtocol = "https";
 
       dbtype = "pgsql";
