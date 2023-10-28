@@ -91,6 +91,7 @@
         };
 
         foraker = nixosSystem {
+          specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
             ./hosts/foraker/default.nix
             agenix.nixosModules.default
