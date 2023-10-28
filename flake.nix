@@ -92,6 +92,7 @@
         foraker = nixosSystem {
           modules = [
             ./hosts/foraker/default.nix
+            agenix.nixosModules.default
           ];
         };
       };
