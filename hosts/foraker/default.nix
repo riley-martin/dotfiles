@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, ... }:
+{ agenix, config, pkgs, ... }:
 
 {
   imports =
@@ -45,6 +45,11 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+
+  age = {
+    secrets.mailserver.file = ../../secrets/mailserver.age;
+    secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
+  };
 
   mailserver = {
     enable = true;
