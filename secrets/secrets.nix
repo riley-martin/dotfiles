@@ -1,9 +1,13 @@
 let
   riley = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMtiN/RfOaFWEah9Br2uOzCQ8n3jQUakis3J4yq9zCDp";
   users = [ riley ];
+  denali = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILnMYy1qhxeHZr6EcjPMizc53+i6DPo2bYcXjyYj+nr3";
+  elias = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOceJhMrSpk8ZzqcXjizL/opMUqZLLvAn1tqwZiL0brW";
+  foraker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAckAg6mOui0G5Seh7YbSWss5iXbG2SNaB57c25MfvqC";
+  systems = [denali elias foraker];
 in
 {
-  "laptop.age".publicKeys = users;
-  "mailserver.age".publicKeys = users;
-  "nextcloud-mail.age".publicKeys = users;
+  "laptop.age".publicKeys = [ riley denali ];
+  "mailserver.age".publicKeys = [ riley foraker ];
+  "nextcloud-mail.age".publicKeys = [ riley foraker ];
 }

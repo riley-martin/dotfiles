@@ -117,8 +117,10 @@
 
 
   virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
     waydroid.enable = true;
-    lxd.enable = true;
+    # lxd.enable = true;
   };
   
 
@@ -180,7 +182,6 @@
 
   programs.adb.enable = true;
 
-  virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
   # List packages installed in system profile. To search, run:
