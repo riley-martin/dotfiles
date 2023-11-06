@@ -49,6 +49,7 @@
   age = {
     secrets.mailserver.file = ../../secrets/mailserver.age;
     secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
+    secrets.connor-mail.file = ../../secrets/connor-mail.age;
   };
 
   mailserver = {
@@ -57,12 +58,15 @@
     domains = [ "rileymartin.xyz" ];
     loginAccounts = {
       "me@rileymartin.xyz" = {
-        hashedPasswordFile = "/etc/nixos/mailpass";
-        aliases = [ "postmaster@rileymartin.xyz" "riley-martin@riley-martin.xyz" ];
+        hashedPasswordFile = config.age.secrets.mailserver.path;
+        aliases = [ "signup@rileymartin.xyz" "postmaster@rileymartin.xyz" "riley-martin@rileymartin.xyz" ];
       };
       "nextcloud@rileymartin.xyz" = {
-        hashedPasswordFile = "/etc/nixos/nextcloud-mailpass";
+        hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
         sendOnly = true;
+      };
+      "connor@rileymartin.xyz" = {
+        hashedPasswordFile = config.age.secrets.connor-mail.path;
       };
     };
     certificateScheme = "acme-nginx";

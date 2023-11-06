@@ -10,4 +10,5 @@ in
   "laptop.age".publicKeys = [ riley denali ];
   "mailserver.age".publicKeys = [ riley foraker ];
   "nextcloud-mail.age".publicKeys = [ riley foraker ];
+  "connor-mail.age".publicKeys = [ riley foraker ];
 }

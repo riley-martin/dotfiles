@@ -122,6 +122,11 @@
     waydroid.enable = true;
     # lxd.enable = true;
   };
+
+  zramSwap = {
+    enable = true;
+    priority = 10;
+  };
   
 
   # Configure keymap in X11
