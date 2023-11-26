@@ -140,6 +140,8 @@ in {
     # ./ironbar.nix
   ];
 
+  services.kdeconnect.enable = true;
+
   services.udiskie = {
     enable = true;
   };

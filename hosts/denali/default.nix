@@ -111,6 +111,7 @@
       meslo-lgs-nf
       font-awesome
       material-symbols
+      victor-mono
       (nerdfonts.override { fonts = [ "Iosevka" ]; })
     ];
   };
