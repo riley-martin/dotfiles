@@ -66,7 +66,9 @@
 
   services.fprintd.enable = true;
   # services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
-  services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprint-eh575;
+  # services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprint-eh575;
+  services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
+
   
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -146,6 +148,8 @@
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
+  nixpkgs.config.allowUnfree = true;
+  
   hardware.opengl = {
     enable = true;
     driSupport = true;

@@ -21,6 +21,7 @@ in {
       "ungoogled-chromium"
       "chromium-unwrapped"
       "chrome-widevine-cdm"
+      "cuda_nvcc-11.8.89"
     ];
     chromium = {
       enableWideVine = true;
@@ -185,4 +186,6 @@ in {
   programs.starship = {
     enable = true;
   };
+
+  services.syncthing.enable = true;
 }

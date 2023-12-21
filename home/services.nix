@@ -1,12 +1,12 @@
 { pkgs, ... }: {
-  systemd.user.targets = {
-    tray = {
-      Unit = {
-        Description = "Fake tray";
-        Requires = [ "graphical-session-pre.target" ];
-      };
-    };
-  };
+  # systemd.user.targets = {
+  #   tray = {
+  #     Unit = {
+  #       Description = "Fake tray";
+  #       Requires = [ "graphical-session-pre.target" ];
+  #     };
+  #   };
+  # };
   systemd.user.services = {
     polkit-gnome-agent = {
       Unit = {
