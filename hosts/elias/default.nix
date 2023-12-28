@@ -252,7 +252,7 @@
         enableACME = true;
         locations = {
           # static files
-          "^~ /loleaflet" = {
+          "^~ /browser" = {
             proxyPass = "http://localhost:9980";
             extraConfig = ''
               proxy_set_header Host $host;
@@ -274,8 +274,29 @@
             '';
           };
 
+          "~ ^/cool/(.*)/ws$" = {
+             proxyPass = "http://127.0.0.1:9980";
+             extraConfig = ''
+               proxy_set_header Upgrade $http_upgrade;
+               proxy_set_header Connection "Upgrade";
+               proxy_set_header Host $host;
+               proxy_read_timeout 36000s;
+            '';
+           };
+
+
           # download, presentation, image upload and websocket
-          "~ ^/lool" = {
+          # "~ ^/lool" = {
+          #   proxyPass = "http://localhost:9980";
+          #   extraConfig = ''
+          #     proxy_set_header Upgrade $http_upgrade;
+          #     proxy_set_header Connection "Upgrade";
+          #     proxy_set_header Host $host;
+          #     proxy_read_timeout 36000s;
+          #   '';
+          # };
+
+          "~ ^/(c|l)ool" = {
             proxyPass = "http://localhost:9980";
             extraConfig = ''
               proxy_set_header Upgrade $http_upgrade;
@@ -286,7 +307,7 @@
           };
 
           # Admin Console websocket
-          "^~ /lool/adminws" = {
+          "^~ /cool/adminws" = {
             proxyPass = "http://localhost:9980";
             extraConfig = ''
               proxy_set_header Upgrade $http_upgrade;
