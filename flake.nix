@@ -87,6 +87,7 @@
           specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
             ./hosts/elias/default.nix
+            agenix.nixosModules.default
           ];
         };
 
