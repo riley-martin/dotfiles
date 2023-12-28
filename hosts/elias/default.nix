@@ -315,8 +315,8 @@
         image = "collabora/code";
         imageFile = pkgs.dockerTools.pullImage {
           imageName = "collabora/code";
-          imageDigest = "sha256:aab41379baf5652832e9237fcc06a768096a5a7fccc66cf8bd4fdb06d2cbba7f";
-          sha256 = "sha256-M66lynhzaOEFnE15Sy1N6lBbGDxwNw6ap+IUJAvoCLs=";
+          imageDigest = "sha256:3660e56e1974f4fbe08fac35bad577e6a1836e72f5090117bffe9702f3cea165";
+          sha256 = "0xvjl0r4nnldhz6wa6q422vniqvgigw5vbvw48fn57m5173knyrh";
         };
         ports = ["9980:9980"];
         environment = {
