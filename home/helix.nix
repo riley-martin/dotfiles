@@ -2,27 +2,33 @@
   programs.helix = {
     enable = true;
     # package = (pkgs.callPackage ./pkgs/helix.nix {});
-    languages = { language = [
-      {
-        name = "rust";
+    languages = { 
+      language-server.rust-analyzer = {
+        command = "rust-analyzer";
         config = {
           checkOnSave = { command = "clippy"; };
           cargo = { allFeatures = true; };
           procMacro = { enable = true; };
           auto-format = true;
         };
-        language-server = {
-          command = "rust-analyzer";
-          # command = lib.getExe pkgs.rustup;
-          # args = ["run" "stable" "rust-analyzer" ];
-        };
-      }
-      {
-        name = "nix";
-        language-server = { command = lib.getExe pkgs.nil; };
-        formatter = { command = "${pkgs.nix}/bin/nix fmt"; };
-      }
-    ];};
+      };
+      language-server.nil = {
+        command = lib.getExe pkgs.nil;
+      };
+      language = [
+        {
+          name = "rust";
+          language-servers = [{
+            name = "rust-analyzer";
+          }];
+        }
+        {
+          name = "nix";
+          language-servers = [{ name = "nil"; }];
+          formatter = { command = "${pkgs.nix}/bin/nix fmt"; };
+        }
+      ];
+    };
     settings = {
       theme = "dracula_at_night";
       editor = {
