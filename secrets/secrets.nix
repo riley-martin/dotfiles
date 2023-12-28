@@ -11,4 +11,10 @@ in
   "mailserver.age".publicKeys = [ riley foraker ];
   "nextcloud-mail.age".publicKeys = [ riley foraker ];
   "connor-mail.age".publicKeys = [ riley foraker ];
+  "backup-pass.age".publicKeys = [ riley elias ];
+  "ddns_tok.age".publicKeys = [ riley elias ];
+  "mailpass.age".publicKeys = [ riley elias ];
+  "nextcloud-admin-pass.age".publicKeys = [ riley elias ];
+  "onlyoffice_secret.age".publicKeys = [ riley elias ];
+  "pgsql-pass.age".publicKeys = [ riley elias ];
 }
