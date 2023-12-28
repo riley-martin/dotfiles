@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ agenix, config, pkgs, ... }:
 
 {
   imports =
@@ -22,6 +22,16 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "elias"; # Define your hostname.
+
+  age = {
+    secrets.backup-pass.file = ../../secrets/backup-pass.age;
+    secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
+    secrets.mailpass.file = ../../secrets/mailpass.age;
+    secrets.nextcloud-admin-pass.file = ../../secrets/nextcloud-admin-pass.age;
+    secrets.onlyoffice_secret.file = ../../secrets/onlyoffice_secret.age;
+    secrets.pgsql-pass.file = ../../secrets/pgsql-pass.age;
+  };
+  
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -54,7 +64,8 @@
         ${pkgs.mount}/bin/mount /dev/disk/by-label/backup /mnt/backup
       '';
       initialize = true;
-      passwordFile = "/etc/nixos/backup-pass";
+      # passwordFile = "/etc/nixos/backup-pass";
+      passwordFile = config.age.secrets.backup-pass.path;
       paths = [
         "/etc"
         "/var"
@@ -85,20 +96,20 @@
     configWritable = true;
   };
   
-  services.cloudflared = {
-    enable = false;
-    tunnels = {
-      "1c8eccd8-ba4a-42cf-9285-73c190d6489c" = {
-        credentialsFile = "/etc/nixos/006588ea-bae6-4451-ae20-aa705a265308.json";
-        default = "http_status:404";
-        ingress = {
-          "*.rileymartin.xyz" = {
-            service = "http://localhost";
-          };
-        };
-      };
-    };
-  };
+  # services.cloudflared = {
+  #   enable = false;
+  #   tunnels = {
+  #     "1c8eccd8-ba4a-42cf-9285-73c190d6489c" = {
+        # credentialsFile = "/etc/nixos/006588ea-bae6-4451-ae20-aa705a265308.json";
+  #       default = "http_status:404";
+  #       ingress = {
+  #         "*.rileymartin.xyz" = {
+  #           service = "http://localhost";
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
 
   services.cloudflare-dyndns = {
     enable = true;
@@ -109,7 +120,8 @@
       "cloud.rileymartin.xyz"
       "office.rileymartin.xyz"
     ];
-    apiTokenFile = "/etc/nixos/ddns_tok";
+    # apiTokenFile = "/etc/nixos/ddns_tok";
+    apiTokenFile = config.age.secrets.ddns_tok.path;
   };
 
   services.onlyoffice = {
@@ -117,7 +129,8 @@
     hostname = "office.rileymartin.xyz";
     # hostname = "office.localhost";
     # port = 8080;
-    jwtSecretFile = "/etc/nixos/onlyoffice_secret";
+    # jwtSecretFile = "/etc/nixos/onlyoffice_secret";
+    jwtSecretFile = config.age.secrets.onlyoffice_secret.path;
   };
   
   services.nextcloud = {
@@ -135,14 +148,16 @@
     };
     
     config = {
-      adminpassFile = "/etc/nixos/nextcloud-admin-pass";
+      # adminpassFile = "/etc/nixos/nextcloud-admin-pass";
+      adminpassFile = config.age.secrets.nextcloud-admin-pass.path;
       overwriteProtocol = "https";
 
       dbtype = "pgsql";
       dbuser = "nextcloud";
       dbhost = "/run/postgresql";
       dbname = "nextcloud";
-      dbpassFile = "/etc/nixos/pgsql-pass";
+      # dbpassFile = "/etc/nixos/pgsql-pass";
+      dbpassFile = config.age.secrets.pgsql-pass.path;
 
       defaultPhoneRegion = "US";
 
@@ -385,7 +400,7 @@
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
+  # system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
