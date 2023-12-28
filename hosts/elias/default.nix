@@ -321,7 +321,7 @@
         ports = ["9980:9980"];
         environment = {
           domain = "cloud.rileymartin.xyz";
-          extra_params = "--o:ssl.enable=false --o:ssl.termination=true --o:net.post_allow.host='.*'";
+          extra_params = "--o:ssl.enable=false --o:ssl.termination=true --o:net.post_allow.host='.*' --o:storage.wopi.host='.*'";
         };
         extraOptions = ["--cap-add" "MKNOD"];
       };
