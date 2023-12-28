@@ -27,7 +27,12 @@
     secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;
-    secrets.nextcloud-admin-pass.file = ../../secrets/nextcloud-admin-pass.age;
+    secrets.nextcloud-admin-pass = {
+      file = ../../secrets/nextcloud-admin-pass.age;
+      mode = "770";
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
     secrets.onlyoffice_secret.file = ../../secrets/onlyoffice_secret.age;
     secrets.pgsql-pass = {
       file = ../../secrets/pgsql-pass.age;
