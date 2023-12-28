@@ -29,7 +29,12 @@
     secrets.mailpass.file = ../../secrets/mailpass.age;
     secrets.nextcloud-admin-pass.file = ../../secrets/nextcloud-admin-pass.age;
     secrets.onlyoffice_secret.file = ../../secrets/onlyoffice_secret.age;
-    secrets.pgsql-pass.file = ../../secrets/pgsql-pass.age;
+    secrets.pgsql-pass = {
+      file = ../../secrets/pgsql-pass.age;
+      mode = "770";
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
   };
   
   # Pick only one of the below networking options.
