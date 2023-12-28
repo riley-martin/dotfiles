@@ -134,13 +134,9 @@
     apiTokenFile = config.age.secrets.ddns_tok.path;
   };
 
-  services.onlyoffice = {
-    enable = false;
-    hostname = "office.rileymartin.xyz";
-    # hostname = "office.localhost";
-    # port = 8080;
-    # jwtSecretFile = "/etc/nixos/onlyoffice_secret";
-    jwtSecretFile = config.age.secrets.onlyoffice_secret.path;
+  services.odoo = {
+    enable = true;
+    domain = "odoo.rileymartin.xyz";
   };
   
   services.nextcloud = {
