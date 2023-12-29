@@ -7,4 +7,5 @@
   chromium-flagfile = pkgs.callPackage ./chromium-flagfile.nix {};
   fprint-eh575 = pkgs.callPackage ./fprint-eh575.nix {};
   fprintd = pkgs.callPackage ./fprintd.nix {};
+  odoo = pkgs.callPackage ./odoo.nix {};
 }
