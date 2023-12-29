@@ -99,20 +99,5 @@
           ];
         };
       };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      # homeConfigurations = {
-      #   "riley@beta" = home-manager.lib.homeManagerConfiguration {
-      #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-      #     extraSpecialArgs = { inherit inputs outputs self agenix customPackages; system = "x86_64-linux"; };
-      #     modules = with inputs; [
-      #       # > Our main home-manager configuration file <
-      #       ./hosts/denali
-      #       hyprland.homeManagerModules.default
-      #       ironbar.homeManagerModules.default
-      #     ];
-      #   };
-      # };
     };
 }
