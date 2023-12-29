@@ -142,6 +142,12 @@
     enable = true;
     domain = "odoo.rileymartin.xyz";
     package = (pkgs.callPackage ../../pkgs {}).odoo;
+    settings = {
+      options = {
+        db_user = "odoo";
+        dbfilter = "^odoo.*$";
+      };
+    };
   };
   
   services.nextcloud = {
