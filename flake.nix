@@ -47,6 +47,10 @@
       ];
     in
     rec {
+
+      nixpkgs.config.permittedInsecurePackages = [
+        "qtwebkit-5.212.0-alpha4"
+      ];
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
       customPackages = forAllSystems (system:
