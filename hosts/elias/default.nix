@@ -139,7 +139,7 @@
   };
 
   services.odoo = {
-    enable = true;
+    enable = false;
     domain = "odoo.rileymartin.xyz";
     package = (pkgs.callPackage ../../pkgs {}).odoo;
     settings = {
@@ -215,17 +215,17 @@
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "nextcloud" "odoo" ];
+    ensureDatabases = [ "nextcloud" ]; # "odoo" ];
     ensureUsers = [
       {
         name = "nextcloud";
         # ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
         ensureDBOwnership = true;
       }
-      {
-        name = "odoo";
-        ensureDBOwnership = true;
-      }
+      # {
+      #   name = "odoo";
+      #   ensureDBOwnership = true;
+      # }
     ];
   };
 
