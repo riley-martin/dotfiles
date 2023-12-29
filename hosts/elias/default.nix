@@ -141,7 +141,7 @@
   services.odoo = {
     enable = true;
     domain = "odoo.rileymartin.xyz";
-    package = (pkgs.callPackage ../../pkgs {}).fprintd;
+    package = (pkgs.callPackage ../../pkgs {}).odoo;
   };
   
   services.nextcloud = {
