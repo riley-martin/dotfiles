@@ -209,10 +209,16 @@
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "nextcloud" ];
+    ensureDatabases = [ "nextcloud" "odoo" ];
     ensureUsers = [
-      { name = "nextcloud";
-        ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+      {
+        name = "nextcloud";
+        # ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+        ensureDBOwnership = true;
+      }
+      {
+        name = "odoo";
+        ensureDBOwnership = true;
       }
     ];
   };
