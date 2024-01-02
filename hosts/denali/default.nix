@@ -184,6 +184,7 @@
   # home-manager.nixosModules.home-manager = {
   home-manager = {
     # users.riley = import ./home.nix { inherit self pkgs inputs lib system customPackages;};
+    extraSpecialArgs =  {inherit self inputs system;} ;
     users.riley.imports = [
       ./home.nix
     ];

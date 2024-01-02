@@ -6,7 +6,7 @@ wayland.windowManager.hyprland = {
     # recommendedEnvironment = true;
 
     plugins = [
-        self.inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+        # self.inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
     ];
 
     settings = {
@@ -69,7 +69,7 @@ wayland.windowManager.hyprland = {
             bezier = "xyz, 0.05, 0.9, 0.1, 1.05";
             enabled = 1;
             animation = [
-                "windows, 1, x4x, xyz"
+                "windows, 1, 4, xyz"
                 "border, 1, 4, default"
                 "fade, 1, 4, default"
                 "workspaces, 1, 4, default"

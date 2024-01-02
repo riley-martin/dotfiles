@@ -18,7 +18,7 @@
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.darwin.follows = "";
+    # agenix.inputs.darwin.follows = "";
 
     ironbar.url = "github:JakeStanger/ironbar";
     ironbar.inputs.nixpkgs.follows = "nixpkgs";
@@ -49,9 +49,7 @@
         # "aarch64-darwin"
         # "x86_64-darwin"
       ];
-    in
-    rec {
-
+    in rec {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
       customPackages = forAllSystems (system:

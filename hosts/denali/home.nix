@@ -19,6 +19,7 @@ in {
       "chromiumBeta"
       "chromium-beta"
       "ungoogled-chromium"
+      "ungoogled-chromium-unwrapped"
       "chromium-unwrapped"
       "chrome-widevine-cdm"
       "cuda_nvcc-11.8.89"
