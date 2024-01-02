@@ -4,6 +4,32 @@ in {
 wayland.windowManager.hyprland = {
     enable = true;
     # recommendedEnvironment = true;
+    settings = {
+        # bind = [
+        #     "abc"
+        # ];
+        monitor = ", preferred, auto, 1";
+        input = {
+          # kb_file =
+          kb_layout = "us";
+          # kb_variant = dvp
+          # kb_model =
+          # kb_options = caps:swapescape, shift:both_capslock_cancel
+          kb_options = "compose:menu";
+          # kb_rules =
+
+          follow_mouse = 1;
+          natural_scroll = true;
+          scroll_method = "2fg";
+
+          touchpad = {
+              natural_scroll = true;
+              disable_while_typing = true;
+          };
+
+          sensitivity = 0.40; # -1.0 < sensitivity < 1.0, 0 means no modification.
+        };
+    };
     extraConfig = ''
       #
       # Please note not all available settings / options are set here.
@@ -36,27 +62,6 @@ wayland.windowManager.hyprland = {
       exec-once = /usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/wireplumber
       exec-once = eww open bar
       exec-once = swayidle -w timeout 120 'hyprctl dispatch dpms off' timeout 125 '${swaylock}' resume 'hyprctl dispatch dpms on'
-
-      input {
-          kb_file =
-          kb_layout = us
-      #    kb_variant = dvp
-          kb_model =
-      #    kb_options = caps:swapescape, shift:both_capslock_cancel
-          kb_options = compose:menu
-          kb_rules =
-
-          follow_mouse = 1
-          natural_scroll = true
-          scroll_method = 2fg
-
-          touchpad {
-              natural_scroll = yes
-              disable_while_typing = true
-          }
-
-          sensitivity = 0.40 # -1.0 < sensitivity < 1.0, 0 means no modification.
-      }
 
       general {
           layout = dwindle
