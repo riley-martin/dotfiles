@@ -47,6 +47,18 @@ wayland.windowManager.hyprland = {
 
             sensitivity = 0.40; # -1.0 < sensitivity < 1.0, 0 means no modification.
         };
+
+        decoration = {
+            rounding = 8;
+            dim_inactive = false;
+            #screen_shader = /home/riley/.config/hypr/nightlight.frag
+            blur = {
+                enabled = true;
+                size = 8;
+                passes = 2;
+            };
+        };
+
     };
     extraConfig = ''
       #
@@ -81,23 +93,6 @@ wayland.windowManager.hyprland = {
       exec-once = eww open bar
       exec-once = swayidle -w timeout 120 'hyprctl dispatch dpms off' timeout 125 '${swaylock}' resume 'hyprctl dispatch dpms on'
 
-      general {
-          layout = dwindle
-          gaps_in = 2
-          gaps_out = 4
-          border_size = 2
-          # col.active_border = 0xa62fd0ff
-          # col.inactive_border = 0x66333333
-          # col.active_border = 0xff5e81ac
-          col.active_border = 0xff5e81ac 0xff3edd99 45deg
-          col.inactive_border = 0x66333333
-          no_cursor_warps = false
-          cursor_inactive_timeout = 4
-
-          apply_sens_to_raw = 0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
-
-      #    damage_tracking = full # leave it on full unless you hate your GPU and want to make it suffer
-      }
 
       decoration {
           rounding = 8
