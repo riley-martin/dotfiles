@@ -1,4 +1,4 @@
-{ customPackages, self, system, pkgs, lib, ... }:
+{ customPackages, self, system, inputs, pkgs, lib, ... }:
 let
   nixpkgs = import ../../nixpkgs.nix {};
 in {

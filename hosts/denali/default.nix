@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ customPackages, home-manager, agenix, config, pkgs, lib, self, system, ... }:
+{ customPackages, home-manager, agenix, config, inputs, pkgs, lib, self, system, ... }:
 
 {
   imports =
@@ -37,7 +37,6 @@
   age = {
     secrets.laptop.file = ../../secrets/laptop.age;
   };
-
 
   networking.hostName = "denali"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -184,10 +183,10 @@
 
   # home-manager.nixosModules.home-manager = {
   home-manager = {
-    # system = "x86_64";
-    # useGlobalPkgs = true;
-    # useUserPkgs = true;
-    users.riley = import ./home.nix { inherit self pkgs lib system customPackages;};
+    # users.riley = import ./home.nix { inherit self pkgs inputs lib system customPackages;};
+    users.riley.imports = [
+      ./home.nix
+    ];
   };
 
   programs.adb.enable = true;

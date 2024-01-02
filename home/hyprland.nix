@@ -1,9 +1,14 @@
-{ ... }: let 
+{ self, pkgs, ... }: let 
   swaylock = "swaylock -f -c 000000";
 in {
 wayland.windowManager.hyprland = {
     enable = true;
     # recommendedEnvironment = true;
+
+    plugins = [
+        self.inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+    ];
+
     settings = {
         # bind = [
         #     "abc"
@@ -18,8 +23,8 @@ wayland.windowManager.hyprland = {
             # col.active_border = 0xa62fd0ff
             # col.inactive_border = 0x66333333
             # col.active_border = 0xff5e81ac
-            col.active_border = "0xff5e81ac 0xff3edd99 45deg";
-            col.inactive_border = "0x66333333";
+            "col.active_border" = "0xff5e81ac 0xff3edd99 45deg";
+            "col.inactive_border" = "0x66333333";
             no_cursor_warps = false;
             cursor_inactive_timeout = 4;
 
@@ -58,6 +63,37 @@ wayland.windowManager.hyprland = {
                 passes = 2;
             };
         };
+        blurls = [ "waybar" "gtk-layer-shell" ];
+
+        animations = {
+            bezier = "xyz, 0.05, 0.9, 0.1, 1.05";
+            enabled = 1;
+            animation = [
+                "windows, 1, x4x, xyz"
+                "border, 1, 4, default"
+                "fade, 1, 4, default"
+                "workspaces, 1, 4, default"
+            ];
+        };
+
+        dwindle = {
+            pseudotile = 0; # enable pseudotiling on dwindle
+            preserve_split = true;
+        };
+
+        gestures = {
+            workspace_swipe = true;
+            workspace_swipe_distance = 200;
+            workspace_swipe_create_new = true;
+        };
+
+        misc = {
+            animate_manual_resizes = true;
+        };
+
+        debug = {
+            overlay = false;
+        };
 
     };
     extraConfig = ''
@@ -93,48 +129,6 @@ wayland.windowManager.hyprland = {
       exec-once = eww open bar
       exec-once = swayidle -w timeout 120 'hyprctl dispatch dpms off' timeout 125 '${swaylock}' resume 'hyprctl dispatch dpms on'
 
-
-      decoration {
-          rounding = 8
-          dim_inactive = false
-          #screen_shader = /home/riley/.config/hypr/nightlight.frag
-          blur {
-              enabled = true
-              size = 8
-              passes = 2
-          }
-      }
-
-      animations {
-          bezier = xyz, 0.05, 0.9, 0.1, 1.05
-          enabled = 1
-          animation = windows, 1, 4, xyz
-          animation = border, 1, 4, default
-          animation = fade, 1, 4, default
-          animation = workspaces, 1, 4, default
-      }
-      dwindle {
-          pseudotile = 0 # enable pseudotiling on dwindle
-          preserve_split = yes
-      }
-
-      gestures {
-          workspace_swipe = true
-          workspace_swipe_distance = 200
-          workspace_swipe_create_new = true
-      }
-
-      misc {
-          animate_manual_resizes = true
-      }
-
-      debug {
-          overlay = false
-
-      }
-
-      blurls = waybar
-      blurls = gtk-layer-shell
 
 
       # Make rofi float because tiled launchers suck
