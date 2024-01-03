@@ -6,7 +6,7 @@ wayland.windowManager.hyprland = {
     # recommendedEnvironment = true;
 
     plugins = [
-        # self.inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+        self.inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
     ];
 
     settings = {
