@@ -139,7 +139,7 @@
   };
 
   services.odoo = {
-    enable = false;
+    enable = true;
     domain = "odoo.rileymartin.xyz";
     package = (pkgs.callPackage ../../pkgs {}).odoo;
     settings = {
