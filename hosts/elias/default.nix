@@ -249,6 +249,7 @@
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts = {
 
+
       "cloud.rileymartin.xyz" = {
         ## Force HTTP redirect to HTTPS
         forceSSL = true;
@@ -330,6 +331,11 @@
             '';
           };
         };
+      };
+
+      "odoo.rileymartin.xyz" = {
+        enableACME = true;
+        forceSSL = true;
       };
     };
   };
