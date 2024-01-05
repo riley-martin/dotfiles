@@ -144,6 +144,7 @@
     package = (pkgs.callPackage ../../pkgs {}).odoo;
     settings = {
       options = {
+        admin_passwd = builtins.readFile config.age.secrets.pgsql-pass.path;
         db_user = "odoo";
         db_password = builtins.readFile config.age.secrets.pgsql-pass.path;
         dbfilter = "^odoo.*$";
