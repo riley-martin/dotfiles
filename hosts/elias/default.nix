@@ -168,7 +168,6 @@
     config = {
       # adminpassFile = "/etc/nixos/nextcloud-admin-pass";
       adminpassFile = config.age.secrets.nextcloud-admin-pass.path;
-      overwriteProtocol = "https";
 
       dbtype = "pgsql";
       dbuser = "nextcloud";
@@ -176,9 +175,11 @@
       dbname = "nextcloud";
       # dbpassFile = "/etc/nixos/pgsql-pass";
       dbpassFile = config.age.secrets.pgsql-pass.path;
+    };
 
+    extraOptions = {
       defaultPhoneRegion = "US";
-
+      overwriteProtocol = "https";
       extraTrustedDomains = [
         "127.0.0.1"
         "localhost"
