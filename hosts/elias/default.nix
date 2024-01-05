@@ -145,6 +145,7 @@
     settings = {
       options = {
         db_user = "odoo";
+        db_password = builtins.readFile config.age.secrets.pgsql-pass.path;
         dbfilter = "^odoo.*$";
       };
     };
@@ -215,17 +216,17 @@
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "nextcloud" ]; # "odoo" ];
+    ensureDatabases = [ "nextcloud" "odoo" ];
     ensureUsers = [
       {
         name = "nextcloud";
         # ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
         ensureDBOwnership = true;
       }
-      # {
-      #   name = "odoo";
-      #   ensureDBOwnership = true;
-      # }
+      {
+        name = "odoo";
+        ensureDBOwnership = true;
+      }
     ];
   };
 
