@@ -150,6 +150,17 @@
         dbfilter = "^odoo.*$";
       };
     };
+    addons = [
+      (pkgs.buildPythonPackage rec {
+        pname = "odoo-addons-oca-account-financial-reporting";
+        version = "16.0.20230919.0";
+        src = pkgs.fetchPypi {
+          inherit pname version;
+          sha256 = "";
+        };
+        doCheck = false;
+      })
+    ];
   };
   
   services.nextcloud = {
