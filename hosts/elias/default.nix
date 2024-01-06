@@ -154,8 +154,11 @@
       (pkgs.python3Packages.buildPythonPackage rec {
         pname = "odoo-addons-oca-account-financial-reporting";
         version = "16.0.20230919.0";
-        src = pkgs.fetchPypi {
-          inherit pname version;
+        src = pkgs.fetchFromGitHub {
+          # inherit pname version;
+          owner = "OCA";
+          repo = "account-financial-reporting";
+          rev = "16.0";
           sha256 = "";
         };
         doCheck = false;
