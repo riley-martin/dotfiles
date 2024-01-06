@@ -159,7 +159,7 @@
           owner = "OCA";
           repo = "account-financial-reporting";
           rev = "16.0";
-          sha256 = "";
+          sha256 = "sha256-im3PjewsMviH+8tXylbANVbVBUgPwiT5TSkOyqGlwYs=";
         };
         doCheck = false;
       })
