@@ -148,22 +148,22 @@
         db_user = "odoo";
         db_password = builtins.readFile config.age.secrets.pgsql-pass.path;
         dbfilter = "^odoo.*$";
+        addons_path = "'/home/riley/.odoo-addons','/nix/store/xv7kq744zwgpvjfc8np5s3s6qwkzp2gy-odoo-16.0.20231024/lib/python3.10/site-packages/odoo/addons', '/var/lib/private/odoo/.local/share/Odoo/addons/16.0'"
       };
     };
     addons = [
-      (pkgs.python3Packages.buildPythonPackage rec {
-        pname = "odoo-addons-oca-account-financial-reporting";
-        version = "16.0.20230919.0";
-        src = pkgs.fetchFromGitHub {
-          # inherit pname version;
-          owner = "OCA";
-          repo = "account-financial-reporting";
-          rev = "16.0";
-          sha256 = "sha256-im3PjewsMviH+8tXylbANVbVBUgPwiT5TSkOyqGlwYs=";
-        };
-        doCheck = false;
-        nativeBuildInputs = [ pkgs.python3Packages.setuptools-odoo ];
-      })
+      # (pkgs.python3Packages.buildPythonPackage rec {
+      #   pname = "odoo-addons-oca-account-financial-reporting";
+      #   version = "16.0.20230919.0";
+      #   src = pkgs.fetchFromGitHub {
+      #     # inherit pname version;
+      #     owner = "OCA";
+      #     repo = "account-financial-reporting";
+      #     rev = "16.0";
+      #     sha256 = "sha256-im3PjewsMviH+8tXylbANVbVBUgPwiT5TSkOyqGlwYs=";
+      #   };
+      #   doCheck = false;
+      #   nativeBuildInputs = [ pkgs.python3Packages.setuptools-odoo ];})
     ];
   };
   
