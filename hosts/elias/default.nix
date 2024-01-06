@@ -148,7 +148,7 @@
         db_user = "odoo";
         db_password = builtins.readFile config.age.secrets.pgsql-pass.path;
         dbfilter = "^odoo.*$";
-        addons_path = "/home/riley/.odoo-addons, /nix/store/xv7kq744zwgpvjfc8np5s3s6qwkzp2gy-odoo-16.0.20231024/lib/python3.10/site-packages/odoo/addons, /var/lib/private/odoo/.local/share/Odoo/addons/16.0";
+        addons_path = "/opt/odoo/custom_addons, /nix/store/xv7kq744zwgpvjfc8np5s3s6qwkzp2gy-odoo-16.0.20231024/lib/python3.10/site-packages/odoo/addons, /var/lib/private/odoo/.local/share/Odoo/addons/16.0";
       };
     };
     addons = [
