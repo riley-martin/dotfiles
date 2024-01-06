@@ -151,7 +151,7 @@
       };
     };
     addons = [
-      (pkgs.buildPythonPackage rec {
+      (pkgs.python3Packages.buildPythonPackage rec {
         pname = "odoo-addons-oca-account-financial-reporting";
         version = "16.0.20230919.0";
         src = pkgs.fetchPypi {
