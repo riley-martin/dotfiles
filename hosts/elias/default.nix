@@ -162,6 +162,7 @@
           sha256 = "sha256-im3PjewsMviH+8tXylbANVbVBUgPwiT5TSkOyqGlwYs=";
         };
         doCheck = false;
+        propagatedBuildInputs = [ pkgs.python3Packages.setuptools-odoo ];
       })
     ];
   };
