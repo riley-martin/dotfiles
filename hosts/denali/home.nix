@@ -134,11 +134,12 @@ in {
     ../../home/helix.nix
     # ./alacritty.nix
     # ./waybar.nix
-    ../../home/wezterm.nix
+    ../../home/terminals/wezterm.nix
     ../../home/nushell.nix
     ../../home/dunst.nix
     ../../home/eww
-    ../../home/alacritty.nix
+    ../../home/terminals/alacritty.nix
+    ../../home/terminals/rio.nix
     # ./ironbar.nix
   ];
 
