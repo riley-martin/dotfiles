@@ -360,7 +360,10 @@
       "media.rileymartin.xyz" = {
         enableACME = true;
         forceSSL = true;
-        clientMaxBodySize = "20M";
+        # clientMaxBodySize = "20M";
+        extraConfig = ''
+          client_max_body_size = 20M;
+        '';
         locations = {
           " = /" = {
             return = "302 https://$host/web";
