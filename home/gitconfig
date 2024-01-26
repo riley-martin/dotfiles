@@ -16,6 +16,7 @@
 	email = rileyseanm@gmail.com
 [core]
 	pager = delta
+	editor = hx
 
 [interactive]
 	diffFilter = delta --color-only

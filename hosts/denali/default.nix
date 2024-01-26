@@ -170,12 +170,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
+  # programs.nushell.enable = true;
   users.users.riley = {
     isNormalUser = true;
     passwordFile = config.age.secrets.laptop.path;
     extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" "adbusers" ];
     home = "/home/riley";
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     packages = with pkgs; [
       swaylock
     ];
