@@ -379,7 +379,7 @@
               proxy_buffering off;
             '';
           };
-          "= /web/" = {
+          "^~ /web/" = {
             proxyPass = "http://localhost:8096/web/index.html";
             extraConfig = ''
               proxy_set_header Host $host;
