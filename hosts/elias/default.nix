@@ -260,7 +260,7 @@
 
   services.nginx = {
     enable = true;
-    logError = "stderr:info";
+    logError = "stderr info";
 
     # Use recommended settings
     recommendedGzipSettings = true;
