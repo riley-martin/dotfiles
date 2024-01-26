@@ -141,7 +141,7 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-  }
+  };
 
   services.odoo = {
     enable = false;
