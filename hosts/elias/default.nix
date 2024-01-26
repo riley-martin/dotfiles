@@ -138,8 +138,13 @@
     apiTokenFile = config.age.secrets.ddns_tok.path;
   };
 
-  services.odoo = {
+  services.jellyfin = {
     enable = true;
+    openFirewall = true;
+  }
+
+  services.odoo = {
+    enable = false;
     domain = "odoo.rileymartin.xyz";
     package = (pkgs.callPackage ../../pkgs {}).odoo;
     settings = {
@@ -352,9 +357,54 @@
         };
       };
 
-      "odoo.rileymartin.xyz" = {
+      "media.rileymartin.xyz" = {
         enableACME = true;
         forceSSL = true;
+        clientMaxBodySize = "20M";
+        locations = {
+          " = /" = {
+            return = "302 https://$host/web";
+          };
+          "/" = {
+            proxyPass = "http://localhost:8096";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header X-Forwarded-Protocol $scheme;
+              proxy_set_header X-Forwarded-Host $http_host;
+
+              # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+              proxy_buffering off;
+            '';
+          };
+          "= /web/" = {
+            proxyPass = "http://localhost:8096/web/index.html";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header X-Forwarded-Protocol $scheme;
+              proxy_set_header X-Forwarded-Host $http_host;
+            '';
+          };
+          "/socket" = {
+            proxyPass = "http://localhost:8096";
+            extraConfig = ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_set_header X-Forwarded-Protocol $scheme;
+              proxy_set_header X-Forwarded-Host $http_host;
+            '';
+          };
+        };
       };
     };
   };
