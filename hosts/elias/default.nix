@@ -379,7 +379,7 @@
               proxy_buffering off;
             '';
           };
-          "~ ^/web/$" = {
+          "~ ^/web/" = {
             proxyPass = "http://127.0.0.1:8096/web/index.html";
             extraConfig = ''
               proxy_set_header Host $host;html
