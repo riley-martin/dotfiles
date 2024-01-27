@@ -360,54 +360,52 @@
 
       "media.rileymartin.xyz" = {
         enableACME = true;
-        # forceSSL = true;
-        addSSL = true;
-        locations."/".proxyPass = "https://localhost:8096";
+        forceSSL = true;
         # clientMaxBodySize = "20M";
-        # locations = {
-        #   " = /" = {
-        #     return = "302 https://$host/web";
-        #   };
-        #   "/" = {
-        #     proxyPass = "http://127.0.0.1:8096";
-        #     extraConfig = ''
-        #       proxy_set_header Host $host;
-        #       # proxy_set_header X-Real-IP $remote_addr;
-        #       # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        #       # proxy_set_header X-Forwarded-Proto $scheme;
-        #       # proxy_set_header X-Forwarded-Protocol $scheme;
-        #       # proxy_set_header X-Forwarded-Host $http_host;
+        locations = {
+          " = /" = {
+            return = "302 https://$host/web";
+          };
+          "/" = {
+            proxyPass = "http://127.0.0.1:8096";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              # proxy_set_header X-Real-IP $remote_addr;
+              # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              # proxy_set_header X-Forwarded-Proto $scheme;
+              # proxy_set_header X-Forwarded-Protocol $scheme;
+              # proxy_set_header X-Forwarded-Host $http_host;
 
-        #       # Disable buffering when the nginx proxy gets very resource heavy upon streaming
-        #       proxy_buffering off;
-        #     '';
-        #   };
-        #   "= /web/" = {
-        #     proxyPass = "http://127.0.0.1:8096/web/index.html";
-        #     extraConfig = ''
-        #       proxy_set_header Host $host;
-        #       # proxy_set_header X-Real-IP $remote_addr;
-        #       # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        #       # proxy_set_header X-Forwarded-Proto $scheme;
-        #       # proxy_set_header X-Forwarded-Protocol $scheme;
-        #       # proxy_set_header X-Forwarded-Host $http_host;
-        #     '';
-        #   };
-        #   "/socket" = {
-        #     proxyPass = "http://127.0.0.1:8096";
-        #     extraConfig = ''
-        #       proxy_http_version 1.1;
-        #       proxy_set_header Upgrade $http_upgrade;
-        #       proxy_set_header Connection "upgrade";
-        #       proxy_set_header Host $host;
-        #       # proxy_set_header X-Real-IP $remote_addr;
-        #       # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        #       # proxy_set_header X-Forwarded-Proto $scheme;
-        #       # proxy_set_header X-Forwarded-Protocol $scheme;
-        #       # proxy_set_header X-Forwarded-Host $http_host;
-        #     '';
-        #   };
-        # };
+              # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+              proxy_buffering off;
+            '';
+          };
+          "= /web/" = {
+            proxyPass = "http://127.0.0.1:8096/web/index.html";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              # proxy_set_header X-Real-IP $remote_addr;
+              # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              # proxy_set_header X-Forwarded-Proto $scheme;
+              # proxy_set_header X-Forwarded-Protocol $scheme;
+              # proxy_set_header X-Forwarded-Host $http_host;
+            '';
+          };
+          "/socket" = {
+            proxyPass = "http://127.0.0.1:8096";
+            extraConfig = ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_set_header Host $host;
+              # proxy_set_header X-Real-IP $remote_addr;
+              # proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              # proxy_set_header X-Forwarded-Proto $scheme;
+              # proxy_set_header X-Forwarded-Protocol $scheme;
+              # proxy_set_header X-Forwarded-Host $http_host;
+            '';
+          };
+        };
       };
     };
   };
@@ -488,6 +486,9 @@
     curl
     bottom
     git
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
