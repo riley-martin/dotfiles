@@ -262,6 +262,8 @@
     enable = true;
     logError = "stderr info";
 
+    resolver.addresses = [ "[::1]" "127.0.0.1"];
+
     # Use recommended settings
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
