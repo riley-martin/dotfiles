@@ -48,29 +48,8 @@
     };
   };
   
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  # networking.hosts = {
-  #   "0.0.0.0" = [
-  #     "builds.srht.local"
-  #     "git.srht.local"
-  #     "hub.srht.local"
-  #     "logs.srht.local"
-  #     "man.srht.local"
-  #     "meta.srht.local"
-  #     "srht.local"
-  #   ];
-  # };
-  
-  # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  
-  # services.logind.extraConfig = "HandleLidSwitch=ignore";
   services.logind.lidSwitch = "ignore";
 
   services.restic.backups = {
@@ -111,21 +90,6 @@
     config = {};
     configWritable = true;
   };
-  
-  # services.cloudflared = {
-  #   enable = false;
-  #   tunnels = {
-  #     "1c8eccd8-ba4a-42cf-9285-73c190d6489c" = {
-        # credentialsFile = "/etc/nixos/006588ea-bae6-4451-ae20-aa705a265308.json";
-  #       default = "http_status:404";
-  #       ingress = {
-  #         "*.rileymartin.xyz" = {
-  #           service = "http://localhost";
-  #         };
-  #       };
-  #     };
-  #   };
-  # };
 
   services.cloudflare-dyndns = {
     enable = true;
@@ -136,7 +100,6 @@
       "cloud.rileymartin.xyz"
       "office.rileymartin.xyz"
     ];
-    # apiTokenFile = "/etc/nixos/ddns_tok";
     apiTokenFile = config.age.secrets.ddns_tok.path;
   };
 
@@ -145,36 +108,6 @@
     openFirewall = true;
   };
 
-  services.odoo = {
-    enable = false;
-    domain = "odoo.rileymartin.xyz";
-    package = (pkgs.callPackage ../../pkgs {}).odoo;
-    settings = {
-      options = {
-        admin_passwd = builtins.readFile config.age.secrets.pgsql-pass.path;
-        db_user = "odoo";
-        db_password = builtins.readFile config.age.secrets.pgsql-pass.path;
-        # dbfilter = "^odoo.*$";
-        dbfilter = ".*";
-        addons_path = "/opt/odoo/custom_addons, /opt/odoo/custom_addons/CybroAddons, /nix/store/xv7kq744zwgpvjfc8np5s3s6qwkzp2gy-odoo-16.0.20231024/lib/python3.10/site-packages/odoo/addons, /var/lib/private/odoo/.local/share/Odoo/addons/16.0";
-      };
-    };
-    addons = [
-      # (pkgs.python3Packages.buildPythonPackage rec {
-      #   pname = "odoo-addons-oca-account-financial-reporting";
-      #   version = "16.0.20230919.0";
-      #   src = pkgs.fetchFromGitHub {
-      #     # inherit pname version;
-      #     owner = "OCA";
-      #     repo = "account-financial-reporting";
-      #     rev = "16.0";
-      #     sha256 = "sha256-im3PjewsMviH+8tXylbANVbVBUgPwiT5TSkOyqGlwYs=";
-      #   };
-      #   doCheck = false;
-      #   nativeBuildInputs = [ pkgs.python3Packages.setuptools-odoo ];})
-    ];
-  };
-  
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "nextcloud" "odoo" ];
@@ -182,10 +115,6 @@
       {
         name = "nextcloud";
         # ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-        ensureDBOwnership = true;
-      }
-      {
-        name = "odoo";
         ensureDBOwnership = true;
       }
     ];
@@ -199,7 +128,6 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "rileyseanm@gmail.com";
-    # certs."cloud.rileymartin.xyz".extraDomainNames = [ "office.rileymartin.xyz" ];
   };
 
   virtualisation.oci-containers = {
@@ -215,7 +143,7 @@
         };
         ports = ["9980:9980"];
         environment = {
-          domain = "cloud.rileymartin.xyz";
+          domain = "office.rileymartin.xyz";
           extra_params = "--o:ssl.enable=false --o:ssl.termination=true --o:net.post_allow.host='.*' --o:storage.wopi.host='.*'";
         };
         extraOptions = ["--cap-add" "MKNOD"];
