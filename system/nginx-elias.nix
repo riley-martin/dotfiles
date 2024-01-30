@@ -110,7 +110,7 @@
             return = "302 https://$host/web";
           };
           "/" = {
-            proxyPass = "http://127.0.0.1:8096";
+            proxyPass = "http://192.168.0.10:8096";
             extraConfig = ''
               proxy_set_header Host $host;
               proxy_ssl_server_name on;
@@ -125,7 +125,7 @@
             '';
           };
           "= /web/" = {
-            proxyPass = "http://127.0.0.1:8096/web/index.html";
+            proxyPass = "http://192.168.0.10:8096/web/index.html";
             extraConfig = ''
               proxy_set_header Host $host;
               proxy_ssl_server_name on;
@@ -137,7 +137,7 @@
             '';
           };
           "/socket" = {
-            proxyPass = "http://127.0.0.1:8096";
+            proxyPass = "http://192.168.0.10:8096";
             extraConfig = ''
               proxy_http_version 1.1;
               proxy_set_header Upgrade $http_upgrade;
