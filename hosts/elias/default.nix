@@ -105,6 +105,9 @@
 
   services.vaultwarden = {
     enable = true;
+    config = {
+      rocketAddress = "localhost";
+    };
   };
 
   services.jellyfin = {
