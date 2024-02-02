@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   services.nginx = {
     enable = true;
     logError = "stderr info";
@@ -25,10 +25,14 @@
         enableACME = true;
       };
 
-      # "office.rileymartin.xyz" = {
-      #   enableACME = true;
-      #   forceSSL = true;
-      # };
+      "warden.rileymartin.xyz" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+        };
+      }
+      
       "office.rileymartin.xyz" = {
         forceSSL = true;
         enableACME = true;

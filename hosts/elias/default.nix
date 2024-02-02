@@ -103,6 +103,10 @@
     apiTokenFile = config.age.secrets.ddns_tok.path;
   };
 
+  services.vaultwarden = {
+    enable = true;
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
