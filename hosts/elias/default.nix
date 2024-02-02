@@ -106,7 +106,7 @@
   services.vaultwarden = {
     enable = true;
     config = {
-      rocketAddress = "localhost";
+      rocketAddress = "127.0.0.1";
       rocketPort = 8222;
     };
   };
