@@ -65,6 +65,10 @@
         hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
         sendOnly = true;
       };
+      "warden@rileymartin.xyz" = {
+        hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
+        sendOnly = true;
+      };
       "connor@rileymartin.xyz" = {
         hashedPasswordFile = config.age.secrets.connor-mail.path;
       };
