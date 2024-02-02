@@ -110,10 +110,10 @@
       rocketAddress = "127.0.0.1";
       rocketPort = 8222;
       signupsAllowed = false;
-      smtpHost = "mail.rileymartin.xyz";
-      smtpFrom = "warden@rileymartin.xyz";
-      smtpUsername = "warden@rileymartin.xyz";
-      smtpPassword = (builtins.readFile config.age.secrets.nextcloud-mail.path);
+      # smtpHost = "mail.rileymartin.xyz";
+      # smtpFrom = "warden@rileymartin.xyz";
+      # smtpUsername = "warden@rileymartin.xyz";
+      # smtpPassword = (builtins.readFile config.age.secrets.nextcloud-mail.path);
     };
   };
 
