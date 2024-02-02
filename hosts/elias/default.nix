@@ -107,6 +107,7 @@
     enable = true;
     config = {
       rocketAddress = "localhost";
+      rocketPort = 8222;
     };
   };
 
