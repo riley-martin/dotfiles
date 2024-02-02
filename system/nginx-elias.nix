@@ -29,7 +29,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+          proxyPass = "http://localhost:${toString config.services.vaultwarden.config.ROCKET_PORT}";
         };
       };
       
