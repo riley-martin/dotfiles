@@ -30,7 +30,7 @@
   networking.hostName = "elias"; # Define your hostname.
 
   age = {
-    secrets.nextcloud-mail = ../../secrets/nextcloud-mail.age;
+    secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
     secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;
