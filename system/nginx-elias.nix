@@ -18,7 +18,7 @@
     virtualHosts = {
 
 
-      "cloud.rileymartin.xyz" = {
+      "cloud.rileymartin.dev" = {
         ## Force HTTP redirect to HTTPS
         forceSSL = true;
         ## LetsEncrypt
