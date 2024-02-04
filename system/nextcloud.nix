@@ -2,7 +2,7 @@
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud28;
-      hostName = "cloud.rileymartin.xyz";
+      hostName = "cloud.rileymartin.dev";
       # hostName = "cloud.localhost";
       https = true;
       configureRedis = true;
