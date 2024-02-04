@@ -26,6 +26,7 @@
       };
 
       "warden.rileymartin.xyz" = {
+      enableACME = true;
         locations."/" = {
           return = "301 https://warden.rileymartin.dev";
         };
