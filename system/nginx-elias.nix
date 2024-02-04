@@ -25,7 +25,7 @@
         enableACME = true;
       };
 
-      "warden.rileymartin.xyz" = {
+      "warden.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
