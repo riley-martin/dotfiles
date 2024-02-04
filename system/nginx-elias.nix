@@ -17,6 +17,13 @@
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts = {
 
+      "cloud.rileymartin.xyz" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          return = "301 https://cloud.rileymartin.dev";
+        };
+      };
 
       "cloud.rileymartin.dev" = {
         ## Force HTTP redirect to HTTPS
