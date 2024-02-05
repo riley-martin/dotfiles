@@ -48,7 +48,7 @@
         };
       };
       
-      "office.rileymartin.xyz" = {
+      "office.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
         locations = {
@@ -120,7 +120,7 @@
         };
       };
 
-      "media.rileymartin.xyz" = {
+      "media.rileymartin.dev" = {
         enableACME = true;
         forceSSL = true;
         # clientMaxBodySize = "20M";

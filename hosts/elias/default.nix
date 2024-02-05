@@ -157,7 +157,7 @@
         };
         ports = ["9980:9980"];
         environment = {
-          domain = "office.rileymartin.xyz";
+          domain = "office.rileymartin.dev";
           extra_params = "--o:ssl.enable=false --o:ssl.termination=true --o:net.post_allow.host='.*' --o:storage.wopi.host='.*'";
         };
         extraOptions = ["--cap-add" "MKNOD"];
