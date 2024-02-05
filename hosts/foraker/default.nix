@@ -71,7 +71,7 @@
       };
       "connor@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.connor-mail.path;
-        aliases = [ "connor@rileymartin.xyz"]
+        aliases = [ "connor@rileymartin.xyz"];
       };
     };
     certificateScheme = "acme-nginx";
