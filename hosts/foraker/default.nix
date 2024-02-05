@@ -54,23 +54,24 @@
 
   mailserver = {
     enable = true;
-    fqdn = "mail.rileymartin.xyz";
-    domains = [ "rileymartin.xyz" ];
+    fqdn = "mail.rileymartin.dev";
+    domains = [ "rileymartin.dev" "rileymartin.xyz" ];
     loginAccounts = {
-      "me@rileymartin.xyz" = {
+      "me@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
-        aliases = [ "signup@rileymartin.xyz" "postmaster@rileymartin.xyz" "riley-martin@rileymartin.xyz" ];
+        aliases = [ "me@rileymartin.xyz" "signup@rileymartin.dev" "postmaster@rileymartin.dev" "riley-martin@rileymartin.dev" ];
       };
-      "nextcloud@rileymartin.xyz" = {
+      "nextcloud@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
         sendOnly = true;
       };
-      "warden@rileymartin.xyz" = {
+      "warden@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
         sendOnly = true;
       };
-      "connor@rileymartin.xyz" = {
+      "connor@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.connor-mail.path;
+        aliases = [ "connor@rileymartin.xyz"]
       };
     };
     certificateScheme = "acme-nginx";
@@ -134,6 +135,7 @@
     agenix.packages.x86_64-linux.default
     curl
     helix
+    git
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
   ];
