@@ -62,11 +62,11 @@
         aliases = [ "me@rileymartin.xyz" "signup@rileymartin.dev" "postmaster@rileymartin.dev" "riley-martin@rileymartin.dev" ];
       };
       "nextcloud@rileymartin.dev" = {
-        hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
+        hashedPasswordFile = config.age.secrets.mailserver.path;
         sendOnly = true;
       };
       "warden@rileymartin.dev" = {
-        hashedPasswordFile = config.age.secrets.nextcloud-mail.path;
+        hashedPasswordFile = config.age.secrets.mailserver.path;
         sendOnly = true;
       };
       "connor@rileymartin.dev" = {
