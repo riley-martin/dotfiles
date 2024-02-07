@@ -240,7 +240,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
-  networking.firewall.allowTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [80 443];
   networking.enableIPv6 = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
