@@ -11,6 +11,7 @@
       # ./mailz.nix
       ../../system/nextcloud.nix
       ../../system/nginx-elias.nix
+      ../../system/fail2ban.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
