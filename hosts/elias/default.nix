@@ -98,8 +98,9 @@
     # ipv6 = true;
     proxied = false;
     domains = [
-      "cloud.rileymartin.xyz"
-      "office.rileymartin.xyz"
+      "cloud.rileymartin.dev"
+      "office.rileymartin.dev"
+      "warden.rileymartin.dev"
     ];
     apiTokenFile = config.age.secrets.ddns_tok.path;
   };
