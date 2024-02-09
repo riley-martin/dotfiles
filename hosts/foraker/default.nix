@@ -81,7 +81,7 @@
 
   services.roundcube = {
     enable = true;
-    hostName = "mail.rileymartin.xyz";
+    hostName = "mail.rileymartin.dev";
     extraConfig = ''
       $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
       $config['smtp_user'] = "%u";
