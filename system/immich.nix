@@ -44,11 +44,11 @@ in {
     image = "ghcr.io/immich-app/immich-server:${immichVersion}";
     ports = ["127.0.0.1:2283:3001"];
     extraOptions = [
-      "--pull=newer"
+      # "--pull=newer"
       # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
-      "--dns=10.88.0.1"
+      # "--dns=10.88.0.1"
     ];
     cmd = [ "start.sh" "immich" ];
     environment = {
@@ -69,11 +69,11 @@ in {
   virtualisation.oci-containers.containers.immich_microservices = {
     image = "ghcr.io/immich-app/immich-server:${immichVersion}";
     extraOptions = [
-      "--pull=newer"
+      # "--pull=newer"
       # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
-      "--dns=10.88.0.1"
+      # "--dns=10.88.0.1"
     ];
     cmd = [ "start.sh" "microservices" ];
     environment = {
@@ -93,7 +93,7 @@ in {
 
   virtualisation.oci-containers.containers.immich_machine_learning = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
-    extraOptions = ["--pull=newer"];
+    # extraOptions = ["--pull=newer"];
     environment = {
       IMMICH_VERSION = immichVersion;
     };
