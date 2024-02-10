@@ -48,7 +48,7 @@ in {
       # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
-      # "--dns=10.88.0.1"
+      "--dns=10.88.0.1"
     ];
     cmd = [ "start.sh" "immich" ];
     environment = {
@@ -73,7 +73,7 @@ in {
       # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
-      # "--dns=10.88.0.1"
+      "--dns=10.88.0.1"
     ];
     cmd = [ "start.sh" "microservices" ];
     environment = {
