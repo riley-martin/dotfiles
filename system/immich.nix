@@ -61,7 +61,7 @@ in {
     };
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
-      "/etc/localtime:/etc/localtime:ro"
+      # "/etc/localtime:/etc/localtime:ro"
       # "${immichExternalVolume1}:${immichExternalVolume1}:ro"
     ];
   };
@@ -86,7 +86,7 @@ in {
     };
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
-      "/etc/localtime:/etc/localtime:ro"
+      # "/etc/localtime:/etc/localtime:ro"
       # "${immichExternalVolume1}:${immichExternalVolume1}:ro"
     ];
   };
