@@ -12,6 +12,7 @@
       ../../system/nextcloud.nix
       ../../system/nginx-elias.nix
       ../../system/fail2ban.nix
+      ../../system/immich.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
