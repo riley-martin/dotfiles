@@ -49,8 +49,10 @@ in {
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
       # "--dns=10.88.0.1"
-      "--link immich_redis"
-      "--link immich_postgres"
+      # "--link immich_redis"
+      # "--link immich_postgres"
+      # docker network create immich_net
+      "--network immich_net"
     ];
     cmd = [ "start.sh" "immich" ];
     environment = {
@@ -76,8 +78,9 @@ in {
       # that includes both this server and the upstream system server, causing resolutions of other pod names
       # to be inconsistent.
       # "--dns=10.88.0.1"
-      "--link immich_redis"
-      "--link immich_postgres"
+      # "--link immich_redis"
+      # "--link immich_postgres"
+      "--network immich_net"
     ];
     cmd = [ "start.sh" "microservices" ];
     environment = {
@@ -97,7 +100,7 @@ in {
 
   virtualisation.oci-containers.containers.immich_machine_learning = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
-    # extraOptions = ["--pull=newer"];
+    extraOptions = ["--network immich_net"];
     environment = {
       IMMICH_VERSION = immichVersion;
     };
@@ -108,10 +111,12 @@ in {
 
   virtualisation.oci-containers.containers.immich_redis = {
     image = "redis:6.2-alpine@sha256:80cc8518800438c684a53ed829c621c94afd1087aaeb59b0d4343ed3e7bcf6c5";
+    extraOptions = [ "--network immich_net" ];
   };
 
   virtualisation.oci-containers.containers.immich_postgres = {
     image = "tensorchord/pgvecto-rs:pg14-v0.1.11";
+    extraOptions = [ "--network immich_net" ];
     environment = {
       POSTGRES_PASSWORD = postgresPassword;
       POSTGRES_USER = postgresUser;
