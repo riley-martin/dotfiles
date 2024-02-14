@@ -63,9 +63,9 @@
   services.sshd.enable = true;
   services.udisks2.enable = true;
 
-  # services.fprintd.enable = true;
+  services.fprintd.enable = true;
   # services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
-  # services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprint-eh575;
+  services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprint-eh575;
   # services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
 
   
