@@ -13,6 +13,7 @@
       ../../system/nginx-elias.nix
       ../../system/fail2ban.nix
       ../../system/immich.nix
+      ../../system/audiobookshelf.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
