@@ -64,10 +64,10 @@ stdenv.mkDerivation rec {
     # Include virtual drivers for fprintd tests
     "-Ddrivers=all"
     "-Dudev_hwdb_dir=${placeholder "out"}/lib/udev/hwdb.d"
-    "-Dpam_modules_dir=${placeholder "out"}/lib/security"
+    # "-Dpam_modules_dir=${placeholder "out"}/lib/security"
     "-Dsysconfdir=${placeholder "out"}/etc"
-    "-Ddbus_service_dir=${placeholder "out"}/share/dbus-1/system-services"
-    "-Dsystemd_system_unit_dir=${placeholder "out"}/lib/systemd/system"
+    # "-Ddbus_service_dir=${placeholder "out"}/share/dbus-1/system-services"
+    # "-Dsystemd_system_unit_dir=${placeholder "out"}/lib/systemd/system"
   ];
 
   nativeInstallCheckInputs = [
