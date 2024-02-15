@@ -7,6 +7,9 @@
   services.nginx.virtualHosts."books.rileymartin.dev" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".proxyPass = "http://127.0.0.1:4061";
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:4061";
+      proxyWebsockets = true;
+    };
   };
 }
