@@ -20,6 +20,9 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     # agenix.inputs.darwin.follows = "";
 
+    nix-snapd.url = "github:io12/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
+
     ironbar.url = "github:JakeStanger/ironbar";
     ironbar.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -39,7 +42,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, hyprland, hyprland-plugins, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -83,6 +86,7 @@
             ./hosts/denali/default.nix
             # (import ./hosts/denali{}).homeManagerConfiguration
             agenix.nixosModules.default
+            nix-snapd.nixosModules.default
           ];
         };
 

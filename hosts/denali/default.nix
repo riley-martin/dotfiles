@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ customPackages, home-manager, agenix, config, inputs, pkgs, lib, self, system, ... }:
+{ customPackages, home-manager, agenix, nix-snapd, config, inputs, pkgs, lib, self, system, ... }:
 
 {
   imports =
@@ -62,6 +62,8 @@
 
   services.sshd.enable = true;
   services.udisks2.enable = true;
+
+  services.snap.enable = true;
 
   services.fprintd.enable = true;
   # services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
