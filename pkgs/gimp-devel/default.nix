@@ -1,84 +1,29 @@
-{ stdenv
-, lib
-, fetchurl
-, pkg-config
-, meson
-, atkmm
-, alsa-lib
-, perl538
-, appstream
-, babl
-, libgudev
-, isocodes
-, cairo
-, gdk-pixbuf
-, gegl
-, gexiv2
-, gtk3
-, lcms
-, libmypaint
-, mypaint-brushes1
-, librsvg
-, glib-networking
-, glib
-, desktop-file-utils
-, gcc
-, appstream-glib
-, libarchive
-, xorg
-, libbacktrace
-, ghostscript
-, findutils
-, coreutils
-, bashInteractive
-, libmng
-, aalib
-, openexr
-, libwebp
-, libheif
-, vala
-, poppler
-, poppler_data
-, libwmf
-, libjxl
-, gjs
-, luajit
-, libxml2
-, libxslt
-, gi-docgen
-, xvfb-run
-, shared-mime-info
-, gobject-introspection
-, ninja
-, python3
-, wrapGAppsHook
-, gsettings-desktop-schemas
-, gnome3
-, hicolor-icon-theme
-, graphviz
-}:
+{ stdenv, lib, aalib, alsa-lib, appstream, appstream-glib, babl, bashInteractive
+, cairo, desktop-file-utils, fetchurl, findutils, gdk-pixbuf, gegl, gexiv2
+, ghostscript, gi-docgen, gjs, glib, glib-networking, gobject-introspection
+, gtk3, isocodes, lcms, libarchive, libgudev, libheif, libjxl, libmng
+, libmypaint, librsvg, libwebp, libwmf, libxslt, lua, luajit, meson
+, mypaint-brushes1, ninja, openexr, perl538, pkg-config, poppler, poppler_data
+, python, python3, shared-mime-info, vala, wrapGAppsHook, xorg, xvfb-run
 
+}:
 let
   python = python3.withPackages (pp: [ pp.pygobject3 ]);
   lua = luajit.withPackages (ps: [ ps.lgi ]);
 in stdenv.mkDerivation (finalAttrs: {
   pname = "gimp";
-  version = "2.99.14";
+  version = "2.99.16";
 
   outputs = [ "out" "dev" ];
 
   src = fetchurl {
-    url = "http://download.gimp.org/pub/gimp/v${lib.versions.majorMinor finalAttrs.version}/gimp-${finalAttrs.version}.tar.xz";
-    sha256 = "MTogVHXR/wPFxNlgLwn1yXW6bBx52IQ+I5b5/iq996g=";
-    # sha256 = "6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d";
-
+    url = "http://download.gimp.org/pub/gimp/v${
+        lib.versions.majorMinor finalAttrs.version
+      }/gimp-${finalAttrs.version}.tar.xz";
+    hash = "sha256-a0SW7e5Eczn5IydnVSR+rbZOxA2K7CQdBrYtGm62UI0=";
   };
 
-  patches = [
-    ./babl-0.1-name-change-meson.patch
-    ./meson-gtls.patch
-    ./pygimp-interp.patch
-  ];
+  patches = [ ./meson-gtls.patch ./pygimp-interp.patch ];
 
   nativeBuildInputs = [
     pkg-config
@@ -137,20 +82,10 @@ in stdenv.mkDerivation (finalAttrs: {
     gobject-introspection
     python
     libgudev
-    gnome3.adwaita-icon-theme
   ];
 
-  preConfigure = "
-    patchShebangs tools/gimp-mkenums app/tests/create_test_env.sh
-  ";
-
-  preFixup = ''
-    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [
-      # for dot for gegl:introspect (Debug » Show Image Graph, hidden by default on stable release)
-      graphviz
-    ]}:$out/bin")
-    gappsWrapperArgs+=(--prefix XDG_DATA_DIRS : "${hicolor-icon-theme}/share:${gnome3.adwaita-icon-theme}/share")
-  '';
+  preConfigure =
+    "patchShebangs tools/gimp-mkenums app/tests/create_test_env.sh plug-ins/script-fu/scripts/ts-helloworld.scm";
 
   enableParallelBuilding = true;
 
@@ -159,7 +94,7 @@ in stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "The GNU Image Manipulation Program: Development Edition";
     homepage = "https://www.gimp.org/";
-    maintainers = with maintainers; [ 9p4 ];
+    maintainers = with maintainers; [ "9p4" ];
     license = licenses.gpl3Plus;
     platforms = platforms.unix;
     mainProgram = "gimp";
