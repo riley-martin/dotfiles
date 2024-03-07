@@ -136,7 +136,7 @@ in {
     # ./waybar.nix
     ../../home/terminals/wezterm.nix
     ../../home/nushell.nix
-    ../../home/dunst.nix
+    # ../../home/dunst.nix
     ../../home/eww
     ../../home/terminals/alacritty.nix
     ../../home/terminals/rio.nix
