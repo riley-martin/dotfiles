@@ -79,7 +79,7 @@ in {
     self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
-    keepassxc
+    keepassxc signal-desktop bitwarden
 
     ## Development tools
     gh nil age
