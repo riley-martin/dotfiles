@@ -7,12 +7,10 @@
 # , ninja
 # , perl
 # , gettext
-# , cairo
 # , gtk-doc
 # , libxslt
 # , docbook-xsl-nons
 # , docbook_xml_dtd_412
-# , fetchurl
 # , glib
 # , gusb
 # , dbus
@@ -23,6 +21,7 @@
 # , libfprint
 # , python3
 }:
+
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "fprintd";
@@ -31,20 +30,18 @@ stdenv.mkDerivation rec {
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
-    owner = "topni1";
+    owner = "libfprint";
     repo = pname;
-    # rev = "v${version}";
-    rev = "2776600bd0de832c5fc3689fbabefe0538a6b904";
-    sha256 = "91vOQLwIJ/p+WZgE+NOdPl6L8c97S65SCzWVr7qkt10=";
-    # sha256 = "sha256-ePhcIZyXoGr8XlBuzKjpibU9D/44iCXYBlpVR9gcswQ=";
+    rev = "v${version}";
+    sha256 = "sha256-ePhcIZyXoGr8XlBuzKjpibU9D/44iCXYBlpVR9gcswQ=";
   };
 
   patches = [
-  # backport upstream patch fixing tests
-  (fetchpatch {
-    url = "https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/ae04fa989720279e5558c3b8ff9ebe1959b1cf36.patch";
-    sha256 = "sha256-jW5vlzrbZQ1gUDLBf7G50GnZfZxhlnL2Eu+9Bghdwdw=";
-  })
+    # backport upstream patch fixing tests
+    (fetchpatch {
+      url = "https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/ae04fa989720279e5558c3b8ff9ebe1959b1cf36.patch";
+      sha256 = "sha256-jW5vlzrbZQ1gUDLBf7G50GnZfZxhlnL2Eu+9Bghdwdw=";
+    })
   ];
 
   nativeBuildInputs = [
@@ -95,8 +92,7 @@ stdenv.mkDerivation rec {
   # FIXME: Ugly hack for tests to find libpam_wrapper.so
   LIBRARY_PATH = lib.makeLibraryPath [ python3.pkgs.pypamtest ];
 
-  doCheck = false;
-  checkPhase = "";
+  doCheck = true;
 
   postPatch = ''
     patchShebangs \

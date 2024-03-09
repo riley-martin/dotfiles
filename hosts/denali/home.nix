@@ -87,6 +87,7 @@ in {
     ## Graphics
     darktable freecad blender hugin
     (callPackage ../../pkgs{}).gimp-devel
+    kdenlive
 
     ## Office
     libreoffice-fresh
