@@ -115,7 +115,7 @@ in {
   };
 
   virtualisation.oci-containers.containers.immich_postgres = {
-    image = "tensorchord/pgvecto-rs:pg14-v0.1.11";
+    image = "tensorchord/pgvecto-rs:pg14-v0.2.1";
     extraOptions = [ "--network=immich_net" ];
     environment = {
       POSTGRES_PASSWORD = postgresPassword;
