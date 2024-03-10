@@ -7,7 +7,9 @@ let
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
   immichVersion = "release";
-  # immichExternalVolume1 = "/tank/BackupData/Google Photos/someone@example.com"; # TODO: if external volumes are desired
+  # immichExternalVolume = "/tank/BackupData/Google Photos/someone@example.com"; # TODO: if external volumes are desired
+  immichExternalVolume1 = "/home/riley/Video";
+  immichExternalVolume2 = "/home/riley/Picture";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresPassword = "immich"; # TODO: put a random password here
@@ -66,7 +68,8 @@ in {
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
       # "/etc/localtime:/etc/localtime:ro"
-      # "${immichExternalVolume1}:${immichExternalVolume1}:ro"
+      "${immichExternalVolume1}:${immichExternalVolume1}:ro"
+      "${immichExternalVolume2}:${immichExternalVolume2}:ro"
     ];
   };
 
@@ -94,7 +97,8 @@ in {
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
       # "/etc/localtime:/etc/localtime:ro"
-      # "${immichExternalVolume1}:${immichExternalVolume1}:ro"
+      "${immichExternalVolume1}:${immichExternalVolume1}:ro"
+      "${immichExternalVolume2}:${immichExternalVolume2}:ro"
     ];
   };
 
