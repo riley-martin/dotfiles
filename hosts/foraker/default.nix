@@ -79,6 +79,8 @@
     certificateScheme = "acme-nginx";
   };
 
+  services.dovecot2.sieve.extensions = [ "fileinto" ];
+
   services.roundcube = {
     enable = true;
     hostName = "mail.rileymartin.dev";
