@@ -6,7 +6,7 @@ let
   immichRoot = "/home/immich"; # TODO: Tweak these to your desired storage locations
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "1.98.2";
+  immichVersion = "v1.98.2";
   # immichExternalVolume = "/tank/BackupData/Google Photos/someone@example.com"; # TODO: if external volumes are desired
   immichExternalVolume1 = "/home/riley/Video";
   immichExternalVolume2 = "/home/riley/Picture";
