@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 let
   immichHost = "images.rileymartin.dev"; # TODO: put your immich domain name here
@@ -47,12 +47,6 @@ in {
     ports = ["127.0.0.1:2283:3001"];
     extraOptions = [
       "--pull=always"
-      # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
-      # that includes both this server and the upstream system server, causing resolutions of other pod names
-      # to be inconsistent.
-      # "--dns=10.88.0.1"
-      # "--link immich_redis"
-      # "--link immich_postgres"
       # docker network create immich_net
       "--network=immich_net"
     ];
@@ -67,7 +61,6 @@ in {
     };
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
-      # "/etc/localtime:/etc/localtime:ro"
       "${immichExternalVolume1}:${immichExternalVolume1}:ro"
       "${immichExternalVolume2}:${immichExternalVolume2}:ro"
     ];
@@ -77,12 +70,6 @@ in {
     image = "ghcr.io/immich-app/immich-server:${immichVersion}";
     extraOptions = [
       "--pull=always"
-      # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
-      # that includes both this server and the upstream system server, causing resolutions of other pod names
-      # to be inconsistent.
-      # "--dns=10.88.0.1"
-      # "--link immich_redis"
-      # "--link immich_postgres"
       "--network=immich_net"
     ];
     cmd = [ "start.sh" "microservices" ];
@@ -96,7 +83,6 @@ in {
     };
     volumes = [
       "${immichPhotos}:/usr/src/app/upload"
-      # "/etc/localtime:/etc/localtime:ro"
       "${immichExternalVolume1}:${immichExternalVolume1}:ro"
       "${immichExternalVolume2}:${immichExternalVolume2}:ro"
     ];
