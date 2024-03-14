@@ -23,6 +23,8 @@ in {
       "chromium-unwrapped"
       "chrome-widevine-cdm"
       "cuda_nvcc-11.8.89"
+      "cudatoolkit"
+      "davinci-resolve"
     ];
     chromium = {
       enableWideVine = true;
@@ -142,6 +144,7 @@ in {
     ../../home/terminals/alacritty.nix
     ../../home/terminals/rio.nix
     # ./ironbar.nix
+    ../../home/video.nix
   ];
 
   services.kdeconnect.enable = true;
