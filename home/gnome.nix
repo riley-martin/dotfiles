@@ -8,5 +8,8 @@
     iagno
     tali
   ]);
-  environment.systemPackages = [ pkgs.gnome.gnome-tweaks pkgs.libgtop ];
+  environment.systemPackages = (
+    ( with pkgs; [ gnome.gnome-tweaks libgtop ] )
+    // ( with pkgs.gnomeExtensions; [ tophat window-gestures] )
+  );
 }
