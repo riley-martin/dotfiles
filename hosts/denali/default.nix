@@ -67,7 +67,7 @@
 
   services.snap.enable = true;
 
-  services.fprintd.enable = true;
+  services.fprintd.enable = false;
   # services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
   services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
   # systemd.services."fprintd".serviceConfig = {

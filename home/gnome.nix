@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   packages = with pkgs; [ gnome.gnome-tweaks gnome.gnome-settings-daemon ];
-  extensions = with pkgs.gnomeExtensions; [ tophat window-gestures appindicator ];
+  extensions = with pkgs.gnomeExtensions; [ tophat window-gestures appindicator astra-monitor gsconnect ];
 in
 {
   services.xserver.enable = true;
