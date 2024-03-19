@@ -89,7 +89,7 @@ in {
     ## Graphics
     darktable freecad blender hugin
     (callPackage ../../pkgs{}).gimp-devel
-    kdenlive
+    kdenlive inkscape
 
     ## Office
     libreoffice-fresh
@@ -147,7 +147,7 @@ in {
     ../../home/video.nix
   ];
 
-  services.kdeconnect.enable = true;
+  # services.kdeconnect.enable = true;
 
   services.udiskie = {
     enable = true;
