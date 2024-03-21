@@ -62,6 +62,10 @@
       "me@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
         aliases = [ "me@rileymartin.xyz" "signup@rileymartin.dev" "postmaster@rileymartin.dev" "riley-martin@rileymartin.dev" ];
+        # use plus addressing so I can use somerandomsite+signup@rileymartin.dev
+        aliasesRegexp = [
+          "/^.+\\+signup\\@rileymartin\\.dev$/"
+        ];
       };
       "nextcloud@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;

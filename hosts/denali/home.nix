@@ -25,6 +25,7 @@ in {
       "cuda_nvcc-11.8.89"
       "cudatoolkit"
       "davinci-resolve"
+      "Anytype-0.38.0"
     ];
     chromium = {
       enableWideVine = true;
@@ -82,6 +83,7 @@ in {
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
     keepassxc signal-desktop bitwarden
+    anytype
 
     ## Development tools
     gh nil age
