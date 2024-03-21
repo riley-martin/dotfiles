@@ -20,6 +20,9 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     # agenix.inputs.darwin.follows = "";
 
+    snm.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    snm.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-snapd.url = "github:io12/nix-snapd";
     nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -99,7 +102,7 @@
         };
 
         foraker = nixosSystem {
-          specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
+          specialArgs = { inherit snm inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
             ./hosts/foraker/default.nix
             agenix.nixosModules.default
