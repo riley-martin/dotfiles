@@ -45,7 +45,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, ... }@inputs:
+  outputs = { self, nixpkgs, snm, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
