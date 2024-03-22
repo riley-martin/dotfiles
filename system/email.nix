@@ -28,7 +28,7 @@
       };
       "wendell@wmartinconstruction.com" = {
         hashedPasswordFile = config.age.secrets.wendell-mail.path;
-        aliases = [ "info@wmartinconstruction.com" ];
+        aliases = [ "info@wmartinconstruction.com" "contact@wmartinconstruction.com" ];
       };
       "riley@wmartinconstruction.com" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
