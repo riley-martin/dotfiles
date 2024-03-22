@@ -11,6 +11,7 @@ in
   "mailserver.age".publicKeys = [ riley foraker ];
   "nextcloud-mail.age".publicKeys = [ riley foraker ];
   "connor-mail.age".publicKeys = [ riley foraker ];
+  "wendell-mail.age".publicKeys = [ riley foraker ];
   "backup-pass.age".publicKeys = [ riley elias ];
   "ddns_tok.age".publicKeys = [ riley elias ];
   "mailpass.age".publicKeys = [ riley elias ];
