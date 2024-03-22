@@ -4,7 +4,7 @@
     enable = true;
     openFirewall = true;
     fqdn = "mail.rileymartin.dev";
-    domains = [ "rileymartin.dev" "rileymartin.xyz" ];
+    domains = [ "rileymartin.dev" "rileymartin.xyz" "wmartinconstruction.com" ];
     loginAccounts = {
       "me@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
@@ -25,6 +25,14 @@
       "connor@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.connor-mail.path;
         aliases = [ "connor@rileymartin.xyz"];
+      };
+      "wendell@wmartinconstruction.com" = {
+        hashedPasswordFile = config.age.secrets.mailserver.path;
+        aliases = [ "info@wmartinconstruction.com" ];
+      };
+      "riley@wmartinconstruction.com" = {
+        hashedPasswordFile = config.age.secrets.mailserver.path;
+        aliases = [ "postmaster@wmartinconstruction.com" "admin@wmartinconstruction.com" ];
       };
     };
     certificateScheme = "acme-nginx";
