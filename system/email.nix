@@ -27,7 +27,7 @@
         aliases = [ "connor@rileymartin.xyz"];
       };
       "wendell@wmartinconstruction.com" = {
-        hashedPasswordFile = config.age.secrets.mailserver.path;
+        hashedPasswordFile = config.age.secrets.wendell-mail.path;
         aliases = [ "info@wmartinconstruction.com" ];
       };
       "riley@wmartinconstruction.com" = {

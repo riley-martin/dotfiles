@@ -47,6 +47,7 @@
 
   age = {
     secrets.mailserver.file = ../../secrets/mailserver.age;
+    secrets.wendell-mail.file = ../../secrets/wendell-mail.age;
     secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
     secrets.connor-mail.file = ../../secrets/connor-mail.age;
   };
