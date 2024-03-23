@@ -37,6 +37,12 @@
     secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;
+    secrets.vaultwarden-env = {
+      file = ../../secrets/vaultwarden-env.age;
+      mode = "770";
+      owner = "vaultwarden";
+      group = "vaultwarden";
+    };
     secrets.nextcloud-admin-pass = {
       file = ../../secrets/nextcloud-admin-pass.age;
       mode = "770";
@@ -113,11 +119,6 @@
     config = {
       rocketAddress = "127.0.0.1";
       rocketPort = 8222;
-      # signupsAllowed = false;
-      # smtpHost = "mail.rileymartin.xyz";
-      # smtpFrom = "warden@rileymartin.xyz";
-      # smtpUsername = "warden@rileymartin.xyz";
-      # smtpPassword = (builtins.readFile config.age.secrets.nextcloud-mail.path);
     };
   };
 
