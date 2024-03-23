@@ -116,6 +116,7 @@
 
   services.vaultwarden = {
     enable = true;
+    environmentFile = config.age.secrets.vaultwarden-env.path;
     config = {
       rocketAddress = "127.0.0.1";
       rocketPort = 8222;
