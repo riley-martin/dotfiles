@@ -4,7 +4,7 @@
     settings = {
       music-path = "/home/jellyfin";
       podcast-path = "/home/subsonic";
-      playlists-path = "/home/subsonic";
+      # playlists-path = "/home/subsonic/playlists";
     };
   };
   services.nginx.virtualHosts."music.rileymartin.dev" = {
