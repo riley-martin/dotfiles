@@ -7,6 +7,7 @@ in {
     reloadConfig = true;
     systemdIntegration = true;
     config = {
+      monitor = ", preferred, auto, 1";
       general = {
         layout = "dwindle";
         border_size = 2;

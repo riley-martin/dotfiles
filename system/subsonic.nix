@@ -2,9 +2,9 @@
   services.gonic = {
     enable = true;
     settings = {
-      music-path = "";
-      podcast-path = "";
-      playlists-path = "";
+      music-path = "/home/jellyfin";
+      podcast-path = "/home/subsonic";
+      playlists-path = "/home/subsonic";
     };
   };
   services.nginx.virtualHosts."music.rileymartin.dev" = {
