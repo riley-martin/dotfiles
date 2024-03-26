@@ -2,8 +2,8 @@
   services.gonic = {
     enable = true;
     settings = {
-      music-path = "/home/subsonic/music";
-      podcast-path = "/home/subsonic/podcast";
+      music-path = "/mnt/music";
+      podcast-path = "/mnt/podcast";
       # playlists-path = "/home/subsonic/playlists";
     };
   };
