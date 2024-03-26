@@ -1,7 +1,9 @@
 { ... }: {
   services.gonic = {
     enable = true;
-    settings = {};
+    settings = {
+      music-path = "/home/jellyfin";
+    };
   };
   services.nginx.virtualHosts."music.rileymartin.dev" = {
     enableACME = true;
