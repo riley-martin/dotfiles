@@ -14,6 +14,7 @@
       ../../system/fail2ban.nix
       ../../system/immich.nix
       ../../system/audiobookshelf.nix
+      ../../system/subsonic.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
