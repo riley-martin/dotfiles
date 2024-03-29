@@ -4,7 +4,7 @@
     settings = {
       music-path = "/mnt/music";
       podcast-path = "/mnt/podcast";
-      jukebox-enabled = true;
+      # jukebox-enabled = true;
       # playlists-path = "/home/subsonic/playlists";
     };
   };
