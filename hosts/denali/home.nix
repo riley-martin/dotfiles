@@ -36,23 +36,23 @@ in {
   # formatter.system = pkgs.alejandra;
 
   xdg.enable = true;
-  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
-    [General]
-    theme=MateriaDark
-  '';
+  # xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+  #   [General]
+  #   theme=MateriaDark
+  # '';
 
   gtk = {
     enable = true;
-    iconTheme = {
-      # package = pkgs.papirus-icon-theme;
-      # name = "Papirus-Dark";
-      package = pkgs.materia-theme;
-      name = "Materia-dark-icons";
-    };
-    theme = {
-      package = pkgs.materia-theme;
-      name = "Materia-dark-compact";
-    };
+    # iconTheme = {
+    #   # package = pkgs.papirus-icon-theme;
+    #   # name = "Papirus-Dark";
+    #   package = pkgs.materia-theme;
+    #   name = "Materia-dark-icons";
+    # };
+    # theme = {
+    #   package = pkgs.materia-theme;
+    #   name = "Materia-dark-compact";
+    # };
   };
 
   home.pointerCursor = {
@@ -83,7 +83,7 @@ in {
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
     keepassxc signal-desktop bitwarden
-    anytype
+    gnome.gnome-boxes
 
     ## Development tools
     gh nil age
