@@ -67,7 +67,7 @@
     localbackup = {
       backupPrepareCommand = ''
         mkdir -p /mnt/backup
-        ${pkgs.mount}/bin/mount /dev/disk/by-label/backup /mnt/backup
+        ${pkgs.mount}/bin/mount /dev/disk/by-label/backup /mnt/backup || echo 'failed to mount!'
       '';
       initialize = true;
       # passwordFile = "/etc/nixos/backup-pass";
