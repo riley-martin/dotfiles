@@ -1,7 +1,7 @@
 { nixpkgs, pkgs, ... }:
 let
   packages = with pkgs; [ gnome.gnome-tweaks gnome.gnome-settings-daemon ];
-  extensions = with pkgs.gnomeExtensions; [ tophat window-gestures appindicator astra-monitor gsconnect ];
+  extensions = with pkgs.gnomeExtensions; [ tophat window-gestures appindicator astra-monitor gsconnect pop-shell ];
 in
 {
   # this enables dynamic triple buffering
