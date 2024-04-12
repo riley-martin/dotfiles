@@ -41,6 +41,7 @@
     secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;
+    secrets.rclone-config.file = ../../secrets/rclone-config.age;
     secrets.vaultwarden-env = {
       file = ../../secrets/vaultwarden-env.age;
       mode = "770";
@@ -67,14 +68,11 @@
   services.logind.lidSwitch = "ignore";
 
   services.restic.backups = {
-    localbackup = {
-      backupPrepareCommand = ''
-        mkdir -p /mnt/backup
-        ${pkgs.mount}/bin/mount /dev/disk/by-label/backup /mnt/backup || echo 'failed to mount!'
-      '';
+    onedrive = {
       initialize = true;
-      # passwordFile = "/etc/nixos/backup-pass";
       passwordFile = config.age.secrets.backup-pass.path;
+      repository = "rclone:onedrive:elias";
+      rcloneConfigFile = config.age.secrets.rclone-config.path;
       paths = [
         "/etc"
         "/var"
@@ -82,10 +80,16 @@
         "/usr"
         "/srv"
       ];
-      repository = "/mnt/backup/server";
-      backupCleanupCommand = ''
-        ${pkgs.umount}/bin/umount /dev/disk/by-label/backup
-      '';
+      pruneOpts = [ 
+        "--keep-daily 7"
+        "--keep-weekly 4"
+        "--keep-monthly 3"
+      ];
+      extraBackupArgs = [ "--no-scan" ];
+      timerConfig = {
+        OnCalender = "daily";
+        Persistent = true;
+      };
     };
   };
   

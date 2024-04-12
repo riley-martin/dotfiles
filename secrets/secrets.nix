@@ -19,4 +19,5 @@ in
   "onlyoffice_secret.age".publicKeys = [ riley elias ];
   "pgsql-pass.age".publicKeys = [ riley elias ];
   "vaultwarden-env.age".publicKeys = [ riley elias ];
+  "rclone-config.age".publicKeys = [ riley elias denali ];
 }
