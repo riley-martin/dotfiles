@@ -80,6 +80,7 @@
         "/home"
         "/usr"
         "/srv"
+        "/mnt"
       ];
       pruneOpts = [ 
         "--keep-daily 7"
