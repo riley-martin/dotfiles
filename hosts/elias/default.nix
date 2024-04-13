@@ -42,6 +42,7 @@
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;
     secrets.rclone-config.file = ../../secrets/rclone-config.age;
+    secrets.restic-env.file = ../../secrets/restic-env.age;
     secrets.vaultwarden-env = {
       file = ../../secrets/vaultwarden-env.age;
       mode = "770";
@@ -68,11 +69,11 @@
   services.logind.lidSwitch = "ignore";
 
   services.restic.backups = {
-    onedrive = {
+    elias = {
       initialize = true;
       passwordFile = config.age.secrets.backup-pass.path;
-      repository = "rclone:onedrive:elias";
-      rcloneConfigFile = config.age.secrets.rclone-config.path;
+      repository = "s3:https://ewr1.vultrobjects.com/elias";
+      environmentFile = config.age.secrets.restic-env.path;
       paths = [
         "/etc"
         "/var"
