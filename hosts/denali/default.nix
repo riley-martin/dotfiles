@@ -48,13 +48,11 @@
       passwordFile = config.age.secrets.backup-pass.path;
       repository = "s3:https://ewr1.vultrobjects.com/denali";
       environmentFile = config.age.secrets.restic-env.path;
+      extraBackupArgs = [
+        "--exclude-file=${./backupignore}"
+      ];
       paths = [
-        "/etc"
-        "/var"
         "/home"
-        "/usr"
-        "/srv"
-        "/mnt"
       ];
       pruneOpts = [ 
         "--keep-daily 7"

@@ -1,0 +1,9 @@
+\.*
+!.config
+*.iso
+*.bin
+*.tmp
+*.bak
+target/**/*
+node_modules/**/*
+
