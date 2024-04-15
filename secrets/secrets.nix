@@ -12,7 +12,7 @@ in
   "nextcloud-mail.age".publicKeys = [ riley foraker ];
   "connor-mail.age".publicKeys = [ riley foraker ];
   "wendell-mail.age".publicKeys = [ riley foraker ];
-  "backup-pass.age".publicKeys = [ riley elias ];
+  "backup-pass.age".publicKeys = [ riley elias denali ];
   "ddns_tok.age".publicKeys = [ riley elias ];
   "mailpass.age".publicKeys = [ riley elias ];
   "nextcloud-admin-pass.age".publicKeys = [ riley elias ];
@@ -20,5 +20,5 @@ in
   "pgsql-pass.age".publicKeys = [ riley elias ];
   "vaultwarden-env.age".publicKeys = [ riley elias ];
   "rclone-config.age".publicKeys = [ riley elias denali ];
-  "restic-env.age".publicKeys = [ riley elias ];
+  "restic-env.age".publicKeys = [ riley elias denali ];
 }
