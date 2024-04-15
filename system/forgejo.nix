@@ -10,7 +10,7 @@
         ENABLED = true;
         USER = "noreply@rileymartin.dev";
         ENVELOPE_FROM = "git@rileymartin.dev";
-      }
+      };
     };
     mailerPasswordFile = config.age.secrets.mailserver.path;
   };
