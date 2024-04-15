@@ -4,6 +4,7 @@
     settings = {
       server.DOMAIN = "git.rileymartin.dev";
       server.HTTP_PORT = 7654;
+      server.ROOT_URL = "https://git.rileymartin.dev";
       mailer = {
         SMTP_PORT = 465;
         SMTP_ADDR = "mail.rileymartin.dev";
