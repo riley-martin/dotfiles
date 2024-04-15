@@ -16,10 +16,10 @@
   };
   services.nginx.enable = true;
   services.nginx.virtualHosts."git.rileymartin.dev" = {
+    enableACME = true;
+    forceSSL = true;
     locations."/" = {
       proxyPass = "http://localhost:7654";
-      enableACME = true;
-      forceSSL = true;
     };
   };
 }
