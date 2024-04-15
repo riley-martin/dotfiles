@@ -8,7 +8,7 @@ let
 in
 {
   "laptop.age".publicKeys = [ riley denali ];
-  "mailserver.age".publicKeys = [ riley foraker ];
+  "mailserver.age".publicKeys = [ riley foraker elias ];
   "nextcloud-mail.age".publicKeys = [ riley foraker ];
   "connor-mail.age".publicKeys = [ riley foraker ];
   "wendell-mail.age".publicKeys = [ riley foraker ];

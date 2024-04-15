@@ -5,7 +5,7 @@
       server.DOMAIN = "git.rileymartin.dev";
       server.HTTP_PORT = 7654;
     };
-    mailerPasswordFile = config.age.secrets.mailserver.path;
+    mailerPasswordFile = config.age.secrets.mailpass.path;
   };
   services.nginx.enable = true;
   services.nginx.virtualHosts."git.rileymartin.dev" = {
