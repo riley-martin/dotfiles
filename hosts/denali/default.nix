@@ -38,7 +38,31 @@
 
   age = {
     secrets.laptop.file = ../../secrets/laptop.age;
+    secrets.restic-env.file = ../../secrets/restic-env.age;
   };
+  
+  services.restic.backups = {
+    elias = {
+      initialize = true;
+      passwordFile = config.age.secrets.backup-pass.path;
+      repository = "s3:https://ewr1.vultrobjects.com/denali";
+      environmentFile = config.age.secrets.restic-env.path;
+      paths = [
+        "/etc"
+        "/var"
+        "/home"
+        "/usr"
+        "/srv"
+        "/mnt"
+      ];
+      pruneOpts = [ 
+        "--keep-daily 7"
+        "--keep-weekly 4"
+        "--keep-monthly 3"
+      ];
+    };
+  };
+
 
   networking.hostName = "denali"; # Define your hostname.
   # Pick only one of the below networking options.
