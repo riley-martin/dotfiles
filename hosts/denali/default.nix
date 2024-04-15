@@ -43,7 +43,7 @@
   };
   
   services.restic.backups = {
-    elias = {
+    denali = {
       initialize = true;
       passwordFile = config.age.secrets.backup-pass.path;
       repository = "s3:https://ewr1.vultrobjects.com/denali";
