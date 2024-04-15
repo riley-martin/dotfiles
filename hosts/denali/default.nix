@@ -38,6 +38,7 @@
 
   age = {
     secrets.laptop.file = ../../secrets/laptop.age;
+    secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.restic-env.file = ../../secrets/restic-env.age;
   };
   
