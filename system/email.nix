@@ -25,7 +25,10 @@
       "noreply@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
         sendOnly = true;
-        aliases = [ "git@rileymartin.dev" ];
+      };
+      "git@rileymartin.dev" = {
+        hashedPasswordFile = config.age.secrets.mailserver.path;
+        aliases = [ "forgejo@rileymartin.dev" ];
       };
       "connor@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.connor-mail.path;

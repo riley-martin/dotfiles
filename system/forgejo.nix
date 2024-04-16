@@ -6,11 +6,10 @@
       server.HTTP_PORT = 7654;
       server.ROOT_URL = "https://git.rileymartin.dev";
       mailer = {
-        SMTP_PORT = 465;
+        SMTP_PORT = 587;
         SMTP_ADDR = "mail.rileymartin.dev";
         ENABLED = true;
-        USER = "noreply@rileymartin.dev";
-        ENVELOPE_FROM = "git@rileymartin.dev";
+        USER = "git@rileymartin.dev";
       };
     };
     mailerPasswordFile = config.age.secrets.mailserver.path;
