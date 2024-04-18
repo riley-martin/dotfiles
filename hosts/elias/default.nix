@@ -94,7 +94,7 @@
         "--keep-weekly 4"
         "--keep-monthly 3"
       ];
-      extraBackupArgs = [ "--no-scan" ];
+      # extraBackupArgs = [ "--no-scan" ];
       timerConfig = {
         OnCalender = "daily";
         Persistent = true;
