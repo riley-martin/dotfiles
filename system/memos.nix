@@ -14,6 +14,7 @@ in {
     };
   };
 
+  virtualisation.oci-containers.backend = "docker";
   virtualisation.oci-containers.containers.memos = {
     image = "neosmemo/memos:${version}";
     ports = ["127.0.0.1:5230:5230"];
