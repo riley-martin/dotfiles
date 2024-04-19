@@ -1,6 +1,6 @@
 { ... }:
 let
-  version = "3.0";
+  version = "0.21.0";
 in {
   services.nginx.virtualHosts."memos.rileymartin.dev" = {
     extraConfig = ''
