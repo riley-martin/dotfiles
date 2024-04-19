@@ -16,6 +16,7 @@
       ../../system/audiobookshelf.nix
       ../../system/subsonic.nix
       ../../system/forgejo.nix
+      ../../system/memos.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
