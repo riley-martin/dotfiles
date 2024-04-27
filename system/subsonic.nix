@@ -5,7 +5,7 @@
       music-path = "/mnt/media/music";
       podcast-path = "/mnt/media/podcast";
       # jukebox-enabled = true;
-      # playlists-path = "/home/subsonic/playlists";
+      playlists-path = "/mnt/media/playlists";
     };
   };
   services.nginx.virtualHosts."music.rileymartin.dev" = {
