@@ -86,7 +86,7 @@ in {
     gnome.gnome-boxes
 
     ## Development tools
-    gh nil age
+    gh nil age vscodium
 
     ## Graphics
     darktable freecad blender hugin
