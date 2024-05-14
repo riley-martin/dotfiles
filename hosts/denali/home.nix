@@ -135,7 +135,7 @@ in {
   imports = [
     ../../home/services.nix
     ../../home/zsh.nix
-    ../../home/hyprland.nix
+    # ../../home/hyprland.nix
     ../../home/helix.nix
     # ./alacritty.nix
     # ./waybar.nix
