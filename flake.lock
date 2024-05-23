@@ -2019,7 +2019,8 @@
         "nix-alien": "nix-alien",
         "nix-snapd": "nix-snapd",
         "nixpkgs": "nixpkgs_15",
-        "snm": "snm"
+        "snm": "snm",
+        "update-ddterm": "update-ddterm"
       }
     },
     "rust-overlay": {
@@ -2359,6 +2360,22 @@
       "original": {
         "owner": "input-output-hk",
         "repo": "tullia",
+        "type": "github"
+      }
+    },
+    "update-ddterm": {
+      "locked": {
+        "lastModified": 1713882873,
+        "narHash": "sha256-U2wyZ7v6P5yn4Fhny7iibCfKU0OOkMrbQRFKXiSIfNk=",
+        "owner": "tmyllymaki",
+        "repo": "nixpkgs",
+        "rev": "d79d5a878b44800ffbe79a6290f4260dd4982151",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tmyllymaki",
+        "ref": "update-ddterm",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
