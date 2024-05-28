@@ -3,7 +3,7 @@
     enable = true;
     passwordFile = config.age.secrets.paperless.path;
   };
-  service.nginx = {
+  services.nginx = {
     enable = true;
     virtualHosts."papers.rileymartin.dev" = {
       forceSSL = true;
