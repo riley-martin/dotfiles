@@ -17,6 +17,7 @@
       ../../system/subsonic.nix
       ../../system/forgejo.nix
       ../../system/memos.nix
+      ../../system/paperless.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -40,6 +41,7 @@
 
   age = {
     # secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
+    secrets.paperless.file = ../../secrets/paperless.age;
     secrets.backup-pass.file = ../../secrets/backup-pass.age;
     secrets.ddns_tok.file = ../../secrets/ddns_tok.age;
     secrets.mailpass.file = ../../secrets/mailpass.age;

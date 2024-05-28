@@ -21,4 +21,5 @@ in
   "vaultwarden-env.age".publicKeys = [ riley elias ];
   "rclone-config.age".publicKeys = [ riley elias denali ];
   "restic-env.age".publicKeys = [ riley elias denali ];
+  "paperless.age".publicKeys = [ riley elias ];
 }
