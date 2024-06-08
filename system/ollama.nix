@@ -32,7 +32,7 @@
         "--name=open-webui"
         "--hostname=open-webui"
         "--network=host"
-        # "--add-host=host.containers.internal:host-gateway"
+        "--add-host=host.docker.internal:host-gateway"
       ];
     };
   };
