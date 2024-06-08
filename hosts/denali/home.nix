@@ -26,6 +26,7 @@ in {
       "cudatoolkit"
       "davinci-resolve"
       "Anytype-0.38.0"
+      "android-studio-stable"
     ];
     chromium = {
       enableWideVine = true;
@@ -66,6 +67,7 @@ in {
     QT_STYLE_OVERRIDE = "kvantum";
     GTK_USE_PORTAL = 1;
     WLR_DRM_NO_MODIFIERS = 1;
+    FLAKE = "/home/riley/dotfiles";
   };
 
   home.packages = with pkgs; [
@@ -86,7 +88,7 @@ in {
     gnome.gnome-boxes
 
     ## Development tools
-    gh nil age vscodium
+    gh nil age vscodium android-studio
 
     ## Graphics
     darktable freecad blender hugin

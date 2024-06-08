@@ -18,6 +18,7 @@
       ../../system/forgejo.nix
       ../../system/memos.nix
       ../../system/paperless.nix
+      ../../system/ollama.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
