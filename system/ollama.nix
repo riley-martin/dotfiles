@@ -28,7 +28,7 @@
       ];
 
       extraOptions = [
-        "--pull=newer" # Pull if the image on the registry is newer
+        "--pull=always" # Pull if the image on the registry is newer
         "--name=open-webui"
         "--hostname=open-webui"
         "--network=host"
