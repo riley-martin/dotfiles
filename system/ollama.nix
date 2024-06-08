@@ -24,7 +24,7 @@
       ];
 
       ports = [
-        "127.0.0.1:9876:8080" # Ensures we listen only on localhost
+        "127.0.0.1:8080:9876" # Ensures we listen only on localhost
       ];
 
       extraOptions = [
