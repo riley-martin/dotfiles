@@ -24,7 +24,7 @@
       ];
 
       ports = [
-        "127.0.0.1:8080:9876" # Ensures we listen only on localhost
+        "127.0.0.1:8080:8080" # Ensures we listen only on localhost
       ];
 
       extraOptions = [
@@ -41,7 +41,7 @@
     virtualHosts."llm.rileymartin.dev" = {
       forceSSL = true;
       enableACME = true;
-      locations."/".proxyPass = "http://localhost:9876";
+      locations."/".proxyPass = "http://localhost:8080";
     };
   };
 }
