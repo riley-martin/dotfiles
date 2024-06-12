@@ -6,8 +6,7 @@ let
   immichRoot = "/home/immich"; # TODO: Tweak these to your desired storage locations
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.105.1";
-  # immichExternalVolume = "/tank/BackupData/Google Photos/someone@example.com"; # TODO: if external volumes are desired
+  immichVersion = "v1.106.2";
   immichExternalVolume1 = "/home/riley/Video";
   immichExternalVolume2 = "/home/riley/Picture";
 
@@ -50,7 +49,7 @@ in {
       # docker network create immich_net
       "--network=immich_net"
     ];
-    cmd = [ "start.sh" "immich" ];
+    # cmd = [ "start.sh" "immich" ];
     environment = {
       IMMICH_VERSION = immichVersion;
       DB_HOSTNAME = "immich_postgres";
@@ -66,27 +65,27 @@ in {
     ];
   };
 
-  virtualisation.oci-containers.containers.immich_microservices = {
-    image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-    extraOptions = [
-      "--pull=always"
-      "--network=immich_net"
-    ];
-    cmd = [ "start.sh" "microservices" ];
-    environment = {
-      IMMICH_VERSION = immichVersion;
-      DB_HOSTNAME = "immich_postgres";
-      DB_USERNAME = postgresUser;
-      DB_DATABASE_NAME = postgresDb;
-      DB_PASSWORD = postgresPassword;
-      REDIS_HOSTNAME = "immich_redis";
-    };
-    volumes = [
-      "${immichPhotos}:/usr/src/app/upload"
-      "${immichExternalVolume1}:${immichExternalVolume1}:ro"
-      "${immichExternalVolume2}:${immichExternalVolume2}:ro"
-    ];
-  };
+  # virtualisation.oci-containers.containers.immich_microservices = {
+  #   image = "ghcr.io/immich-app/immich-server:${immichVersion}";
+  #   extraOptions = [
+  #     "--pull=always"
+  #     "--network=immich_net"
+  #   ];
+  #   cmd = [ "start.sh" "microservices" ];
+  #   environment = {
+  #     IMMICH_VERSION = immichVersion;
+  #     DB_HOSTNAME = "immich_postgres";
+  #     DB_USERNAME = postgresUser;
+  #     DB_DATABASE_NAME = postgresDb;
+  #     DB_PASSWORD = postgresPassword;
+  #     REDIS_HOSTNAME = "immich_redis";
+  #   };
+  #   volumes = [
+  #     "${immichPhotos}:/usr/src/app/upload"
+  #     "${immichExternalVolume1}:${immichExternalVolume1}:ro"
+  #     "${immichExternalVolume2}:${immichExternalVolume2}:ro"
+  #   ];
+  # };
 
   virtualisation.oci-containers.containers.immich_machine_learning = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
