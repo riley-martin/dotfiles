@@ -1,7 +1,7 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   packages = with pkgs; [ gnome.gnome-tweaks gnome.gnome-settings-daemon gjs ];
-  extensions = with pkgs.gnomeExtensions; [ inputs.update-ddterm.legacyPackages.x86_64-linux.gnomeExtensions.ddterm tophat window-gestures appindicator astra-monitor gsconnect pop-shell ];
+  extensions = with pkgs.gnomeExtensions; [ ddterm tophat window-gestures appindicator astra-monitor gsconnect pop-shell ];
 in
 {
   # this enables dynamic triple buffering

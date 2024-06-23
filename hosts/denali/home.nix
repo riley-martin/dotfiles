@@ -22,6 +22,7 @@ in {
       "ungoogled-chromium-unwrapped"
       "chromium-unwrapped"
       "chrome-widevine-cdm"
+      "widevine-cdm"
       "cuda_nvcc-11.8.89"
       "cudatoolkit"
       "davinci-resolve"
@@ -86,6 +87,7 @@ in {
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
     keepassxc signal-desktop bitwarden
     gnome.gnome-boxes
+    kitty iotas
 
     ## Development tools
     gh nil age vscodium android-studio

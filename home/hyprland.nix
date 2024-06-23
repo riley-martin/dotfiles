@@ -83,7 +83,7 @@ in {
         "${mod}_SHIFT, M" = "exit,";
         "${mod}, R" = "exec, rofi -show run";
         "${mod}, Space" = "exec, rofi -show drun -show-icons";
-        "${mod}, Return" = "exec, alacritty";
+        "${mod}, Return" = "exec, ${lib.getExe pkgs.alacritty}";
         "${mod}, Backspace" = "killactive,";
 
 

@@ -22,6 +22,12 @@
     "fs.inotify.max_user_watches" = 524288;
   };
 
+  
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+
   security.pam.loginLimits = with lib;
     flip concatMap [ "*" "root" ] (domain:
     flip concatMap [ "nproc" "nofile" ] (item:
