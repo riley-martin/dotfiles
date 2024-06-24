@@ -19,6 +19,7 @@
       ../../system/memos.nix
       ../../system/paperless.nix
       ../../system/ollama.nix
+      ../../system/matrix.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -73,6 +74,7 @@
       owner = "nextcloud";
       group = "nextcloud";
     };
+    secrets.matrix.file = ../../secrets/matrix.age;
   };
   
   # time.timeZone = "Europe/Amsterdam";

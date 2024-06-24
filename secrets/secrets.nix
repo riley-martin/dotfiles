@@ -22,4 +22,5 @@ in
   "rclone-config.age".publicKeys = [ riley elias denali ];
   "restic-env.age".publicKeys = [ riley elias denali ];
   "paperless.age".publicKeys = [ riley elias ];
+  "matrix.age".publicKeys = [ riley elias ];
 }
