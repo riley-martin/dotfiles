@@ -74,7 +74,12 @@
       owner = "nextcloud";
       group = "nextcloud";
     };
-    secrets.matrix.file = ../../secrets/matrix.age;
+    secrets.matrix = {
+      file = ../../secrets/matrix.age;
+      mode = "770";
+      owner = "matrix-synapse";
+      group = "matrix-synapse";
+    };
   };
   
   # time.timeZone = "Europe/Amsterdam";
