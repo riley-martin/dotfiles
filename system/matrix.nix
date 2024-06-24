@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   domain = "rileymartin.dev";
   fqdn = "matrix.rileymartin.dev";
@@ -15,7 +15,13 @@ in {
   # networking.domain = "example.org";
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
-  services.postgresql.enable = true;
+  services.postgresql = {
+    enable = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
+  };
 
   services.nginx = {
     enable = true;
