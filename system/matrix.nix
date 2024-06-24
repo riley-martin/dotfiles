@@ -57,7 +57,7 @@ in {
         # This is usually needed for homeserver discovery (from e.g. other Matrix clients).
         # Further reference can be found in the upstream docs at
         # https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
-        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown (clientConfig ++ syncv3Config);
+        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown (clientConfig // syncv3Config);
       };
       "${fqdn}" = {
         enableACME = true;
