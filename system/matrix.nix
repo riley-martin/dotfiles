@@ -11,8 +11,8 @@ let
     return 200 '${builtins.toJSON data}';
   '';
 in {
-  networking.hostName = "myhostname";
-  networking.domain = "example.org";
+  # networking.hostName = "myhostname";
+  # networking.domain = "example.org";
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   services.postgresql.enable = true;
