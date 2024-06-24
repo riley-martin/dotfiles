@@ -5,6 +5,7 @@ let
   baseUrl = "https://${fqdn}";
   clientConfig."m.homeserver".base_url = baseUrl;
   serverConfig."m.server" = "${fqdn}:443";
+  syncv3Config."org.matrix.msc3575.proxy".url = "https://syncv3.rileymartin.dev";
   mkWellKnown = data: ''
     default_type application/json;
     add_header Access-Control-Allow-Origin *;
@@ -39,6 +40,11 @@ in {
       # This pattern also allows to seamlessly move the homeserver from
       # myhostname.example.org to myotherhost.example.org by only changing the
       # /.well-known redirection target.
+      "syncv3.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/".proxyPass = "http://localhost:8009";
+      };
       "${domain}" = {
         enableACME = true;
         forceSSL = true;
@@ -51,7 +57,7 @@ in {
         # This is usually needed for homeserver discovery (from e.g. other Matrix clients).
         # Further reference can be found in the upstream docs at
         # https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
-        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown (clientConfig ++ syncv3Config);
       };
       "${fqdn}" = {
         enableACME = true;
@@ -94,5 +100,11 @@ in {
         } ];
       }
     ];
+  };
+
+  services.matrix-sliding-sync = {
+    enable = true;
+    settings.SYNCV3_SERVER = "https://matrix.rileymartin.dev";
+    environmentFile = config.age.secrets.matrix-sliding-sync.path;
   };
 }
