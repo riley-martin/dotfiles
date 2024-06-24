@@ -19,8 +19,9 @@ in {
     enable = true;
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
-      local all       all     trust
+      host    matrix-synapse     matrix-synapse ::1/128     md5
       host matrix-synapse matrix-synapse samehost trust
+      local all       all     trust
     '';
   };
 
