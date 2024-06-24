@@ -82,9 +82,9 @@
     };
     secrets.matrix-sliding-sync = {
       file = ../../secrets/matrix-sliding-sync.age;
-      mode = "770";
-      owner = "matrix-sliding-sync";
-      group = "matrix-sliding-sync";
+      # mode = "770";
+      # owner = "matrix-sliding-sync";
+      # group = "matrix-sliding-sync";
     };
   };
   
