@@ -9,8 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       home-manager.nixosModules.home-manager
-      # ../../home/plasma.nix
-      ../../home/gnome.nix
+      ../../home/plasma.nix
+      # ../../home/gnome.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

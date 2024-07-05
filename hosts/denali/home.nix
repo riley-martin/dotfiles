@@ -98,7 +98,7 @@ in {
     kdenlive inkscape
 
     ## Office
-    libreoffice-fresh
+    libreoffice-qt
 
     ## Other
     stellarium
