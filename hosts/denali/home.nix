@@ -82,7 +82,7 @@ in {
     imv xdg-utils wluma swayidle
     (callPackage ../../pkgs{}).chromium-flagfile
     (callPackage ../../pkgs{}).fprint-eh575
-    self.inputs.gestures.packages.${system}.gestures
+    # self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
     keepassxc signal-desktop bitwarden
@@ -94,7 +94,8 @@ in {
 
     ## Graphics
     darktable freecad blender hugin
-    (callPackage ../../pkgs{}).gimp-devel
+    # (callPackage ../../pkgs{}).gimp-devel
+    gimp
     kdenlive inkscape
 
     ## Office

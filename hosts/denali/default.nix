@@ -217,7 +217,7 @@
     passwordFile = config.age.secrets.laptop.path;
     extraGroups = [ "wheel" "networkmanager" "input" "uinput" "video" "libvirtd" "dialout" "plugdev" "adbusers" ];
     home = "/home/riley";
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     packages = with pkgs; [
       swaylock
     ];
