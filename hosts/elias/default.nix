@@ -136,7 +136,7 @@
   };
 
   services.cloudflare-dyndns = {
-    enable = true;
+    enable = false;
     ipv4 = true;
     # ipv6 = true;
     proxied = false;
