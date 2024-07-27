@@ -21,9 +21,19 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/0FF8-C1EE";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/media".label = "MEDIA";
+  fileSystems."/mnt/media" =
+    { device = "/dev/disk/by-uuid/e28c7cc6-7919-469f-a06e-8cafc7f67800";
+      fsType = "ext4";
+    };
+
+  fileSystems."/home/immich" =
+    { device = "/mnt/media/immich";
+      fsType = "none";
+      options = [ "bind" ];
+    };
 
   swapDevices = [ ];
 
@@ -32,7 +42,13 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-193d12aedf9b.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-3a6dc9b45ca7.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.veth57c9549.useDHCP = lib.mkDefault true;
+  # networking.interfaces.veth6ccad21.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
