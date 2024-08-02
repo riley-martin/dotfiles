@@ -93,7 +93,7 @@ in {
     gh nil age vscodium android-studio
 
     ## Graphics
-    digikam darktable freecad blender hugin
+    digikam exiftool darktable freecad blender hugin
     # (callPackage ../../pkgs{}).gimp-devel
     gimp
     kdenlive inkscape
