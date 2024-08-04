@@ -66,7 +66,7 @@ in {
 
   home.sessionVariables = {
     QT_STYLE_OVERRIDE = "kvantum";
-    GTK_USE_PORTAL = 1;
+    GTK_USE_PORTAL = 0;
     WLR_DRM_NO_MODIFIERS = 1;
     FLAKE = "/home/riley/dotfiles";
   };
