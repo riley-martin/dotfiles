@@ -1,91 +1,148 @@
-{ stdenv, lib, aalib, alsa-lib, appstream, appstream-glib, babl, bashInteractive
-, cairo, desktop-file-utils, fetchurl, findutils, gdk-pixbuf, gegl, gexiv2
-, ghostscript, gi-docgen, gjs, glib, glib-networking, gobject-introspection
-, gtk3, isocodes, lcms, libarchive, libgudev, libheif, libjxl, libmng
-, libmypaint, librsvg, libwebp, libwmf, libxslt, lua, luajit, meson
-, mypaint-brushes1, ninja, openexr, perl538, pkg-config, poppler, poppler_data
-, python, python3, shared-mime-info, vala, wrapGAppsHook, xorg, xvfb-run
-
+{
+  aalib,
+  alsa-lib,
+  appstream,
+  appstream-glib,
+  babl,
+  bashInteractive,
+  cairo,
+  cfitsio,
+  desktop-file-utils,
+  fetchurl,
+  findutils,
+  gdk-pixbuf,
+  gegl,
+  gexiv2,
+  ghostscript,
+  gi-docgen,
+  gjs,
+  glib,
+  glib-networking,
+  gobject-introspection,
+  gtk3,
+  isocodes,
+  lcms,
+  lib,
+  libarchive,
+  libgudev,
+  libheif,
+  libiff,
+  libilbm,
+  libjxl,
+  libmng,
+  libmypaint,
+  librsvg,
+  libwebp,
+  libwmf,
+  libxslt,
+  lua,
+  luajit,
+  meson,
+  mypaint-brushes1,
+  ninja,
+  openexr,
+  perl538,
+  pkg-config,
+  poppler,
+  poppler_data,
+  python,
+  python3,
+  qoi,
+  shared-mime-info,
+  stdenv,
+  vala,
+  wrapGAppsHook,
+  xorg,
+  xvfb-run,
 }:
 let
   python = python3.withPackages (pp: [ pp.pygobject3 ]);
   lua = luajit.withPackages (ps: [ ps.lgi ]);
-in stdenv.mkDerivation (finalAttrs: {
+in
+stdenv.mkDerivation (finalAttrs: {
   pname = "gimp";
-  version = "2.99.16";
+  version = "2.99.18";
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
   src = fetchurl {
-    url = "http://download.gimp.org/pub/gimp/v${
-        lib.versions.majorMinor finalAttrs.version
-      }/gimp-${finalAttrs.version}.tar.xz";
-    hash = "sha256-a0SW7e5Eczn5IydnVSR+rbZOxA2K7CQdBrYtGm62UI0=";
+    url = "http://download.gimp.org/pub/gimp/v${lib.versions.majorMinor finalAttrs.version}/gimp-${finalAttrs.version}.tar.xz";
+    hash = "sha256-jBu3qUrA1NDN5NcB2LNWOHwuzYervTW799Ii1A9t224=";
   };
 
-  patches = [ ./meson-gtls.patch ./pygimp-interp.patch ];
+  patches = [
+    ./meson-gtls.patch
+    ./pygimp-interp.patch
+    ./docs_dont_fail_on_warn.patch
+  ];
 
   nativeBuildInputs = [
-    pkg-config
-    libxslt
-    ghostscript
-    libarchive
-    bashInteractive
-    libheif
-    libwebp
-    libmng
     aalib
-    libjxl
-    isocodes
-    perl538
-    appstream
-    meson
-    xvfb-run
-    gi-docgen
-    findutils
-    vala
     alsa-lib
+    appstream
+    bashInteractive
+    findutils
+    ghostscript
+    gi-docgen
+    isocodes
+    libarchive
+    libheif
+    libiff
+    libilbm
+    libjxl
+    libmng
+    libwebp
+    libxslt
+    meson
     ninja
+    perl538
+    pkg-config
+    vala
     wrapGAppsHook
+    xvfb-run
   ];
 
   buildInputs = [
-    gjs
-    lua
-    babl
+    aalib
     appstream-glib
-    gegl
-    gtk3
-    glib
-    gdk-pixbuf
+    babl
     cairo
+    cfitsio
+    desktop-file-utils
+    gdk-pixbuf
+    gegl
     gexiv2
+    ghostscript
+    gjs
+    glib
+    glib-networking
+    gobject-introspection
+    gtk3
     lcms
+    libgudev
+    libheif
     libjxl
+    libmng
+    libmypaint
+    librsvg
+    libwebp
+    libwmf
+    lua
+    mypaint-brushes1
+    openexr
     poppler
     poppler_data
-    openexr
-    libmng
-    librsvg
-    desktop-file-utils
-    libwmf
-    ghostscript
-    aalib
-    shared-mime-info
-    libwebp
-    libheif
-    xorg.libXpm
-    xorg.libXmu
-    glib-networking
-    libmypaint
-    mypaint-brushes1
-    gobject-introspection
     python
-    libgudev
+    qoi
+    shared-mime-info
+    xorg.libXmu
+    xorg.libXpm
   ];
 
-  preConfigure =
-    "patchShebangs tools/gimp-mkenums app/tests/create_test_env.sh plug-ins/script-fu/scripts/ts-helloworld.scm";
+  preConfigure = "patchShebangs tools/gimp-mkenums app/tests/create_test_env.sh plug-ins/script-fu/scripts/ts-helloworld.scm";
 
   enableParallelBuilding = true;
 

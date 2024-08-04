@@ -94,8 +94,8 @@ in {
 
     ## Graphics
     digikam exiftool darktable freecad blender hugin
-    # (callPackage ../../pkgs{}).gimp-devel
-    gimp
+    (callPackage ../../pkgs{}).gimp-devel
+    # gimp
     kdenlive inkscape
 
     ## Office
