@@ -43,12 +43,17 @@
 
     gestures.url = "github:riley-martin/gestures";
 
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, snm, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, ... }@inputs:
+  outputs = { self, nixpkgs, snm, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, nixos-cosmic, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -93,6 +98,7 @@
             # (import ./hosts/denali{}).homeManagerConfiguration
             agenix.nixosModules.default
             nix-snapd.nixosModules.default
+            nixos-cosmic.nixosModules.default
           ];
         };
 

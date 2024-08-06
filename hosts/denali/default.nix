@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       home-manager.nixosModules.home-manager
+      # ../../home/cosmic.nix
       ../../home/plasma.nix
       # ../../home/gnome.nix
     ];
@@ -36,7 +37,12 @@
     )));
 
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    substituters = [ "https://cosmic.cachix.org/" ];
+    trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+  };
+
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
