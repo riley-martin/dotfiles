@@ -1,7 +1,7 @@
 let
   riley = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMtiN/RfOaFWEah9Br2uOzCQ8n3jQUakis3J4yq9zCDp";
   users = [ riley ];
-  denali = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILnMYy1qhxeHZr6EcjPMizc53+i6DPo2bYcXjyYj+nr3";
+  denali = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGgsw8LSWwCT50Vw6HC1AXNo0sxig39zZ/O3WmChXFk";
   elias = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOceJhMrSpk8ZzqcXjizL/opMUqZLLvAn1tqwZiL0brW";
   foraker = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAckAg6mOui0G5Seh7YbSWss5iXbG2SNaB57c25MfvqC";
   systems = [denali elias foraker];
