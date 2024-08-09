@@ -93,6 +93,12 @@
           # system = "x86_64";
           specialArgs = { inherit inputs outputs self agenix home-manager customPackages; system = "x86_64-linux"; };
           modules = [
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
             # > Our main nixos configuration file <
             ./hosts/denali/default.nix
             # (import ./hosts/denali{}).homeManagerConfiguration
