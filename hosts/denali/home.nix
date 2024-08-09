@@ -57,15 +57,15 @@ in {
     # };
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 16;
-  };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   package = pkgs.gnome.adwaita-icon-theme;
+  #   name = "Adwaita";
+  #   size = 16;
+  # };
 
   home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "kvantum";
+    # QT_STYLE_OVERRIDE = "kvantum";
     GTK_USE_PORTAL = 0;
     WLR_DRM_NO_MODIFIERS = 1;
     FLAKE = "/home/riley/dotfiles";
@@ -87,7 +87,7 @@ in {
     materia-kde-theme libsForQt5.qtstyleplugin-kvantum
     keepassxc signal-desktop bitwarden
     gnome.gnome-boxes
-    kitty iotas
+    kitty iotas scrcpy
 
     ## Development tools
     gh nil age vscodium android-studio
@@ -99,42 +99,10 @@ in {
     kdenlive inkscape
 
     ## Office
-    libreoffice-qt
+    libreoffice-qt6-fresh
 
     ## Other
     stellarium
-  ]
-  # Deps for eww scripts
-  #TODO: move this to eww `default.nix`
-  ++
-  [
-    bash
-    blueberry
-    bluez
-    brillo
-    coreutils
-    dbus
-    findutils
-    gawk
-    gnome.gnome-control-center
-    gnused
-    imagemagick
-    jaq
-    jc
-    libnotify
-    networkmanager
-    pavucontrol
-    playerctl
-    procps
-    pulseaudio
-    ripgrep
-    socat
-    udev
-    upower
-    util-linux
-    wget
-    wireplumber
-    wlogout
   ];
 
   imports = [
@@ -167,7 +135,7 @@ in {
   ];
 
   programs.eww = {
-    enable = true;
+    enable = false;
     package = pkgs.eww-wayland;
     # package = (pkgs.callPackage ./eww { inherit pkgs; });
     configDir = ../../home/eww/sidebar;
