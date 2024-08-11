@@ -251,6 +251,7 @@
     wget
     pciutils
     virt-manager
+    wine64
   ];
 
   # environment.etc = {
