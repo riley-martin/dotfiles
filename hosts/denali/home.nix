@@ -88,6 +88,7 @@ in {
     keepassxc signal-desktop bitwarden
     gnome.gnome-boxes
     kitty iotas scrcpy
+    handbrake
 
     ## Development tools
     gh nil age vscodium android-studio
