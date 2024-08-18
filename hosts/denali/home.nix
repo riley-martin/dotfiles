@@ -74,7 +74,7 @@ in {
   home.packages = with pkgs; [
     ## Command line utilities
     hey progress libnotify zip unzip sl bashInteractive s-tui
-    dig lynx delta bat lsd ripgrep fd bottom tealdeer
+    dig lynx bat lsd ripgrep fd bottom tealdeer
     self.inputs.nix-alien.packages.${system}.nix-alien
     traceroute restic itd
 
