@@ -113,7 +113,7 @@ in {
     ../../home/helix.nix
     # ./alacritty.nix
     # ./waybar.nix
-    ../../home/terminals/wezterm.nix
+    # ../../home/terminals/wezterm.nix
     ../../home/nushell.nix
     # ../../home/dunst.nix
     ../../home/eww
