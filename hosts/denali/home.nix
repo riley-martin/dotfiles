@@ -97,7 +97,7 @@ in {
     digikam exiftool darktable freecad blender hugin
     (callPackage ../../pkgs{}).gimp-devel
     # gimp
-    kdenlive inkscape
+    kdenlive inkscape audacity
 
     ## Office
     libreoffice-qt6-fresh
