@@ -32,6 +32,24 @@
         enableACME = true;
         locations."/" = {
           proxyPass = "http://100.106.82.60:80";
+          extraConfig = ''
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Port $server_port;
+            proxy_set_header X-Forwarded-Scheme $scheme;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Accept-Encoding "";
+            proxy_set_header Host $host;
+    
+            client_body_buffer_size 512k;
+            proxy_read_timeout 86400s;
+            client_max_body_size 0;
+
+            # Websocket
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+          '';
         };
       };
 
