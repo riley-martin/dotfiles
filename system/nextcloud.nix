@@ -1,8 +1,17 @@
 { pkgs, config, ... }: {
+    services.nginx = {
+      enable = true;
+      virtualHosts."nextcloud" = {
+        listen = [{
+          addr = "100.106.82.60";
+          port = 80;
+        }];
+      };
+    };
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud29;
-      hostName = "100.106.82.60";
+      hostName = "nextcloud";
       # hostName = "cloud.localhost";
       https = false;
       configureRedis = true;
