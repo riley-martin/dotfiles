@@ -1,6 +1,6 @@
 { config, ... }: {
   services.nginx = {
-    enable = true;
+    enable = false;
     logError = "stderr info";
 
     resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1"];
