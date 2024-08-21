@@ -58,7 +58,7 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "ltsncrpt+signup@rileymartin.dev";
+    defaults.email = "letsencrypt+signup@rileymartin.dev";
   };
   
   users.users.riley = {
