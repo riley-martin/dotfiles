@@ -41,6 +41,8 @@
 
   networking.hostName = "elias"; # Define your hostname.
 
+  services.tailscale.enable = true;
+
   age = {
     # secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
     secrets.paperless.file = ../../secrets/paperless.age;
