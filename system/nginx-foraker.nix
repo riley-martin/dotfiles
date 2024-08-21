@@ -129,14 +129,14 @@
         };
       };
 
-    #   "media.rileymartin.dev" = {
-    #     enableACME = true;
-    #     forceSSL = true;
-    #     # clientMaxBodySize = "20M";
-    #     locations = {
-    #       "/".proxyPass = "http://127.0.0.1:8096";
-    #     };
-    #   };
+      "media.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        # clientMaxBodySize = "20M";
+        locations = {
+          "/".proxyPass = "http://100.106.82.60:8096";
+        };
+      };
     };
   };
 }
