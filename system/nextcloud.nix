@@ -38,6 +38,7 @@
         defaultPhoneRegion = "US";
         overwriteProtocol = "https";
         extraTrustedDomains = [
+          "104.156.244.250"
           "100.64.26.109"
           "127.0.0.1"
           "localhost"
