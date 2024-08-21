@@ -72,6 +72,7 @@
     };
   };
 
+  services.tailscale.enable = true;
 
   networking.hostName = "denali"; # Define your hostname.
   # Pick only one of the below networking options.
