@@ -19,6 +19,7 @@
 
       settings.trusted_proxies = [
         "100.64.26.109"
+        "fd7a:115c:a1e0::7701:1a6d"
       ];
 
       phpOptions = {
