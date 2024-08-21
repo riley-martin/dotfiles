@@ -38,6 +38,7 @@
         defaultPhoneRegion = "US";
         overwriteProtocol = "https";
         extraTrustedDomains = [
+          "cloud.rileymartin.dev"
           "100.106.82.60"
           "nextcloud"
           "foraker"
