@@ -282,6 +282,7 @@
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [80 443];
   networking.enableIPv6 = true;
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
