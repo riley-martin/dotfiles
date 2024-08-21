@@ -45,6 +45,7 @@
             proxy_read_timeout 86400s;
             client_max_body_size 0;
             proxy_headers_hash_max_size 8192;
+            proxy_headers_hash_bucket_size 256;
 
             # Websocket
             proxy_http_version 1.1;
