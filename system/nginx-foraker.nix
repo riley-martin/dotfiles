@@ -44,7 +44,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:${toString config.services.vaultwarden.config.rocketPort}";
+          proxyPass = "http://100.106.82.60:8222";
         };
       };
       
