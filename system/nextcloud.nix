@@ -36,7 +36,7 @@
 
       extraOptions = {
         defaultPhoneRegion = "US";
-        overwriteProtocol = "https";
+        # overwriteProtocol = "https";
         extraTrustedDomains = [
           "cloud.rileymartin.dev"
           "100.106.82.60"
