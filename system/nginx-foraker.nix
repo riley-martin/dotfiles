@@ -31,7 +31,7 @@
         ## LetsEncrypt
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:80";
+          proxyPass = "http://100.106.82.60:80/";
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Real-IP $remote_addr;
