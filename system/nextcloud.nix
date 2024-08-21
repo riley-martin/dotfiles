@@ -17,6 +17,9 @@
       configureRedis = true;
       logType = "file";
 
+      settings.trusted_proxies = [
+        "100.64.26.109"
+      ];
 
       phpOptions = {
         "opcache.interned_strings_buffer" = "16";
