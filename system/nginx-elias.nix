@@ -32,21 +32,21 @@
         enableACME = true;
       };
 
-      "warden.rileymartin.xyz" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/" = {
-          return = "301 https://warden.rileymartin.dev";
-        };
-      };
+      # "warden.rileymartin.xyz" = {
+      #   enableACME = true;
+      #   forceSSL = true;
+      #   locations."/" = {
+      #     return = "301 https://warden.rileymartin.dev";
+      #   };
+      # };
 
-      "warden.rileymartin.dev" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://localhost:${toString config.services.vaultwarden.config.rocketPort}";
-        };
-      };
+      # "warden.rileymartin.dev" = {
+      #   forceSSL = true;
+      #   enableACME = true;
+      #   locations."/" = {
+      #     proxyPass = "http://localhost:${toString config.services.vaultwarden.config.rocketPort}";
+      #   };
+      # };
       
       "office.rileymartin.dev" = {
         forceSSL = true;
