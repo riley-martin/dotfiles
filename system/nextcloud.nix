@@ -22,6 +22,21 @@
         "fd7a:115c:a1e0::7701:1a6d"
       ];
 
+      settings.trusted_domains = [
+        "cloud.rileymartin.dev"
+        "100.106.82.60"
+        "nextcloud"
+        "foraker"
+        "104.156.244.250"
+        "100.64.26.109"
+        "127.0.0.1"
+        "localhost"
+        "elias"
+        "192.168.0.10"
+        "71.61.203.114"
+        "cloud.rileymartin.xyz"
+      ];
+
       phpOptions = {
         "opcache.interned_strings_buffer" = "16";
       };
@@ -42,20 +57,6 @@
         defaultPhoneRegion = "US";
         # overwriteProtocol = "https";
         overwriteHost = "100.64.26.109";
-        extraTrustedDomains = [
-          "cloud.rileymartin.dev"
-          "100.106.82.60"
-          "nextcloud"
-          "foraker"
-          "104.156.244.250"
-          "100.64.26.109"
-          "127.0.0.1"
-          "localhost"
-          "elias"
-          "192.168.0.10"
-          "71.61.203.114"
-          "cloud.rileymartin.xyz"
-        ];
       };
       appstoreEnable = true;
       enableImagemagick = true;
