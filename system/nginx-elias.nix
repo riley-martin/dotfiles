@@ -1,6 +1,6 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   services.nginx = {
-    enable = false;
+    enable = lib.mkForce false;
     logError = "stderr info";
 
     resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1"];
