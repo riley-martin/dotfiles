@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../system/fail2ban.nix
       ../../system/email.nix
+      ../../system/nginx-foraker.nix
       snm.nixosModules.default
     ];
 
