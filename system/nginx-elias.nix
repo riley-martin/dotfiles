@@ -17,20 +17,20 @@
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts = {
 
-      "cloud.rileymartin.xyz" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          return = "301 https://cloud.rileymartin.dev";
-        };
-      };
+      # "cloud.rileymartin.xyz" = {
+      #   forceSSL = true;
+      #   enableACME = true;
+      #   locations."/" = {
+      #     return = "301 https://cloud.rileymartin.dev";
+      #   };
+      # };
 
-      "cloud.rileymartin.dev" = {
-        ## Force HTTP redirect to HTTPS
-        forceSSL = true;
-        ## LetsEncrypt
-        enableACME = true;
-      };
+      # "cloud.rileymartin.dev" = {
+      #   ## Force HTTP redirect to HTTPS
+      #   forceSSL = true;
+      #   ## LetsEncrypt
+      #   enableACME = true;
+      # };
 
       # "warden.rileymartin.xyz" = {
       #   enableACME = true;
@@ -48,77 +48,77 @@
       #   };
       # };
       
-      "office.rileymartin.dev" = {
-        forceSSL = true;
-        enableACME = true;
-        locations = {
-          # static files
-          "^~ /browser" = {
-            proxyPass = "http://localhost:9980";
-            extraConfig = ''
-              proxy_set_header Host $host;
-            '';
-          };
-          # WOPI discovery URL
-          "^~ /hosting/discovery" = {
-            proxyPass = "http://localhost:9980";
-            extraConfig = ''
-              proxy_set_header Host $host;
-            '';
-          };
+      # "office.rileymartin.dev" = {
+      #   forceSSL = true;
+      #   enableACME = true;
+      #   locations = {
+      #     # static files
+      #     "^~ /browser" = {
+      #       proxyPass = "http://localhost:9980";
+      #       extraConfig = ''
+      #         proxy_set_header Host $host;
+      #       '';
+      #     };
+      #     # WOPI discovery URL
+      #     "^~ /hosting/discovery" = {
+      #       proxyPass = "http://localhost:9980";
+      #       extraConfig = ''
+      #         proxy_set_header Host $host;
+      #       '';
+      #     };
 
-          # Capabilities
-          "^~ /hosting/capabilities" = {
-            proxyPass = "http://localhost:9980";
-            extraConfig = ''
-              proxy_set_header Host $host;
-            '';
-          };
+      #     # Capabilities
+      #     "^~ /hosting/capabilities" = {
+      #       proxyPass = "http://localhost:9980";
+      #       extraConfig = ''
+      #         proxy_set_header Host $host;
+      #       '';
+      #     };
 
-          "~ ^/cool/(.*)/ws$" = {
-             proxyPass = "http://127.0.0.1:9980";
-             extraConfig = ''
-               proxy_set_header Upgrade $http_upgrade;
-               proxy_set_header Connection "Upgrade";
-               proxy_set_header Host $host;
-               proxy_read_timeout 36000s;
-            '';
-           };
+      #     "~ ^/cool/(.*)/ws$" = {
+      #        proxyPass = "http://127.0.0.1:9980";
+      #        extraConfig = ''
+      #          proxy_set_header Upgrade $http_upgrade;
+      #          proxy_set_header Connection "Upgrade";
+      #          proxy_set_header Host $host;
+      #          proxy_read_timeout 36000s;
+      #       '';
+      #      };
 
 
-          # download, presentation, image upload and websocket
-          # "~ ^/lool" = {
-          #   proxyPass = "http://localhost:9980";
-          #   extraConfig = ''
-          #     proxy_set_header Upgrade $http_upgrade;
-          #     proxy_set_header Connection "Upgrade";
-          #     proxy_set_header Host $host;
-          #     proxy_read_timeout 36000s;
-          #   '';
-          # };
+      #     # download, presentation, image upload and websocket
+      #     # "~ ^/lool" = {
+      #     #   proxyPass = "http://localhost:9980";
+      #     #   extraConfig = ''
+      #     #     proxy_set_header Upgrade $http_upgrade;
+      #     #     proxy_set_header Connection "Upgrade";
+      #     #     proxy_set_header Host $host;
+      #     #     proxy_read_timeout 36000s;
+      #     #   '';
+      #     # };
 
-          "~ ^/(c|l)ool" = {
-            proxyPass = "http://localhost:9980";
-            extraConfig = ''
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "Upgrade";
-              proxy_set_header Host $host;
-              proxy_read_timeout 36000s;
-            '';
-          };
+      #     "~ ^/(c|l)ool" = {
+      #       proxyPass = "http://localhost:9980";
+      #       extraConfig = ''
+      #         proxy_set_header Upgrade $http_upgrade;
+      #         proxy_set_header Connection "Upgrade";
+      #         proxy_set_header Host $host;
+      #         proxy_read_timeout 36000s;
+      #       '';
+      #     };
 
-          # Admin Console websocket
-          "^~ /cool/adminws" = {
-            proxyPass = "http://localhost:9980";
-            extraConfig = ''
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection "Upgrade";
-              proxy_set_header Host $host;
-              proxy_read_timeout 36000s;
-            '';
-          };
-        };
-      };
+      #     # Admin Console websocket
+      #     "^~ /cool/adminws" = {
+      #       proxyPass = "http://localhost:9980";
+      #       extraConfig = ''
+      #         proxy_set_header Upgrade $http_upgrade;
+      #         proxy_set_header Connection "Upgrade";
+      #         proxy_set_header Host $host;
+      #         proxy_read_timeout 36000s;
+      #       '';
+      #     };
+      #   };
+      # };
 
       "media.rileymartin.dev" = {
         enableACME = true;
