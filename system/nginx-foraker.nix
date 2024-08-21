@@ -3,7 +3,7 @@
     enable = true;
     logError = "stderr info";
 
-    resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1"];
+    resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1" "100.100.100.100"];
 
     # Use recommended settings
     recommendedGzipSettings = true;
@@ -25,12 +25,15 @@
     #     };
     #   };
 
-    #   "cloud.rileymartin.dev" = {
-    #     ## Force HTTP redirect to HTTPS
-    #     forceSSL = true;
-    #     ## LetsEncrypt
-    #     enableACME = true;
-    #   };
+      "cloud.rileymartin.dev" = {
+        ## Force HTTP redirect to HTTPS
+        forceSSL = true;
+        ## LetsEncrypt
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://elias:80";
+        };
+      };
 
     #   "warden.rileymartin.xyz" = {
     #     enableACME = true;
@@ -44,7 +47,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:8222";
+          proxyPass = "http://elias:8222";
         };
       };
       

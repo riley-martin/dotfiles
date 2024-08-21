@@ -3,7 +3,7 @@
     enable = lib.mkForce false;
     logError = "stderr info";
 
-    resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1"];
+    resolver.addresses = [ "[::1]" "127.0.0.1" "1.1.1.1" "100.100.100.100"];
 
     # Use recommended settings
     recommendedGzipSettings = true;

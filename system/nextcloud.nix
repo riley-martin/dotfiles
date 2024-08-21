@@ -2,9 +2,9 @@
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud29;
-      hostName = "cloud.rileymartin.dev";
+      hostName = "elias";
       # hostName = "cloud.localhost";
-      https = true;
+      https = false;
       configureRedis = true;
       logType = "file";
 
@@ -29,6 +29,7 @@
         defaultPhoneRegion = "US";
         overwriteProtocol = "https";
         extraTrustedDomains = [
+          "100.64.26.109"
           "127.0.0.1"
           "localhost"
           "elias"
