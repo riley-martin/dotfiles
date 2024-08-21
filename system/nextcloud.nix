@@ -15,7 +15,7 @@
       # hostName = "cloud.localhost";
       https = false;
       configureRedis = true;
-      logType = "file";
+      logType = "syslog";
 
       settings.trusted_proxies = [
         "100.64.26.109"
