@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       # ./mailz.nix
       ../../system/nextcloud.nix
-      ../../system/nginx-elias.nix
+      # ../../system/nginx-elias.nix
       ../../system/fail2ban.nix
       ../../system/immich.nix
       ../../system/audiobookshelf.nix
