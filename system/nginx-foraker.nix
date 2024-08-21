@@ -34,22 +34,20 @@
           proxyPass = "http://100.106.82.60:80";
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Port $server_port;
             proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Accept-Encoding "";
-            proxy_set_header Host $host;
     
             client_body_buffer_size 512k;
             proxy_read_timeout 86400s;
-            client_max_body_size 0;
+            client_max_body_size 8M;
             proxy_headers_hash_max_size 8192;
             proxy_headers_hash_bucket_size 256;
-
-            # Websocket
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $connection_upgrade;
           '';
+        };
+        locations."/.well-known/carddav" = {
+          return = "301 https://cloud.rileymartin.dev/remote.php/dav";
+        };
+        locations."/.well-known/caldav" = {
+          return = "301 https://cloud.rileymartin.dev/remote.php/dav";
         };
       };
 
