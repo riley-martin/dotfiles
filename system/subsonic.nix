@@ -6,13 +6,7 @@
       podcast-path = "/mnt/media/podcast";
       # jukebox-enabled = true;
       playlists-path = "/mnt/media/playlists";
-    };
-  };
-  services.nginx.virtualHosts."music.rileymartin.dev" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://localhost:4747/";
+      listen-addr = "100.106.82.60:4747";
     };
   };
   security.rtkit.enable = true;

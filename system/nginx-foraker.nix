@@ -137,6 +137,37 @@
           "/".proxyPass = "http://100.106.82.60:8096";
         };
       };
+
+      "music.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://100.106.82.60:4747/";
+        };
+      };
+
+      "books.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://100.106.82.60:4061";
+          proxyWebsockets = true;
+        };
+      };
+      
+      "images.rileymartin.dev" = {
+        extraConfig = ''
+          ## Per https://immich.app/docs/administration/reverse-proxy...
+          client_max_body_size 50000M;
+        '';
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://100.106.82.60:2283";
+          proxyWebsockets = true;
+        };
+      };
+
     };
   };
 }
