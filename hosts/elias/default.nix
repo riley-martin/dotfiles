@@ -197,7 +197,7 @@
           imageDigest = "sha256:3660e56e1974f4fbe08fac35bad577e6a1836e72f5090117bffe9702f3cea165";
           sha256 = "0xvjl0r4nnldhz6wa6q422vniqvgigw5vbvw48fn57m5173knyrh";
         };
-        ports = ["9980:9980"];
+        ports = ["100.106.82.60:9980:9980"];
         environment = {
           domain = "office.rileymartin.dev";
           extra_params = "--o:ssl.enable=false --o:ssl.termination=true --o:net.post_allow.host='.*' --o:storage.wopi.host='.*'";
