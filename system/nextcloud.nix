@@ -2,7 +2,7 @@
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud29;
-      hostName = "elias";
+      hostName = "100.106.82.60";
       # hostName = "cloud.localhost";
       https = false;
       configureRedis = true;
