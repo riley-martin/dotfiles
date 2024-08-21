@@ -35,7 +35,7 @@
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
+            proxy_set_header Host 100.64.26.109;
     
             client_body_buffer_size 512k;
             proxy_read_timeout 86400s;
