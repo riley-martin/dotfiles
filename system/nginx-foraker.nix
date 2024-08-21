@@ -31,7 +31,7 @@
         ## LetsEncrypt
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://elias:80";
+          proxyPass = "http://100.106.82.60:80";
         };
       };
 
@@ -47,7 +47,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://elias:8222";
+          proxyPass = "http://100.106.82.60:8222";
         };
       };
       
