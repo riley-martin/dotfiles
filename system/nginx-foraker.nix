@@ -168,6 +168,88 @@
         };
       };
 
+      
+      "memos.rileymartin.dev" = {
+        extraConfig = ''
+          client_max_body_size 50000M;
+        '';
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://100.106.82.60:5230";
+          proxyWebsockets = true;
+        };
+      };
+
+      
+      "papers.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://100.106.82.60:28981";
+      };
+
+
+      "llm.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://100.106.82.60:8080";
+      };
+
+      
+      "git.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          proxyPass = "http://100.106.82.60:7654";
+        };
+      };
+
+      
+      "syncv3.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/".proxyPass = "http://100.106.82.60:8009";
+      };
+
+      "rileymartin.dev" = let
+        clientConfig."m.homeserver".base_url = "rileymartin.dev";
+        serverConfig."m.server" = "matrix.rileymartin.dev:443";
+        syncv3Config."org.matrix.msc3575.proxy".url = "https://syncv3.rileymartin.dev";
+        mkWellKnown = data: ''
+          default_type application/json;
+          add_header Access-Control-Allow-Origin *;
+          return 200 '${builtins.toJSON data}';
+        '';
+      in {
+        enableACME = true;
+        forceSSL = true;
+        # This section is not needed if the server_name of matrix-synapse is equal to
+        # the domain (i.e. example.org from @foo:example.org) and the federation port
+        # is 8448.
+        # Further reference can be found in the docs about delegation under
+        # https://element-hq.github.io/synapse/latest/delegate.html
+        locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
+        # This is usually needed for homeserver discovery (from e.g. other Matrix clients).
+        # Further reference can be found in the upstream docs at
+        # https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
+        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown (clientConfig // syncv3Config);
+      };
+      "matrix.rileymartin.dev" = {
+        enableACME = true;
+        forceSSL = true;
+        # It's also possible to do a redirect here or something else, this vhost is not
+        # needed for Matrix. It's recommended though to *not put* element
+        # here, see also the section about Element.
+        locations."/".extraConfig = ''
+          return 404;
+        '';
+        # Forward all Matrix API calls to the synapse Matrix homeserver. A trailing slash
+        # *must not* be used here.
+        locations."/_matrix".proxyPass = "http://100.106.82.60:8008";
+        # Forward requests for e.g. SSO and password-resets.
+        locations."/_synapse/client".proxyPass = "http://100.106.82.60:8008";
+      };
+
     };
   };
 }

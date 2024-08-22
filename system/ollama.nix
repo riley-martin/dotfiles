@@ -26,7 +26,7 @@
       ];
 
       ports = [
-        "127.0.0.1:8080:8080" # Ensures we listen only on localhost
+        "100.106.82.60:8080:8080" # Ensures we listen only on localhost
       ];
 
       extraOptions = [
@@ -36,14 +36,6 @@
         "--network=host"
         "--add-host=host.docker.internal:host-gateway"
       ];
-    };
-  };
-  services.nginx = {
-    enable = true;
-    virtualHosts."llm.rileymartin.dev" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/".proxyPass = "http://localhost:8080";
     };
   };
 }
