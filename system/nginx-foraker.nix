@@ -186,6 +186,11 @@
         forceSSL = true;
         enableACME = true;
         locations."/".proxyPass = "http://100.106.82.60:28981";
+        locations."/".extraConfig = ''
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header Referer $http_referer;
+
+        '';
       };
 
 
