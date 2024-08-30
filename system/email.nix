@@ -5,6 +5,9 @@
     openFirewall = true;
     fqdn = "mail.rileymartin.dev";
     domains = [ "rileymartin.dev" "rileymartin.xyz" "wmartinconstruction.com" ];
+
+    # A list of all login accounts. To create the password hashes, use
+    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "me@rileymartin.dev" = {
         hashedPasswordFile = config.age.secrets.mailserver.path;
