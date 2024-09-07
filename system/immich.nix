@@ -7,8 +7,8 @@ let
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
   immichVersion = "v1.114.0";
-  immichExternalVolume1 = "/home/riley/Video";
-  immichExternalVolume2 = "/home/riley/Picture";
+  immichExternalVolume1 = "/mnt/media/Videos";
+  immichExternalVolume2 = "/mnt/media/Pictures";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresPassword = "immich"; # TODO: put a random password here
