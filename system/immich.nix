@@ -6,7 +6,7 @@ let
   immichRoot = "/home/immich"; # TODO: Tweak these to your desired storage locations
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.114.0";
+  immichVersion = "v1.115.0";
   immichExternalVolume1 = "/mnt/media/Videos";
   immichExternalVolume2 = "/mnt/media/Pictures";
 
