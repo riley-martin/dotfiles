@@ -27,9 +27,6 @@ in
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.desktopManager.gnome.sessionPath = with pkgs; [ libgtop ];
   environment.gnome.excludePackages = (with pkgs.gnome; [
-    hitori
-    iagno
-    tali
   ]);
   environment.systemPackages = packages ++ extensions;
 
