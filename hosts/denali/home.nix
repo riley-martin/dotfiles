@@ -125,17 +125,6 @@ in {
 
   # services.kdeconnect.enable = true;
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/riley/Music";
-    extraConfig = ''
-      audio_output {
-        type "pipewire"
-        name "PipeWire Output"
-      }
-    '';
-  };
-
   # services.udiskie = {
   #   enable = true;
   # };
