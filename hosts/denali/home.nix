@@ -125,9 +125,20 @@ in {
 
   # services.kdeconnect.enable = true;
 
-  services.udiskie = {
+  services.mpd = {
     enable = true;
+    musicDirectory = "/home/riley/Music";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "PipeWire Output"
+      }
+    '';
   };
+
+  # services.udiskie = {
+  #   enable = true;
+  # };
 
   programs.chromium.commandLineArgs = [
     "--force-dark-mode"
