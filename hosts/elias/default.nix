@@ -41,6 +41,7 @@
   networking.hostName = "elias"; # Define your hostname.
 
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "both";
 
   age = {
     # secrets.nextcloud-mail.file = ../../secrets/nextcloud-mail.age;
