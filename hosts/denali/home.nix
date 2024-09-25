@@ -94,7 +94,7 @@ in {
     gh nil age vscodium android-studio
 
     ## Graphics
-    digikam exiftool darktable blender hugin
+    rawtherapee digikam exiftool darktable blender hugin
     (callPackage ../../pkgs{}).gimp-devel
     # gimp
     kdenlive inkscape audacity
