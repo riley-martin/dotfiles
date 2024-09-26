@@ -102,15 +102,13 @@
 
   services.snap.enable = true;
 
-  services.fprintd.enable = false;
-  # services.fprintd.package = (pkgs.callPackage ../home-manager/pkgs/fprintd.nix 
-  services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
+  # services.fprintd.enable = true;
+  # services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
   # systemd.services."fprintd".serviceConfig = {
   #   ExecStart = "${pkgs.fprintd}/libexec/fprintd";
   #   Type = "dbus";
   #   BusName = "net.reactivated.Fprint";
   # };
-  # services.fprintd.package = (pkgs.callPackage ../../pkgs {}).fprintd;
 
   
   # Enable the X11 windowing system.
