@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  packages = with pkgs; [ gnome-tweaks gjs ptyxis musicpod ];
+  packages = with pkgs; [ gnome-tweaks gjs ptyxis adwaita-qt adwaita-qt6 adwaita-icon-theme adwaita-icon-theme-legacy];
   extensions = with pkgs.gnomeExtensions; [ ddterm window-gestures appindicator astra-monitor gsconnect pop-shell ];
 in
 {
