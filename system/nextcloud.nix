@@ -15,7 +15,6 @@
       # hostName = "cloud.localhost";
       https = false;
       configureRedis = true;
-      logType = "syslog";
 
       settings.trusted_proxies = [
         "100.64.26.109"
@@ -52,10 +51,11 @@
         dbpassFile = config.age.secrets.pgsql-pass.path;
       };
 
-      extraOptions = {
-        defaultPhoneRegion = "US";
+      settings = {
+        default_phone_region = "US";
         # overwriteProtocol = "https";
-        overwriteHost = "100.64.26.109";
+        overwrite_host = "100.64.26.109";
+        log_type = "syslog";
       };
       appstoreEnable = true;
       enableImagemagick = true;
