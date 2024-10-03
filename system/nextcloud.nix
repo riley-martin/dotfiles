@@ -10,7 +10,7 @@
     };
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud29;
+      package = pkgs.nextcloud30;
       hostName = "nextcloud";
       # hostName = "cloud.localhost";
       https = false;
