@@ -34,7 +34,6 @@
         "elias"
         "192.168.0.10"
         "71.61.203.114"
-        "cloud.rileymartin.xyz"
       ];
 
       phpOptions = {
