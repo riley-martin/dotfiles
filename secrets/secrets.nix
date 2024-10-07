@@ -24,4 +24,5 @@ in
   "paperless.age".publicKeys = [ riley elias ];
   "matrix.age".publicKeys = [ riley elias ];
   "matrix-sliding-sync.age".publicKeys = [ riley elias ];
+  "searx.age".publicKeys = [ riley elias ];
 }

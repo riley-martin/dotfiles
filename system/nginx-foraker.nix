@@ -1,4 +1,8 @@
-{ config, ... }: {
+{ config, ... }: 
+let 
+  eliasTailnet = "100.106.82.60";
+in
+{
   services.nginx = {
     enable = true;
     logError = "stderr info";
@@ -23,6 +27,11 @@
     #       return = "301 https://cloud.rileymartin.dev";
     #     };
     #   };
+      "search.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://${eliasTailnet}:4321";
+      };
 
       "cloud.rileymartin.dev" = {
         ## Force HTTP redirect to HTTPS
@@ -30,7 +39,7 @@
         ## LetsEncrypt
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:80/";
+          proxyPass = "http://${eliasTailnet}:80/";
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Real-IP $remote_addr;
@@ -65,7 +74,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:8222";
+          proxyPass = "http://${eliasTailnet}:8222";
         };
       };
       
@@ -75,14 +84,14 @@
         locations = {
           # static files
           "^~ /browser" = {
-            proxyPass = "http://100.106.82.60:9980";
+            proxyPass = "http://${eliasTailnet}:9980";
             extraConfig = ''
               proxy_set_header Host $host;
             '';
           };
           # WOPI discovery URL
           "^~ /hosting/discovery" = {
-            proxyPass = "http://100.106.82.60:9980";
+            proxyPass = "http://${eliasTailnet}:9980";
             extraConfig = ''
               proxy_set_header Host $host;
             '';
@@ -90,14 +99,14 @@
 
           # Capabilities
           "^~ /hosting/capabilities" = {
-            proxyPass = "http://100.106.82.60:9980";
+            proxyPass = "http://${eliasTailnet}:9980";
             extraConfig = ''
               proxy_set_header Host $host;
             '';
           };
 
           "~ ^/cool/(.*)/ws$" = {
-             proxyPass = "http://100.106.82.60:9980";
+             proxyPass = "http://${eliasTailnet}:9980";
              extraConfig = ''
                proxy_set_header Upgrade $http_upgrade;
                proxy_set_header Connection "Upgrade";
@@ -107,7 +116,7 @@
            };
 
           "~ ^/(c|l)ool" = {
-            proxyPass = "http://100.106.82.60:9980";
+            proxyPass = "http://${eliasTailnet}:9980";
             extraConfig = ''
               proxy_set_header Upgrade $http_upgrade;
               proxy_set_header Connection "Upgrade";
@@ -118,7 +127,7 @@
 
           # Admin Console websocket
           "^~ /cool/adminws" = {
-            proxyPass = "http://100.106.82.60:9980";
+            proxyPass = "http://${eliasTailnet}:9980";
             extraConfig = ''
               proxy_set_header Upgrade $http_upgrade;
               proxy_set_header Connection "Upgrade";
@@ -134,7 +143,7 @@
         forceSSL = true;
         # clientMaxBodySize = "20M";
         locations = {
-          "/".proxyPass = "http://100.106.82.60:8096";
+          "/".proxyPass = "http://${eliasTailnet}:8096";
         };
       };
 
@@ -142,7 +151,7 @@
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:4747/";
+          proxyPass = "http://${eliasTailnet}:4747/";
         };
       };
 
@@ -150,7 +159,7 @@
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:4061";
+          proxyPass = "http://${eliasTailnet}:4061";
           proxyWebsockets = true;
         };
       };
@@ -163,7 +172,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:2283";
+          proxyPass = "http://${eliasTailnet}:2283";
           proxyWebsockets = true;
         };
       };
@@ -176,7 +185,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:5230";
+          proxyPass = "http://${eliasTailnet}:5230";
           proxyWebsockets = true;
         };
       };
@@ -185,7 +194,7 @@
       "papers.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://100.106.82.60:28981";
+        locations."/".proxyPass = "http://${eliasTailnet}:28981";
         locations."/".extraConfig = ''
           proxy_set_header X-Forwarded-Proto $scheme;
           proxy_set_header Referer $http_referer;
@@ -197,7 +206,7 @@
       "llm.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://100.106.82.60:8080";
+        locations."/".proxyPass = "http://${eliasTailnet}:8080";
       };
 
       
@@ -205,7 +214,7 @@
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://100.106.82.60:7654";
+          proxyPass = "http://${eliasTailnet}:7654";
         };
       };
 
@@ -213,7 +222,7 @@
       "syncv3.rileymartin.dev" = {
         enableACME = true;
         forceSSL = true;
-        locations."/".proxyPass = "http://100.106.82.60:8009";
+        locations."/".proxyPass = "http://${eliasTailnet}:8009";
       };
 
       "rileymartin.dev" = let
@@ -250,9 +259,9 @@
         '';
         # Forward all Matrix API calls to the synapse Matrix homeserver. A trailing slash
         # *must not* be used here.
-        locations."/_matrix".proxyPass = "http://100.106.82.60:8008";
+        locations."/_matrix".proxyPass = "http://${eliasTailnet}:8008";
         # Forward requests for e.g. SSO and password-resets.
-        locations."/_synapse/client".proxyPass = "http://100.106.82.60:8008";
+        locations."/_synapse/client".proxyPass = "http://${eliasTailnet}:8008";
       };
 
     };

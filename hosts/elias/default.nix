@@ -19,6 +19,7 @@
       ../../system/paperless.nix
       ../../system/ollama.nix
       ../../system/matrix.nix
+      ../../system/searx.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -88,6 +89,7 @@
       # owner = "matrix-sliding-sync";
       # group = "matrix-sliding-sync";
     };
+    secrets.searx.file = ../../secrets/searx.age;
   };
   
   # time.timeZone = "Europe/Amsterdam";
