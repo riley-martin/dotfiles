@@ -1,7 +1,7 @@
 { ... }:
 
 let
-  immichRoot = "/home/immich"; # TODO: Tweak these to your desired storage locations
+  immichRoot = "/mnt/media/immich"; # TODO: Tweak these to your desired storage locations
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
   immichVersion = "v1.117.0";
@@ -15,9 +15,5 @@ in {
     mediaLocation = "${immichPhotos}";
     port = 2283;
     host = "100.106.82.60";
-  };
-
-  systemd.services.immich-server.serviceConfig = {
-    ProtectHome = false;
   };
 }
