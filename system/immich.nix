@@ -16,4 +16,8 @@ in {
     port = 2283;
     host = "100.106.82.60";
   };
+
+  systemd.services.immich-server.serviceConfig = {
+    ProtectHome = false;
+  };
 }
