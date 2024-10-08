@@ -1,8 +1,6 @@
 { ... }:
 
 let
-  immichHost = "images.rileymartin.dev"; # TODO: put your immich domain name here
-
   immichRoot = "/home/immich"; # TODO: Tweak these to your desired storage locations
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
@@ -17,27 +15,18 @@ let
 
 in {
 
-  # The primary source for this configuration is the recommended docker-compose installation of immich from
-  # https://immich.app/docs/install/docker-compose, which linkes to:
-  # - https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml
-  # - https://github.com/immich-app/immich/releases/latest/download/example.env
-  # and has been transposed into nixos configuration here.  Those upstream files should probably be checked
-  # for serious changes if there are any upgrade problems here.
-  #
-  # After initial deployment, these in-process configurations need to be done:
-  # - create an admin user by accessing the site
-  # - login with the admin user
-  # - set the "Machine Learning Settings" > "URL" to http://immich_machine_learning:3003
+  services.immich = {
+    enable = true;
+    mediaLocation = "${immichPhotos}";
+  };
 
   virtualisation.oci-containers.containers.immich_server = {
     image = "ghcr.io/immich-app/immich-server:${immichVersion}";
     ports = ["100.106.82.60:2283:3001"];
     extraOptions = [
       "--pull=always"
-      # docker network create immich_net
       "--network=immich_net"
     ];
-    # cmd = [ "start.sh" "immich" ];
     environment = {
       IMMICH_VERSION = immichVersion;
       DB_HOSTNAME = "immich_postgres";
@@ -52,28 +41,6 @@ in {
       "${immichExternalVolume2}:${immichExternalVolume2}:ro"
     ];
   };
-
-  # virtualisation.oci-containers.containers.immich_microservices = {
-  #   image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-  #   extraOptions = [
-  #     "--pull=always"
-  #     "--network=immich_net"
-  #   ];
-  #   cmd = [ "start.sh" "microservices" ];
-  #   environment = {
-  #     IMMICH_VERSION = immichVersion;
-  #     DB_HOSTNAME = "immich_postgres";
-  #     DB_USERNAME = postgresUser;
-  #     DB_DATABASE_NAME = postgresDb;
-  #     DB_PASSWORD = postgresPassword;
-  #     REDIS_HOSTNAME = "immich_redis";
-  #   };
-  #   volumes = [
-  #     "${immichPhotos}:/usr/src/app/upload"
-  #     "${immichExternalVolume1}:${immichExternalVolume1}:ro"
-  #     "${immichExternalVolume2}:${immichExternalVolume2}:ro"
-  #   ];
-  # };
 
   virtualisation.oci-containers.containers.immich_machine_learning = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
