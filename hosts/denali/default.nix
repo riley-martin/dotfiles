@@ -11,8 +11,8 @@
       home-manager.nixosModules.home-manager
       # Desktop-hopping :)
       # ../../home/cosmic.nix
-      # ../../home/plasma.nix
-      ../../home/gnome.nix
+      ../../home/plasma.nix
+      # ../../home/gnome.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
