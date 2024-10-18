@@ -96,6 +96,7 @@ in {
     ## Graphics
     rawtherapee digikam exiftool darktable blender hugin
     (callPackage ../../pkgs{}).gimp-devel
+    siril
     # gimp
     kdenlive inkscape audacity
 
