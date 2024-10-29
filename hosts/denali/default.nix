@@ -147,9 +147,9 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
+      inter
       noto-fonts
-      noto-fonts-cjk
       noto-fonts-emoji
       noto-fonts-extra
       iosevka-bin
@@ -193,7 +193,7 @@
   };
   nixpkgs.config.allowUnfree = true;
   
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver

@@ -6,7 +6,7 @@
     # enableVteIntegration = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestions.enable = true;
     initExtraFirst = ''
       export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.ghcup/bin:$PATH"
       # zmodload zsh/zprof
