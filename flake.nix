@@ -9,6 +9,8 @@
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +55,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, snm, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, nixos-cosmic, ... }@inputs:
+  outputs = { self, nixpkgs, snm, home-manager, agenix, nix-snapd, hyprland, hyprland-plugins, nixos-cosmic, chaotic, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -105,6 +107,7 @@
             agenix.nixosModules.default
             nix-snapd.nixosModules.default
             nixos-cosmic.nixosModules.default
+            chaotic.nixosModules.default
           ];
         };
 

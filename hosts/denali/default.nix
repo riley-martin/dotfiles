@@ -30,6 +30,8 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
+  chaotic.appmenu-gtk3-module.enable = true;
+
   security.pam.loginLimits = with lib;
     flip concatMap [ "*" "root" ] (domain:
     flip concatMap [ "nproc" "nofile" ] (item:

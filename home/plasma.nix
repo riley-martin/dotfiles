@@ -5,5 +5,5 @@
   services.xserver.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
   programs.kdeconnect.package = lib.mkForce pkgs.kdePackages.kdeconnect-kde;
-  environment.systemPackages = with pkgs; [ gnome.gnome-settings-daemon ];
+  environment.systemPackages = with pkgs; [ gnome.gnome-settings-daemon kdePackages.kcalc ];
 }
