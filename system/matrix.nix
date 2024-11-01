@@ -39,10 +39,4 @@ in {
       }
     ];
   };
-
-  services.matrix-sliding-sync = {
-    enable = true;
-    settings.SYNCV3_SERVER = "https://matrix.rileymartin.dev";
-    environmentFile = config.age.secrets.matrix-sliding-sync.path;
-  };
 }
