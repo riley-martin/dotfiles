@@ -36,7 +36,7 @@ in
       "feed.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://${eliasTailnet}";
+        locations."/".proxyPass = "http://${eliasTailnet}:3579";
       };
 
       "cloud.rileymartin.dev" = {
