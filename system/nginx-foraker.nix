@@ -33,6 +33,12 @@ in
         locations."/".proxyPass = "http://${eliasTailnet}:4321";
       };
 
+      "feed.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://${eliasTailnet}";
+      };
+
       "cloud.rileymartin.dev" = {
         ## Force HTTP redirect to HTTPS
         forceSSL = true;

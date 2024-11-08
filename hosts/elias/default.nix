@@ -20,6 +20,7 @@
       ../../system/ollama.nix
       ../../system/matrix.nix
       ../../system/searx.nix
+      ../../system/freshrss.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
