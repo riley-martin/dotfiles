@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   services.nginx = {
     enable = true;
     virtualHosts."freshrss" = {
@@ -13,5 +13,7 @@
     enable = true;
     virtualHost = "freshrss";
     baseUrl = "https://feed.rileymartin.dev";
+    defaultUser = "riley";
+    passwordFile = config.age.secrets.freshrss.path;
   };
 }
