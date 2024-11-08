@@ -91,7 +91,12 @@
       # group = "matrix-sliding-sync";
     };
     secrets.searx.file = ../../secrets/searx.age;
-    secrets.freshrss.file = ../../secrets/freshrss.age;
+    secrets.freshrss = {
+      file = ../../secrets/freshrss.age;
+      mode = "770";
+      owner = "freshrss";
+      group = "freshrss";
+    };
   };
   
   # time.timeZone = "Europe/Amsterdam";
