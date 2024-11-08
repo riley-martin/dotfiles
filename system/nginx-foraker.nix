@@ -36,7 +36,22 @@ in
       "feed.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://${eliasTailnet}:3579";
+        locations."/" = {
+          proxyPass = "http://${eliasTailnet}:3579";
+          extraConfig = ''
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-Port $server_port;
+            proxy_set_header X-Forwarded-Scheme $scheme;
+            proxy_set_header X-Forwarded-Proto $scheme;
+    
+            client_body_buffer_size 512k;
+            proxy_read_timeout 86400s;
+            client_max_body_size 4G;
+            proxy_headers_hash_max_size 8192;
+            proxy_headers_hash_bucket_size 256;
+          '';
+        };
       };
 
       "cloud.rileymartin.dev" = {
