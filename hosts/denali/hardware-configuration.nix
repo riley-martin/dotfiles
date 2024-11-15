@@ -14,7 +14,8 @@
   boot.extraModulePackages = [ ];
   boot.extraModprobeConfig = lib.mkMerge [
     "options snd_hda_intel power_save=1"
-    "options iwlwifi power_save=1 uapsd_disable=1"
+    "options iwlwifi power_save=0 uapsd_disable=1"
+    "options iwlmvm power_scheme=1"
   ];
 
   fileSystems."/" =
