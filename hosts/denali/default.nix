@@ -204,7 +204,7 @@
     ];
   };
 
-  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.enable = false;
 
   hardware.bluetooth.enable = true;
 
