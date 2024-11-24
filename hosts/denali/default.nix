@@ -123,6 +123,8 @@
     SUBSYSTEM=="tty", GROUP="plugdev". MODE="0660"
 
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", SYMLINK+="arduino"
+
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="362d", ATTRS{idProduct}=="0240", MODE=="0666"
   '';
   # services.logind.lidSwitch = "suspend";
   services.tlp = {
