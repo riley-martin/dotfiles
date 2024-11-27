@@ -31,6 +31,7 @@ in
         forceSSL = true;
         enableACME = true;
         locations."/".proxyPass = "http://${eliasTailnet}:8123";
+        locations."/".proxyWebsockets = true;
       };
 
       "search.rileymartin.dev" = {
