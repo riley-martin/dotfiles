@@ -30,7 +30,8 @@ in {
     ];
     chromium = {
       enableWideVine = true;
-      channel = "stable";
+      commandLineArgs = "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation,UseOzonePlatform' --ozone-platform=wayland"
+      # channel = "stable";
     };
   };
 
@@ -133,7 +134,7 @@ in {
     enable = true;
     commandLineArgs = [
       "--force-dark-mode"
-      "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation'"
+      "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation,UseOzonePlatform'"
       "--ozone-platform=wayland"
     ];
     dictionaries = [ pkgs.hunspellDictsChromium.en_US ];
