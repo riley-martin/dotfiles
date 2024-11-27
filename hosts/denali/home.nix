@@ -11,7 +11,6 @@ in {
 
 
   nixpkgs.config = {
-    # This sucks, but I sort of need widevine :(
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       "chromium"
       "chromiumDev"
@@ -80,7 +79,7 @@ in {
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle
-    (callPackage ../../pkgs{}).chromium-flagfile
+    # (callPackage ../../pkgs{}).chromium-flagfile
     (callPackage ../../pkgs{}).fprint-eh575
     # self.inputs.gestures.packages.${system}.gestures
     kanata wl-clipboard brillo wpaperd rofi-wayland jamesdsp dconf
@@ -130,11 +129,15 @@ in {
   #   enable = true;
   # };
 
-  programs.chromium.commandLineArgs = [
-    "--force-dark-mode"
-    "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation'"
-    "--ozone-platform=wayland"
-  ];
+  programs.chromium = {
+    enable = true;
+    commandLineArgs = [
+      "--force-dark-mode"
+      "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation'"
+      "--ozone-platform=wayland"
+    ];
+    dictionaries = [ pkgs.hunspellDictsChromium.en_US ];
+  };
 
   programs.eww = {
     enable = false;
