@@ -30,7 +30,7 @@ in {
     ];
     chromium = {
       enableWideVine = true;
-      commandLineArgs = "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation,UseOzonePlatform' --ozone-platform=wayland"
+      commandLineArgs = "--enable-features='WebUIDarkMode,TouchpadOverscrollHistoryNavigation,UseOzonePlatform' --ozone-platform=wayland";
       # channel = "stable";
     };
   };
@@ -69,6 +69,7 @@ in {
     GTK_USE_PORTAL = 0;
     WLR_DRM_NO_MODIFIERS = 1;
     FLAKE = "/home/riley/dotfiles";
+    NIXOS_OZONE_WL = "1";
   };
 
   home.packages = with pkgs; [
