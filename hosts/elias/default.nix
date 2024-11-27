@@ -141,25 +141,6 @@
     #jack.enable = true;
   };
   
-  services.home-assistant = {
-    enable = false;
-    config = {};
-    configWritable = true;
-  };
-
-  services.cloudflare-dyndns = {
-    enable = false;
-    ipv4 = true;
-    # ipv6 = true;
-    proxied = false;
-    domains = [
-      "cloud.rileymartin.dev"
-      "office.rileymartin.dev"
-      "warden.rileymartin.dev"
-    ];
-    apiTokenFile = config.age.secrets.ddns_tok.path;
-  };
-
   services.vaultwarden = {
     enable = true;
     environmentFile = config.age.secrets.vaultwarden-env.path;
