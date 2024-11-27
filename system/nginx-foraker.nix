@@ -27,6 +27,12 @@ in
     #       return = "301 https://cloud.rileymartin.dev";
     #     };
     #   };
+      "home.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://${eliasTailnet}:8123";
+      };
+
       "search.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;

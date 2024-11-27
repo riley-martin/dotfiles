@@ -21,6 +21,7 @@
       ../../system/matrix.nix
       ../../system/searx.nix
       ../../system/freshrss.nix
+      ../../system/homeassistant.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
