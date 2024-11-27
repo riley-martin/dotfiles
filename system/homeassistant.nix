@@ -3,7 +3,7 @@
     enable = true;
     config = {
       http.use_x_forwarded_for = true;
-      trusted_proxies = ["100.64.26.109" "fd7a:115c:a1e0::4601:523c"];
+      http.trusted_proxies = ["100.64.26.109" "fd7a:115c:a1e0::4601:523c"];
     };
   };
 }
