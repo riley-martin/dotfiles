@@ -8,6 +8,7 @@
     extraComponents = [
       "google" "google_assistant" "google_assistant_sdk"
       "mobile_app"
+      "default_config" "met" "esphome" "shopping_list"
     ];
   };
 }
