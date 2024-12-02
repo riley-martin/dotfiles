@@ -92,7 +92,7 @@ in {
     handbrake spotube
 
     ## Development tools
-    gh nil age vscodium android-studio
+    gh nil age vscodium android-studio delta
 
     ## Graphics
     rawtherapee digikam exiftool darktable blender hugin
