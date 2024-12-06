@@ -80,7 +80,7 @@ in {
     traceroute restic itd
 
     ## Gui/Desktop environment utilities
-    imv xdg-utils wluma swayidle
+    imv xdg-utils wluma swayidle vlc
     # (callPackage ../../pkgs{}).chromium-flagfile
     (callPackage ../../pkgs{}).fprint-eh575
     # self.inputs.gestures.packages.${system}.gestures
