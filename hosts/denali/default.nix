@@ -159,7 +159,7 @@
       font-awesome
       material-symbols
       victor-mono
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      nerd-fonts.iosevka
     ];
   };
 
