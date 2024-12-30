@@ -75,6 +75,9 @@
     };
   };
 
+  services.input-remapper.enable = true;
+  services.input-remapper.enableUdevRules = true;
+
   services.tailscale.enable = true;
 
   networking.hostName = "denali"; # Define your hostname.
