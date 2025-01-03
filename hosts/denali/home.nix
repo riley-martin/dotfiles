@@ -95,17 +95,17 @@ in {
     gh nil age vscodium android-studio delta
 
     ## Graphics
-    rawtherapee digikam exiftool darktable blender hugin
-    (callPackage ../../pkgs{}).gimp-devel
-    siril
+    # rawtherapee digikam exiftool darktable blender hugin
+    # (callPackage ../../pkgs{}).gimp-devel
+    # siril
     # gimp
-    kdenlive inkscape audacity
+    # kdenlive inkscape audacity
 
     ## Office
     libreoffice-qt6-fresh
 
     ## Other
-    stellarium
+    # stellarium
   ];
 
   imports = [
