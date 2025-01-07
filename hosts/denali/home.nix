@@ -95,11 +95,7 @@ in {
     gh nil age vscodium android-studio delta
 
     ## Graphics
-    # rawtherapee digikam exiftool darktable blender hugin
-    # (callPackage ../../pkgs{}).gimp-devel
-    # siril
-    # gimp
-    # kdenlive inkscape audacity
+    exiftool
 
     ## Office
     libreoffice-qt6-fresh
