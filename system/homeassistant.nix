@@ -28,7 +28,6 @@
       image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
       extraOptions = [
         "--network=host"
-        "--restart=unless-stopped"
       ];
     };
   };
