@@ -11,6 +11,10 @@
   #     "default_config" "met" "esphome" "shopping_list"
   #   ];
   # };
+  services.matter-server = {
+    enable = true;
+  };
+
   virtualisation.oci-containers = {
     backend = "docker";
     containers.homeassistant = {
