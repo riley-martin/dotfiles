@@ -11,10 +11,6 @@
   #     "default_config" "met" "esphome" "shopping_list"
   #   ];
   # };
-  services.matter-server = {
-    enable = true;
-  };
-
   virtualisation.oci-containers = {
     backend = "docker";
     containers.homeassistant = {
@@ -24,6 +20,15 @@
       extraOptions = [ 
         "--network=host" 
         # "--device=/dev/ttyACM0:/dev/ttyACM0"  # Example, change this to match your own hardware
+      ];
+    };
+    containers.matter = {
+      volumes = [ "matter-server:/data" ];
+      environment.TZ = "America/New_York";
+      image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
+      extraOptions = [
+        "--network=host"
+        "--restart=unless-stopped"
       ];
     };
   };
