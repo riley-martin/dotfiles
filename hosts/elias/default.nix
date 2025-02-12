@@ -22,6 +22,7 @@
       ../../system/searx.nix
       ../../system/freshrss.nix
       ../../system/homeassistant.nix
+      ../../system/esphome.nix
     ];
 
   nixpkgs.config.allowUnfree = true;

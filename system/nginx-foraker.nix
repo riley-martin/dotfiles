@@ -34,6 +34,12 @@ in
         locations."/".proxyWebsockets = true;
       };
 
+      "esphome.rileymartin.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://${eliasTailnet}:9998";
+      };
+
       "search.rileymartin.dev" = {
         forceSSL = true;
         enableACME = true;
