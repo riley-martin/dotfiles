@@ -75,8 +75,8 @@
     };
   };
 
-  services.input-remapper.enable = true;
-  services.input-remapper.enableUdevRules = true;
+  services.input-remapper.enable = false;
+  services.input-remapper.enableUdevRules = false;
 
   services.flatpak.enable = true;
 
