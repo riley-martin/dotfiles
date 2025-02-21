@@ -78,6 +78,7 @@ in {
     dig lynx bat lsd ripgrep fd bottom tealdeer
     self.inputs.nix-alien.packages.${system}.nix-alien
     traceroute restic itd
+    warp-terminal
 
     ## Gui/Desktop environment utilities
     imv xdg-utils wluma swayidle vlc
