@@ -12,6 +12,7 @@ in {
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "warp-terminal"
       "chromium"
       "chromiumDev"
       "chromium-dev"
