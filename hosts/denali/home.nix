@@ -98,6 +98,7 @@ in {
 
     ## Graphics
     exiftool
+    davinci-resolve
 
     ## Office
     libreoffice-qt6-fresh
