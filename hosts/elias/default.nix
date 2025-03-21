@@ -53,15 +53,15 @@
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
-        "server string" = "smbnix";
-        "netbios name" = "smbnix";
+        "server string" = "elias";
+        "netbios name" = "elias";
         "security" = "user";
         #"use sendfile" = "yes";
         #"max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
         "hosts allow" = "192.168.0. 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
-        "guest account" = "nobody";
+        "guest account" = "guest";
         "map to guest" = "bad user";
       };
       "video" = {
@@ -71,7 +71,7 @@
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "riley";
+        "force user" = "guest";
         "force group" = "users";
       };
     };
